@@ -1,6 +1,14 @@
 # Installation Nouvelle Borne Arcade Puls Impact
 
-Download the raspberry OS Lite from [https://www.raspberrypi.org/downloads/raspberry-pi-os/](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
+## Optional : Project compilation
+
+For generate css : 
+Go to src > renderer > assets > css and execute :  
+`./dart-sass/sass ./sass/theme.scss ./theme.css` to generate or edit css. 
+
+## Installation nouvelle borne
+
+Download the raspberry OS **Lite** from [https://www.raspberrypi.org/downloads/raspberry-pi-os/](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 
 Download the imager for your OS (Windows, Linux, Mac) from [https://www.raspberrypi.org/downloads/](https://www.raspberrypi.org/downloads/)
 
