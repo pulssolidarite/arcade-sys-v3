@@ -1,24 +1,55 @@
-# PULS Sys V2
-
-> A complete system to manage Arcade terminal capable of running retro games with donations management.
-
-#### Build Setup
-
-```bash
-1 - Flash Raspbian
-2 - Build Retroarch 1.7.7 --> https://gist.github.com/AlexMax/32e5d038a66ce57253e740ea75736805 
-3 - Télécharger la dernière release et la mettre sur le bureau --> https://github.com/hilaliMoncef/arcade-sys/releases
-4 - cd /home/pi/Desktop
-5 - chmod a+x LeNomDuFichier.AppImage
-6 - Add Env Variables --> sudo nano /etc/profile et ajouter à la fin "export PULS_LOGIN=LeLoginChoisi" et ensuite "export PULS_MDP=LeMDPChoisi"
-7 - Faire cd /home/pi et puis faire un "git clone https://github.com/hilaliMoncef/arcade-sys-games.git". Un nouveau dossier contenant les jeux et les cores sera créé. Il faudra rajouter les jeux dessus plus tard et ensuite programmer un "git pull" automatique.
-8 - Reboot
-9 - Lancer l'appImage
-```
-
-#### Prerequisites
-
-- RetroArch 1.7.7 installed and configured
-- Node.js with Electron JS
-- Payter Terminal
-- Linux armv7l Environnement for building
+# Installation Nouvelle Borne Arcade Puls Impact
+Download the raspberry OS Lite from [https://www.raspberrypi.org/downloads/raspberry-pi-os/](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
+Download the imager for your OS (Windows, Linux, Mac) from [https://www.raspberrypi.org/downloads/](https://www.raspberrypi.org/downloads/)
+Flash the SD card
+When the SD card is pluged
+> **Warning:** Keyboard is most probably in qwerty (GB) by default
+Default login : pi
+Default password : raspberry
+## Configuration
+`$ sudo raspi-config`
+Go to **4 - Localisation Options**
+- **2 - Timezone** to Europe/Paris
+- **3 - Keyboard** to appropriate keyboard brand and language
+- **4 - WLAN Country** to France
+Go to **2 - Network Options**
+- **2 - Wireless LAN**
+- - enter wifi name and password
+- - Test network with `ping` or `ifconfig`
+Go to **7 - Advanced Options**
+- **3 - Memory Split**
+- - replace 64 by 128 minimum and reboot
+## Update Linux
+`$ sudo apt-get update`
+`$ sudo apt-get upgrade`
+`$ sudo atp-get install git`
+`$ sudo apt-get install lxde ; reboot`
+Accept the clipit security question.
+## Download & Install Retroarch
+`$ sudo apt-get install build-essential libasound2-dev libudev-dev`
+`$ curl -LOk 'https://github.com/libretro/RetroArch/archive/v1.7.7.tar.gz'`
+`$ tar -zxvf v1.7.7.tar.gz`
+`$ cd RetroArch-1.7.7`
+`$ sudo ./configure --enable-alsa --enable-udev --enable-floathard --enable-neon --enable-dispmanx --disable-opengl1`
+`$ sudo make`
+`$ sudo make install`
+`$ retroarch`
+Go to **Online Updater**
+- Download Assets (optional)
+- Download Joypad Profiles
+- esc to exit
+- Reexecute retroarch and configure joypads
+$`cd`
+## Download and install Puls Impact Overlay
+`$ curl -LOk "https://github.com/hilaliMoncef/arcade-sys/releases/download/v2.0.4/PULS-Front-end-2.0.4-armv7l.AppImage"`
+`$ chmod a+x PULS-Front-end-2.0.4-armv7l.AppImage`
+Add these two lines at the end of `/etc/profile` as root :
+> Warning : Make sure to create a new terminal on the Heroku's Admin Panel and use the login for following step.
+`export PULS_LOGIN=???`
+`export PULS_MDP=???`
+`$ source /etc/profile`
+Download games
+`$ git clone https://github.com/hilaliMoncef/arcade-sys-games.git`
+Test the overlay
+`$ ./PULS-Front-end-2.0.4-armv7l.AppImage`
+> Info : If the first screen stays white, please reload the overlay
