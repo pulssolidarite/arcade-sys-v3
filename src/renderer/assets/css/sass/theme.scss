@@ -1,0 +1,259 @@
+@font-face {
+    font-family: "Futura Std";
+    src: url("../webfonts/FuturaStd-ExtraBold.woff2") format("woff2"),
+      url("../webfonts/FuturaStd-ExtraBold.woff") format("woff");
+    font-weight: 700;
+    font-style: bold;
+  }
+  
+@font-face {
+    font-family: "Futura Std";
+    src: url("../webfonts/FuturaStd-Book.woff2") format("woff2"),
+        url("../webfonts/FuturaStd-Book.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pixel";
+    src: url("../webfonts/pixel.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Pixel2";
+    src: url("../webfonts/pixel2.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "Futura Std";
+    font-weight: normal;
+}
+
+.h1,.h2, .h3, .h4, .h5 {
+    font-weight: bold;
+}
+
+.component {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.view {
+    flex: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* TRANSITIONS */
+
+// mytr is main transition for content view 
+
+.mytr-enter-active, .mytr-leave-active {
+    transition: transform .4s cubic-bezier(.47,1.64,.41,.8); //cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.mytr-enter {
+    transform: translateX(100%);
+} 
+
+.mytr-enter-to, .mytr-leave {
+    transform: translateX(0%);
+}
+
+.mytr-leave-to {
+    transform: translateX(-100%);
+}
+
+// step-tr is transition in and out of stepping component
+.step-tr-enter-active, .step-tr-leave-active {
+    transition: transform .4s cubic-bezier(.47,1.64,.41,.8); //cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.step-tr-enter {
+    transform: translateY(-100%);
+} 
+
+.step-tr-enter-to, .step-tr-leave {
+    transform: translateY(0%);
+}
+
+.step-tr-leave-to {
+    transform: translateY(-100%);
+}
+
+/* \TRANSITIONS*/ 
+
+/* CAROUSEL */
+
+@import "vueperslide_perso.scss";
+
+.carousel {
+  height: 76vh;
+  width: 100vw;
+  margin-top: 15vh;
+}
+
+%arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-self: center;
+}
+
+.right-arrow {
+    @extend %arrow;
+    left: -45vh;
+    background-image: url("../img/right-arrow.svg");
+}
+
+.left-arrow {
+    @extend %arrow;
+    left: 45vh;
+    background-image: url("../img/left-arrow.svg");
+}
+
+.div-content {
+    height: 100%;
+    .title {
+        height: 13%;
+    }
+    .picture {
+        height: 40%;
+    }
+    .infos {
+        height: 14%;
+    }
+    .descr {
+        height: 33%;
+    }
+}
+
+
+.slide-name {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color : yellow;
+}
+
+.slide-picture {
+    height: 100%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.slide-description  {
+    font-family: Pixel2;
+    margin-left: 18px;
+    margin-right: 18px;
+    color : white;
+    font-size: 1.4rem;
+    text-align: justify;
+}
+
+/* \CAROUSEL */
+
+/* GAMEPAD*/
+
+%g-btn {
+    color: white;
+	border-width: 2px;
+	font-weight: bold;
+}
+
+.g-btn {
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: #9183BE;
+    background-clip: padding-box;
+}
+
+/* \GAMEPAD */
+
+/* BG */
+
+.bg-gradient {
+    background: rgb(34, 24, 72);
+    background: linear-gradient(
+      90deg,
+      rgb(61, 46, 124) 0%,
+      rgba(34, 24, 72, 1) 100%
+    );
+  }
+
+/* \BG */ 
+
+.amount {
+    box-sizing: content-box;
+    background-color: #3fa9f5;
+    border-radius: 20px;
+    min-height: 300px;
+}
+
+.logo-circle {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    img {
+        object-fit: contain;
+        width: 100px;
+        height: 100px;
+      }
+}
+
+.logo-rounded {
+    overflow: hidden;
+    border-radius: 10px;
+    width: 130px;
+    height: 130px;
+    background-color: white;
+    img {
+        object-fit: cover;
+        width: 130px;
+        height: 130px;
+      }
+  }
+
+/* TITLES */
+
+.s-title {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 4vh;
+  }
+  
+  .title {
+    font-family: Pixel;
+    font-size: 2.5vh;
+    color : white;
+  }
+  
+  .subtitle {
+    font-family: Pixel2;
+    font-size: 1.5vh;
+    color : #C97005;
+  }
+  
+
+/* \TITLES */

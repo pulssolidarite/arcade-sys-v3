@@ -1,0 +1,258 @@
+@font-face {
+  font-family: "Futura Std";
+  src: url("../webfonts/FuturaStd-ExtraBold.woff2") format("woff2"), url("../webfonts/FuturaStd-ExtraBold.woff") format("woff");
+  font-weight: 700;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Futura Std";
+  src: url("../webfonts/FuturaStd-Book.woff2") format("woff2"), url("../webfonts/FuturaStd-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pixel";
+  src: url("../webfonts/pixel.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Pixel2";
+  src: url("../webfonts/pixel2.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "Futura Std";
+  font-weight: normal;
+}
+
+.h1, .h2, .h3, .h4, .h5 {
+  font-weight: bold;
+}
+
+.component {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.view {
+  flex: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* TRANSITIONS */
+.mytr-enter-active, .mytr-leave-active {
+  transition: transform 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+}
+
+.mytr-enter {
+  transform: translateX(100%);
+}
+
+.mytr-enter-to, .mytr-leave {
+  transform: translateX(0%);
+}
+
+.mytr-leave-to {
+  transform: translateX(-100%);
+}
+
+.step-tr-enter-active, .step-tr-leave-active {
+  transition: transform 0.4s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+}
+
+.step-tr-enter {
+  transform: translateY(-100%);
+}
+
+.step-tr-enter-to, .step-tr-leave {
+  transform: translateY(0%);
+}
+
+.step-tr-leave-to {
+  transform: translateY(-100%);
+}
+
+/* \TRANSITIONS*/
+/* CAROUSEL */
+.vueperslides {
+  height: 100%;
+  width: 100%;
+}
+
+.vueperslides__track-inner {
+  margin-left: 32%;
+  margin-right: 32%;
+  height: 98%;
+  margin-top: 1%;
+}
+
+.vueperslide {
+  box-shadow: -5px 0px #775CE4, 0px -5px #775CE4, 5px 0px #372491, 0px 5px #372491;
+  padding-top: 20px;
+  padding-bottom: 35px;
+  padding-right: 35px;
+  padding-left: 35px;
+  transition: all 0.3s ease;
+}
+.vueperslide:not(.vueperslide--active) {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.vueperslide:not(.vueperslide--active) .picture, .vueperslide:not(.vueperslide--active) .title {
+  -webkit-filter: grayscale(100%);
+}
+
+.vueperslide--active {
+  background-color: #512FB5;
+}
+
+.carousel {
+  height: 76vh;
+  width: 100vw;
+  margin-top: 15vh;
+}
+
+.left-arrow, .right-arrow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-self: center;
+}
+
+.right-arrow {
+  left: -45vh;
+  background-image: url("../img/right-arrow.svg");
+}
+
+.left-arrow {
+  left: 45vh;
+  background-image: url("../img/left-arrow.svg");
+}
+
+.div-content {
+  height: 100%;
+}
+.div-content .title {
+  height: 13%;
+}
+.div-content .picture {
+  height: 40%;
+}
+.div-content .infos {
+  height: 14%;
+}
+.div-content .descr {
+  height: 33%;
+}
+
+.slide-name {
+  margin-left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  color: yellow;
+}
+
+.slide-picture {
+  height: 100%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.slide-description {
+  font-family: Pixel2;
+  margin-left: 18px;
+  margin-right: 18px;
+  color: white;
+  font-size: 1.4rem;
+  text-align: justify;
+}
+
+/* \CAROUSEL */
+/* GAMEPAD*/
+.g-btn {
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-weight: bold;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #9183BE;
+  background-clip: padding-box;
+}
+
+/* \GAMEPAD */
+/* BG */
+.bg-gradient {
+  background: #221848;
+  background: linear-gradient(90deg, #3d2e7c 0%, #221848 100%);
+}
+
+/* \BG */
+.amount {
+  box-sizing: content-box;
+  background-color: #3fa9f5;
+  border-radius: 20px;
+  min-height: 300px;
+}
+
+.logo-circle {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+}
+.logo-circle img {
+  object-fit: contain;
+  width: 100px;
+  height: 100px;
+}
+
+.logo-rounded {
+  overflow: hidden;
+  border-radius: 10px;
+  width: 130px;
+  height: 130px;
+  background-color: white;
+}
+.logo-rounded img {
+  object-fit: cover;
+  width: 130px;
+  height: 130px;
+}
+
+/* TITLES */
+.s-title {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 4vh;
+}
+
+.title {
+  font-family: Pixel;
+  font-size: 2.5vh;
+  color: white;
+}
+
+.subtitle {
+  font-family: Pixel2;
+  font-size: 1.5vh;
+  color: #C97005;
+}
+
+/* \TITLES */
+
+/*# sourceMappingURL=theme.css.map */
