@@ -37,10 +37,7 @@ export default {
   },
   created: function() {
     window.addEventListener("gamepadconnected", this.gamepadConnectionHandler);
-    window.addEventListener(
-      "gamepaddisconnected",
-      this.gamepadDisconnectionHandler
-    );
+    window.addEventListener("gamepaddisconnected", this.gamepadDisconnectionHandler);
   },
   computed: {
     start() {

@@ -22,6 +22,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Pixel3";
+  src: url("../webfonts/pixel3.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   font-family: "Futura Std";
   font-weight: normal;
@@ -135,29 +141,27 @@ body {
   background-image: url("../img/left-arrow.svg");
 }
 
-.div-content {
+.carousel-content {
   height: 100%;
 }
-.div-content .title {
+.carousel-content .title {
   height: 13%;
-}
-.div-content .picture {
-  height: 40%;
-}
-.div-content .infos {
-  height: 14%;
-}
-.div-content .descr {
-  height: 33%;
-}
-
-.slide-name {
   margin-left: 50%;
   transform: translateX(-50%);
   text-align: center;
   font-size: 2rem;
   font-weight: 600;
   color: yellow;
+  max-width: fit-content;
+}
+.carousel-content .picture {
+  height: 40%;
+}
+.carousel-content .infos {
+  height: 14%;
+}
+.carousel-content .descr {
+  height: 33%;
 }
 
 .slide-picture {
@@ -196,7 +200,7 @@ body {
 /* BG */
 .bg-gradient {
   background: #221848;
-  background: linear-gradient(90deg, #3d2e7c 0%, #221848 100%);
+  background: linear-gradient(90deg, #001174 0%, #18045e 100%);
 }
 
 /* \BG */
@@ -240,16 +244,16 @@ body {
   width: 100%;
   top: 4vh;
 }
-
-.title {
-  font-family: Pixel;
-  font-size: 2.5vh;
+.s-title .title {
+  font-family: Pixel3;
+  max-width: 60vw;
+  font-size: 3.5vh;
   color: white;
+  margin-left: 20vw;
 }
-
-.subtitle {
+.s-title .subtitle {
   font-family: Pixel2;
-  font-size: 1.5vh;
+  font-size: 2.5vh;
   color: #C97005;
 }
 

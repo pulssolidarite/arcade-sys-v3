@@ -26,10 +26,8 @@
 
               <vueper-slide v-for="(campaign, i) in campaigns" :key="i">
                 <template v-slot:content>
-                  <div class="div-content">
-                    <div class="row title">
-                        <span class="slide-name"> {{ campaign.name }} </span>
-                    </div>
+                  <div class="carousel-content">
+                    <div class="row title"> {{ campaign.name }} </div>
                     <div class="row picture">
                         <img :src=campaign.logo :alt=campaign.name class="slide-picture">
                     </div>
@@ -102,19 +100,11 @@ export default {
   watch: {
     a: function(val) {
       if (val) {
-        // if (this.choosingIndex == 0) {
-        //   this.choosingIndex += 1;
-        // } else {
-        //   this.gotoPayment();
-        // }
         this.gotoPayment();
       }
     },
     b: function(val) {
       if (val) {
-        // if (this.choosingIndex == 1) {
-        //   this.choosingIndex -= 1;
-        // }
         this.$emit("lastView");
       }
     },

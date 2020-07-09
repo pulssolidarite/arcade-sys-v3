@@ -28,6 +28,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Pixel3";
+    src: url("../webfonts/pixel3.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     font-family: "Futura Std";
     font-weight: normal;
@@ -120,10 +127,17 @@ body {
     background-image: url("../img/left-arrow.svg");
 }
 
-.div-content {
+.carousel-content {
     height: 100%;
     .title {
         height: 13%;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+        color: yellow;
+        max-width: fit-content;
     }
     .picture {
         height: 40%;
@@ -134,16 +148,6 @@ body {
     .descr {
         height: 33%;
     }
-}
-
-
-.slide-name {
-    margin-left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 2rem;
-    font-weight: 600;
-    color : yellow;
 }
 
 .slide-picture {
@@ -194,8 +198,8 @@ body {
     background: rgb(34, 24, 72);
     background: linear-gradient(
       90deg,
-      rgb(61, 46, 124) 0%,
-      rgba(34, 24, 72, 1) 100%
+      rgb(0, 17, 116) 0%,
+      rgb(24, 4, 94) 100%
     );
   }
 
@@ -241,19 +245,25 @@ body {
     text-align: center;
     width: 100%;
     top: 4vh;
-  }
-  
-  .title {
-    font-family: Pixel;
-    font-size: 2.5vh;
-    color : white;
-  }
-  
-  .subtitle {
-    font-family: Pixel2;
-    font-size: 1.5vh;
-    color : #C97005;
-  }
+    
+    .title {
+        font-family: Pixel3;
+        max-width: 60vw;
+        font-size: 3.5vh;
+        color: white;
+        margin-left: 20vw;
+    }
+
+    .subtitle {
+        font-family: Pixel2;
+        font-size: 2.5vh;
+        color : #C97005;
+    }
+}
+
+
+
+
   
 
 /* \TITLES */

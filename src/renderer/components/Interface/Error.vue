@@ -32,7 +32,7 @@
               </li>
             </ul>
             <button class="btn btn-success" data-dismiss="modal">
-              <span class="g-btn">B</span> <span>Revenir</span>
+              <span class="g-btn" @click="simulate_b">B</span> <span>Revenir</span>
             </button>
           </div>
         </div>
@@ -57,7 +57,11 @@ export default {
       }
     }
   },
-  methods: {}
+  methods: {
+    simulate_b() {
+      this.$emit("lastView");
+    }
+  }
 };
 </script>
 

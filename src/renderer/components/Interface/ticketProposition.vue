@@ -49,7 +49,12 @@ export default {
     watch: {
         a: function(val) {
             if (val) {
-                // this.$emit("nextView");
+                switch (this.selectedChoice) {
+                    case 0: this.$emit("requestTicket");
+                        break;
+                    case 1: this.$emit("nextView"); 
+                        break;
+                }
             }
         },
         up: function(val) {
