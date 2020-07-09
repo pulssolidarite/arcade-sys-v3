@@ -91,6 +91,7 @@ export default {
                 if (this.selectedTouch == 'valider') {
                     if(this.checkForm()){
                         console.log("l'email enregistré est : "+ this.email);
+                        this.$emit("nextView");
                     } else {
                         console.log('erreur : email invalide');
                     }

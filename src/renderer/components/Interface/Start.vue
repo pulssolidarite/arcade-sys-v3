@@ -26,10 +26,8 @@
 
               <vueper-slide v-for="(game, i) in games" :key="i">
                 <template v-slot:content>
-                  <div class="div-content">
-                    <div class="row title">
-                        <span class="slide-name"> {{ game.name }} </span>
-                    </div>
+                  <div class="carousel-content">
+                    <div class="row title"> {{ game.name }} </div>
                     <div class="row picture">
                         <img :src=game.logo :alt=game.name class="slide-picture">
                     </div>
@@ -93,7 +91,7 @@ export default {
     },
     b: function(val) {
       if (val) {
-        // Nothing for now
+        this.$emit("lastView");
       }
     },
     left: function(val) {
@@ -120,7 +118,7 @@ export default {
       this.gotoCampaign();
     },
     simulate_b() {
-      // Nothing for now
+      this.$emit("lastView");
     },
     simulate_left() {
       this.$refs.carousel.previous();

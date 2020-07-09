@@ -1,11 +1,15 @@
 <template>
   <div class="component">
-      <div class="view amount-choice">
+    <div class="view amount-choice">
 
-        <!-- /////// -->
+        <div class="s-title">
+          <div class="title">COMBIEN SOUHAITE-TU REVERSER À L'ASSOCIATION ?</div>
+          <div class="subtitle">Chaque don est déductible fiscalement</div>
+        </div>
+
         <div class="content">
           
-          <div class="content-amount" style="width : 150px; margin-left:50%; height: 50px">
+          <div class="content-amount">
             <span class="h2 amount">{{ session.amount }}€</span>
           </div>
 
@@ -38,28 +42,18 @@
           </div>
             <!-- amount DETAILS -->
               <div class="amount-detail">
-                <div class="logo-rounded">
-                      <img
-                        :src="getActionPhoto(session.campaign, session.amount)"
-                        :alt="session.campaign.name"
-                        height="125"
-                        class="rounded"
-                      />
-                    </div>
-                      <span class="mt-3">{{
-                        getAction(session.campaign, session.amount)
-                      }}</span>
+                <div class="amount-icon">
+                    <img :src="getActionPhoto(session.campaign, session.amount)" :alt="session.campaign.name" height="125" class="rounded"/>
+                </div>
+                <span class="amount-description"> {{ getAction(session.campaign, session.amount) }} </span>
 
               </div>
             <!-- \amount DETAILS -->
         </div>
 
-        
-
-        <!-- /////// -->
         <!-- GAMEPAD -->
         <helpGamepad @simulate_a="simulate_a" @simulate_b="simulate_b" @simulate_left="simulate_left" @simulate_right="simulate_right"/>
-      </div>
+    </div>
   </div>
 </template>
 
@@ -241,12 +235,24 @@ export default {
   margin-top:8%;
 }
 
+.content-amount {
+  width : 150px; 
+  margin-left:50%;
+  height: 50px;
+  margin-top: 25vh;
+}
+
 .amount-detail {
   margin-left: 50%;
   transform: translateX(-50%);
-  background-color: rgb(0, 140, 255) ;
-  border : solid 3px rgb(33, 29, 255);
-  border-radius: 15px;
+  background-color: #512FB5;
+  box-shadow: -5px 0px #775CE4,
+              0px -5px #775CE4,
+              5px 0px #372491,
+              0px 5px #372491;
+  /* border : solid 3px rgb(33, 29, 255); */
+  /* border-radius: 15px; */
+  text-align: center;
   width: 30vw;
   z-index: 4;
 }
@@ -254,6 +260,7 @@ export default {
 .slider {
   width: 58%;
   margin-left: 21%;
+  margin-top: 8vh;
 }
 
 .content-line {
@@ -266,6 +273,17 @@ export default {
               0px -8px #775CE4,
               8px 0px #372491,
               0px 8px #372491;
+}
+
+.amount-icon {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.amount-description {
+  font-family: pixel3;
+  color: white;
+  font-size: 0.8rem;
 }
 
 .progress {
@@ -332,7 +350,7 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 2.8%;
+  top: 12.5%;
   left: 80%;
 }
 
@@ -342,7 +360,7 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 2.8%;
+  top: 12.5%;
   left: 18%;
 }
 
