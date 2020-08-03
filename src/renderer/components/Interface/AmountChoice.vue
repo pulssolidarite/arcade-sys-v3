@@ -7,7 +7,7 @@
           <div class="subtitle">Chaque don est déductible fiscalement</div>
         </div>
 
-        <div class="content">
+        <div class="s-content">
           
           <div class="content-amount">
             <span class="h2 amount">{{ session.amount }}€</span>
@@ -30,8 +30,8 @@
             </div>
             <!-- </div> -->
             
-            <span class="more-but" @click="simulate_right">+</span>
-            <span class="less-but" @click="simulate_left">-</span>
+            <span class="more-but" @click="simulate_right"><img src="@/assets/img/plus_btn.svg" alt="plus"></span>
+            <span class="less-but" @click="simulate_left"><img src="@/assets/img/moins_btn.svg" alt="moins"></span>
 
             <div class="content-line" id="content-line">
               <!-- <span class="line1" :style="{ width: (this.session.amount/30)*100 + '%' }"></span> -->
@@ -228,12 +228,7 @@ export default {
 
 <style scoped>
 
-.content {
-  position: relative;
-  width : 100%; 
-  height:80%; 
-  margin-top:8%;
-}
+
 
 .content-amount {
   width : 150px; 
@@ -350,8 +345,8 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 12.5%;
-  left: 80%;
+  top: 35%;
+  left: 81%;
 }
 
 .less-but {
@@ -360,8 +355,8 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 12.5%;
-  left: 18%;
+  top: 35%;
+  left: 16.5%;
 }
 
 

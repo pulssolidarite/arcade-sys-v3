@@ -10,7 +10,11 @@
             <div class="w-content">
                   <div class="w-description">1 Jeu, 1 Association, 1 Don</div>
                   <div class="cadre">
-                    <div class="start-but">PRESSE A POUR CHOISIR TON JEU</div>
+                    <div class="top"></div>
+                    <div class="bottom"></div>
+                    <div class="left"></div>
+                    <div class="right"></div>
+                    <div class="start-but">PRESSE <span style="font-size:1.8rem;">A</span> POUR CHOISIR TON JEU</div>
                   </div>
 
                   <div class="w-credit">© PULS IMPACT · 2019 - 2020</div>
@@ -84,81 +88,158 @@ export default {
 
 
 <style scoped>
-.screensaver {
-  z-index: 10;
+
+.cadre {
+  position: relative;
+  margin: 0 auto;
+  border: 5px solid transparent;
 }
 
-.w-title {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    top: 8vh;
+.top,
+.bottom,
+.left,
+.right {
+  position: absolute;
+  -webkit-animation: 8s linear infinite;
+          animation: 8s linear infinite;
+}
+.top {
+  top: -3px;
+  left: -3px;
+  height: 5px;
+  -webkit-animation-name: top;
+          animation-name: top;
+}
+@-webkit-keyframes top {
+  25% {
+    width: 0;
+    background: #ffdb00;
+  }
+  38% {
+    width: calc(100%);
+    background: #ffdb00;
+  }
+  50% {
+    background: #ffdb00;
+  }
+  62% {
+    background: #ffdb00;
+  }
+  75% {
+    width: calc(101%);
+    background: #ffdb00;
+  }
+  88% {
+    left: auto;
+    right: -3px;
+    width: 0;
+    background: #ffdb00;
+  }
 }
 
-.title {
-  font-family: Pixel;
-  font-size: 4.5rem;
-  color : #FFF222;
-  text-shadow: 5px 0px #C97005;
+.bottom {
+  bottom: -3px;
+  right: -3px;
+  height: 5px;
+  -webkit-animation-name: bottom;
+          animation-name: bottom;
+}
+@-webkit-keyframes bottom {
+  0% {
+    width: 0;
+  }
+  12% {
+    width: calc(100%);
+    background: #ffdb00;
+  }
+  25% {
+    background: #ffdb00;
+  }
+  38% {
+    background: #ffdb00;
+  }
+  50% {
+    width: calc(101%);
+    background: #ffdb00;
+  }
+  62% {
+    left: -3px;
+    width: 0;
+    background: #ffdb00;
+  }
+  75% {
+    background: #ffdb00;
+  }
 }
 
-.subtitle {
-  font-family: Pixel;
-  font-size: 2.2rem;
-  color :#C97005;
+.left {
+  bottom: -3px;
+  left: -3px;
+  width: 5px;
+  -webkit-animation-name: left;
+          animation-name: left;
+}
+@-webkit-keyframes left {
+  12% {
+    height: 0;
+    background: #ffdb00;
+  }
+  25% {
+    height: calc(103%);
+    background: #ffdb00;
+  }
+  38% {
+    background: #ffdb00;
+  }
+  50% {
+    background: #ffdb00;
+  }
+  62% {
+    height: calc(103%);
+    background: #ffdb00;
+  }
+  75% {
+    top: -3px;
+    height: 0;
+    background: #ffdb00;
+  }
+  88% {
+    background: #ffdb00;
+  }
 }
 
-.w-content {
-    text-align: center;
-    position: relative;
-    height: 53vh;
-    top: 44vh;
+.right {
+  top: -3px;
+  right: -3px;
+  width: 5px;
+  -webkit-animation-name: right;
+          animation-name: right;
 }
-
-.w-description {
-  font-family: Pixel;
-  font-size: 1.8rem;
-  color : #9183BE;
-  margin-bottom: 3vh;
-}
-
-.start-but {
-  font-family: Pixel;
-  width: 36vw;
-  height: 80px;
-  padding-top: 23px;
-
-  font-size: 1.4rem;
-  color: white; 
-  background-color: #4B37AF;
-  box-shadow: -5px 0px #775CE4,
-              0px -5px #775CE4,
-              5px 0px #372491,
-              0px 5px #372491;
-}
-
-.cadre{
-  width: fit-content; 
-  margin-left: 50%;
-  transform: translateX(-50%);
-  padding: 5px;
-  box-shadow: -5px 0px #2c2c2c,
-              0px -5px #2c2c2c,
-              5px 0px #2c2c2c,
-              0px 5px #2c2c2c;
-}
-
-.w-credit {
-  font-family: Pixel;
-  font-size: 1.4rem;
-  color :white;
-  margin-top:18%;
-}
-
-.w-credit-infos {
-  font-family: Pixel;
-  font-size: 1.1rem;
-  color:white;
+@-webkit-keyframes right {
+  38% {
+    height: 0;
+    background: #ffdb00;
+  }
+  50% {
+    height: calc(103%);
+    background: #ffdb00;
+  }
+  62% {
+    background: #ffdb00;
+  }
+  75% {
+    background: #ffdb00;
+  }
+  88% {
+    height: calc(103%);
+    background: #ffdb00;
+  }
+  100% {
+    top: auto;
+    bottom: -3px;
+    height: 0;
+    background: #ffdb00;
+  }
 }
 
 </style>
