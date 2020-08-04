@@ -8,7 +8,18 @@
         </div>
 
         <div class="s-content">
-
+          <!-- <div class="video-asso">
+            <youtube
+              :video-id="session.campaign.video"
+              :player-vars="playerVars"
+              :fitParent="true"
+              ref="youtube"
+              @ready="playerReady()"
+              @playing="playerPlaying()"
+              @ended="playVideo()"
+              style="height:300px;"
+            ></youtube>
+          </div> -->
           <div class="carousel">
             <vueper-slides ref="carousel" class="no-shadow"
                           :infinite="false" :visibleSlides="1" 
@@ -27,11 +38,15 @@
               <vueper-slide v-for="(campaign, i) in campaigns" :key="i">
                 <template v-slot:content>
                   <div class="carousel-content">
-                    <div class="row title"> {{ campaign.name }} </div>
+                    <div class="row title-a"> {{ campaign.name }} </div>
                     <div class="row picture">
                         <img :src=campaign.logo :alt=campaign.name class="slide-picture">
                     </div>
                     <div class="row infos">
+                      <div class="icon1"></div>
+                      <div class="mission"></div>
+                      <div class="icon2"></div>
+                      <div class="lieux"></div>
                     </div>
                     <div class="row descr">
                       <span class="slide-description">

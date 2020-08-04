@@ -27,11 +27,15 @@
               <vueper-slide v-for="(game, i) in games" :key="i">
                 <template v-slot:content>
                   <div class="carousel-content">
-                    <div class="row title"> {{ game.name }} </div>
+                    <div class="row title-g"> {{ game.name }} </div>
                     <div class="row picture">
                         <img :src=game.logo :alt=game.name class="slide-picture">
                     </div>
                     <div class="row infos">
+                      <div class="icon1"></div>
+                      <div class="nb-j"></div>
+                      <div class="icon2"></div>
+                      <div class="type"></div>
                     </div>
                     <div class="row descr">
                       <span class="slide-description">

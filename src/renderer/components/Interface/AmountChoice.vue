@@ -10,7 +10,9 @@
         <div class="s-content">
           
           <div class="content-amount">
+            <img class="amount-frame" src="@/assets/img/amount-frame.svg" alt="cadre">
             <span class="h2 amount">{{ session.amount }}€</span>
+            <span class="h2 amount2">{{ session.amount }}€</span>
           </div>
 
           <div class="slider">
@@ -36,7 +38,7 @@
             <div class="content-line" id="content-line">
               <!-- <span class="line1" :style="{ width: (this.session.amount/30)*100 + '%' }"></span> -->
               <span class="line1" id="line1"></span>
-              <span class="line2" :style="{ left: (this.session.amount/30)*100 + '%' }"></span>
+              <span class="line2" :style="{ left: (this.session.amount/30)*100 -0.33 + '%' }"></span>
               <span class="line3" id="line3"></span>
             </div>
           </div>
@@ -141,7 +143,7 @@ export default {
                  line1.style.left = "3.1%";
                 break;
         case 5 : line1.style.width ="25%";
-                 line1.style.left = "16.8%";
+                 line1.style.left = "16.3%";
                 break;
         case 10 : line1.style.width ="5%";
                   line1.style.left = "33%";
@@ -237,8 +239,35 @@ export default {
   margin-top: 25vh;
 }
 
+.amount {
+    z-index: 5;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 3.1vh;
+    font-family: pixel2;
+    font-size: 3rem;
+    color: white;
+}
+
+.amount2 {
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-47%);
+    margin-top: 3.4vh;
+    font-family: pixel2;
+    font-size: 3rem;
+    color: black;
+}
+
+.amount-frame {
+  transform: translateX(-50%);
+}
+
 .amount-detail {
   margin-left: 50%;
+  margin-top: -10vh;
   transform: translateX(-50%);
   background-color: #512FB5;
   box-shadow: -5px 0px #775CE4,
@@ -255,7 +284,7 @@ export default {
 .slider {
   width: 58%;
   margin-left: 21%;
-  margin-top: 8vh;
+  margin-top: 12vh;
 }
 
 .content-line {
@@ -287,7 +316,8 @@ export default {
 
 .line1{
     position: relative;
-    top: 118.8%;
+    /* top: 118.8%; */
+    top: 78.8%;
     height: 100%;
     display: block;
     box-sizing: border-box;
@@ -298,11 +328,15 @@ export default {
     top: -25vh;
     display: block;
     box-sizing: border-box;
+    width: 10px;
+    height: 20vh;
+    overflow: hidden;
 }
 
 .line3{
     position: relative;
-    top: 18.5%;
+    /* top: 18.5%; */
+    top : -101.5%;
     left: 66.5%;
     height: 100%;
     display: block;
@@ -345,7 +379,7 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 35%;
+  top: 39%;
   left: 81%;
 }
 
@@ -355,12 +389,10 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 35%;
+  top: 39%;
   left: 16.5%;
 }
 
-
-  
 
 
 </style>

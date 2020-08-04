@@ -119,6 +119,7 @@ body {
 
 .vueperslides__arrow {
   top: 48%;
+  opacity: 1;
 }
 
 .carousel {
@@ -148,34 +149,37 @@ body {
 
 .carousel-content {
   height: 100%;
+  text-align: -webkit-center;
 }
-.carousel-content .title {
-  height: 13%;
-  margin-left: 50%;
-  transform: translateX(-50%);
+.carousel-content .title-a, .carousel-content .title-g {
+  height: 10%;
   text-align: center;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 600;
   color: yellow;
   max-width: fit-content;
+  font-family: pixel2;
 }
 .carousel-content .picture {
-  height: 40%;
+  height: 43%;
+  width: 100%;
+  object-fit: cover;
+  border: solid #C97005 3px;
+  overflow: hidden;
+}
+.carousel-content .picture .slide-picture {
+  height: 100%;
+  margin-left: 50%;
+  transform: translateX(-50%);
 }
 .carousel-content .infos {
   height: 14%;
 }
 .carousel-content .descr {
   height: 33%;
+  overflow: hidden;
 }
-
-.slide-picture {
-  height: 100%;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
-.slide-description {
+.carousel-content .descr .slide-description {
   font-family: Pixel2;
   margin-left: 18px;
   margin-right: 18px;
@@ -184,6 +188,32 @@ body {
   text-align: justify;
 }
 
+/* Responsive */
+@keyframes moveSlideshow {
+  20% {
+    transform: translateY(0%);
+  }
+  98% {
+    transform: translateY(-40%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@media screen and (max-width: 1500px) {
+  .vueperslide--active .descr .slide-description {
+    animation: moveSlideshow 10s linear infinite;
+  }
+
+  .slide-description {
+    font-size: 1.2rem !important;
+  }
+
+  .carousel-content .title-g, .carousel-content .title-a {
+    font-size: 2rem !important;
+  }
+}
+/* Responsive */
 /* \CAROUSEL */
 /* GAMEPAD (FOOTER) */
 .footer {
@@ -205,7 +235,7 @@ body {
 .arrow-up-ft {
   transform: rotate(90deg);
   position: absolute;
-  top: -0.4vh;
+  top: -0.8vh;
 }
 
 .arrow-down-ft {
@@ -268,7 +298,63 @@ body {
   color: white;
 }
 
+/* Responsive */
+@media screen and (max-width: 1500px) {
+  .gpio-help {
+    margin-left: 7vw !important;
+  }
+
+  .gpio2 .arrow-up-ft {
+    left: 3.7vw !important;
+  }
+
+  .gpio3 .arrow-up-ft {
+    left: 5.45vw !important;
+  }
+}
+/* Responsive */
 /* \GAMEPAD (FOOTER) */
+/* STEPPING */
+.stepping {
+  position: absolute;
+  height: 100px;
+  width: 230px;
+  margin-top: 2vh;
+  margin-left: 1.5vw;
+  z-index: 10;
+}
+.stepping .step {
+  color: white;
+  font-family: Pixel2;
+  font-size: 1.5rem;
+}
+.stepping .step .numero-etape {
+  float: right;
+}
+.stepping .indicator {
+  margin-top: 2%;
+}
+.stepping .indicator .star_empty, .stepping .indicator .star_fill {
+  width: 45px;
+  height: 45px;
+  float: left;
+  background-size: 45px;
+}
+.stepping .indicator .star_fill {
+  background-image: url("../img/star_fill.svg");
+}
+.stepping .indicator .star_empty {
+  background-image: url("../img/star.svg");
+}
+
+/* Responsive */
+@media screen and (max-width: 1500px) {
+  .stepping {
+    transform: scale(0.8) translate3d(-20%, -20%, 0);
+  }
+}
+/* Responsive */
+/* \STEPPING */
 /* BG */
 .bg-gradient {
   background: #221848;
@@ -276,13 +362,6 @@ body {
 }
 
 /* \BG */
-.amount {
-  box-sizing: content-box;
-  background-color: #3fa9f5;
-  border-radius: 20px;
-  min-height: 300px;
-}
-
 .logo-circle {
   overflow: hidden;
   border-radius: 50%;
@@ -383,15 +462,30 @@ body {
   box-shadow: -5px 0px #2c2c2c, 0px -5px #2c2c2c, 5px 0px #2c2c2c, 0px 5px #2c2c2c;
 }
 .w-content .w-credit {
+  position: absolute;
+  top: 48vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.w-content .w-credit .copyright {
   font-family: Pixel;
   font-size: 1.4rem;
   color: white;
-  margin-top: 18%;
 }
-.w-content .w-credit-infos {
+.w-content .w-credit .credit-infos {
   font-family: Pixel;
   font-size: 1.1rem;
   color: white;
+  display: block;
 }
+
+/* Responsive */
+@media screen and (max-width: 1500px) {
+  .start-but {
+    font-size: 1.1rem !important;
+  }
+}
+/* Responsive */
+/* HOME PAGE */
 
 /*# sourceMappingURL=theme.css.map */

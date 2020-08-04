@@ -2,7 +2,7 @@
   <div class="component">
     <div class="view payment">
 
-        <div class="row d-flex align-items-center justify-content-around mt-5 pt-5 w-100">
+        <!-- <div class="row d-flex align-items-center justify-content-around mt-5 pt-5 w-100">
           <span class="col-4 offset-1 h3 mt-3 text-uppercase text-center d-flex flex-column align-items-center">
             <span class="text-white">On y est presque</span>
             <span class="text-black">Glisse ton moyen de paiement</span>
@@ -17,10 +17,36 @@
         </div>
         <div class="container px-5 my-3 text-center">
           <img
-            src="@/assets/img/nfc.png"
+            src="@/assets/img/payement.svg"
             style="width: 80%; margin-top: -60px;"
           />
+        </div> -->
+
+      <div class="s-title">
+          <div class="title">
+            <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
+            Realise ton don !
+            <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
+          </div>
+          <div class="subtitle">Place ton moyen de paiement sans contact sur le terminal de la borne. <br> Tu pourras récupérer un reçu après ta partie.</div>
+      </div>
+
+      <div class="s-content">
+        <img class="nfc-illustration" src="@/assets/img/payement.svg"/>
+
+        <div class="recap">
+          <div class="game-icon">
+            <img class="logo-circle" :src="session.game.logo" :alt="session.game.name" />
+          </div>
+          <span class="txt-recap">Je reverse <span style="color:#C97005;">{{session.amount}} €</span> 
+                                  à l’association  <span style="color:#C97005;">{{session.campaign.name}}</span> 
+                                  en jouant à  <span style="color:#C97005;">{{session.game.name}}</span>
+          </span>
+          <div class="asso-icon">
+            <img class="logo-circle" :src="session.campaign.logo" :alt="session.campaign.name" /> 
+          </div>
         </div>
+      </div>
                 
     </div>
   </div>
@@ -157,3 +183,54 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+
+
+.nfc-illustration {
+    height: 70%;
+    margin-top: 50vh;
+    margin-left: 50%;
+    transform: translate3d(-50%,-50%,0);
+}
+
+.recap {
+  position: relative;
+  margin-left: 50%;
+  margin-top: -18vh;
+  transform: translateX(-50%);
+  background-color: #512FB5;
+  box-shadow: -5px 0px #775CE4,
+              0px -5px #775CE4,
+              5px 0px #372491,
+              0px 5px #372491;
+  text-align: center;
+  width: 50vw;
+  height: 10vh;
+  z-index: 4;
+}
+
+.txt-recap {
+  font-family: pixel3;
+  color: white;
+  font-size: 0.8rem;
+  position: absolute;
+  left :50%;
+  width: 36vw;
+  top: 50%;
+  transform: translate3d(-50%,-50%,0);
+}
+
+.game-icon {
+  position: absolute;
+  left: 100%;
+  transform: translateX(-100%) scale(0.8);
+}
+.asso-icon {
+  position: absolute;
+  left: 0%;
+  transform: scale(0.8);
+}
+
+</style>

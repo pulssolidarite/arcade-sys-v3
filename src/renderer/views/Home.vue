@@ -31,6 +31,7 @@
           @saveGame="saveGame"
           @error="handleError"
           @nextView="nextView"
+          @lastView="lastView"
           v-if="viewIndex == 0"
         ></Start>
 
@@ -163,7 +164,7 @@ export default {
         title: "",
         errors: {},
       },
-      viewIndex: -1, // Starting index 
+      viewIndex: 4, // Starting index 
       maxViewIndex: 7,
       isAdmin: this.$store.getters.isAdmin,
       isLoggedIn: this.$store.getters.isLoggedIn,
@@ -359,7 +360,7 @@ export default {
       }
     },
     lastView: function() {
-      if (this.viewIndex > 0) {
+      if (this.viewIndex > -1) {
         this.viewIndex -= 1;
       }
       this.errors = {

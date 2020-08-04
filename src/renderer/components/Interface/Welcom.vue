@@ -17,8 +17,12 @@
                     <div class="start-but">PRESSE <span style="font-size:1.8rem;">A</span> POUR CHOISIR TON JEU</div>
                   </div>
 
-                  <div class="w-credit">© PULS IMPACT · 2019 - 2020</div>
-                  <div class="w-credit-infos">Agence en innovations solidaires</div>
+                  <!-- <div class="w-credit">© PULS IMPACT · 2019 - 2020</div>
+                  <div class="w-credit-infos">Agence en innovations solidaires</div> -->
+                  <div class="w-credit">
+                    <span class="copyright">© PULS IMPACT · 2019 - 2020</span>
+                    <span class="credit-infos">Agence en innovations solidaires</span>
+                  </div>
             </div>
 
 

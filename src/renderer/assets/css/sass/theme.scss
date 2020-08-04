@@ -130,41 +130,86 @@ body {
 
 .carousel-content {
     height: 100%;
-    .title {
-        height: 13%;
-        margin-left: 50%;
-        transform: translateX(-50%);
+    text-align: -webkit-center;
+    %title {
+        height: 10%;
+        // margin-left: 50%;
+        // transform: translateX(-50%);
         text-align: center;
-        font-size: 2rem;
+        font-size: 3rem;
         font-weight: 600;
         color: yellow;
         max-width: fit-content;
+        font-family: pixel2;
+    }
+    .title-g {
+        @extend %title; 
+    }
+    .title-a {
+        @extend %title; 
     }
     .picture {
-        height: 40%;
+        height: 43%;
+        width: 100%;
+        // margin-left: 50%;
+        // transform: translateX(-50%);
+        object-fit: cover;
+        border : solid #C97005 3px;
+        overflow: hidden;
+        .slide-picture {
+            height: 100%;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
     }
     .infos {
         height: 14%;
     }
     .descr {
         height: 33%;
+        overflow: hidden;
+        .slide-description  {
+            font-family: Pixel2;
+            margin-left: 18px;
+            margin-right: 18px;
+            color : white;
+            font-size: 1.4rem;
+            text-align: justify;
+        }
     }
 }
 
-.slide-picture {
-    height: 100%;
-    margin-left: 50%;
-    transform: translateX(-50%);
+    /* Responsive */
+
+@keyframes moveSlideshow {
+    20% {
+        transform: translateY(0%);
+    }
+    98% {
+        transform: translateY(-40%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
 }
 
-.slide-description  {
-    font-family: Pixel2;
-    margin-left: 18px;
-    margin-right: 18px;
-    color : white;
-    font-size: 1.4rem;
-    text-align: justify;
+@media screen and (max-width: 1500px) {
+    .vueperslide--active {
+        .descr {
+            .slide-description {
+                animation: moveSlideshow 10s linear infinite;
+            }
+        }
+    }
+    .slide-description {
+        font-size: 1.2rem !important;
+    }
+    %title {
+        font-size: 2rem !important;
+    }
 }
+
+    /* Responsive */
 
 /* \CAROUSEL */
 
@@ -189,7 +234,7 @@ body {
 .arrow-up-ft {
     transform: rotate(90deg);
     position: absolute;
-    top: -0.4vh;
+    top: -0.8vh;
 }
 
 .arrow-down-ft {
@@ -256,7 +301,73 @@ body {
     color: white;
 }
 
+    /* Responsive */
+@media screen and (max-width: 1500px) {
+    .gpio-help {
+        margin-left: 7vw !important;
+    }
+    .gpio2 {
+        .arrow-up-ft {
+            left : 3.7vw !important;
+        }
+    }
+    .gpio3 {
+        .arrow-up-ft {
+            left: 5.45vw !important;
+        }
+    }
+}
+    /* Responsive */
+
 /* \GAMEPAD (FOOTER) */
+
+/* STEPPING */
+.stepping {
+    position: absolute;
+    height: 100px;
+    width: 230px;
+    margin-top: 2vh;
+    margin-left: 1.5vw;
+    z-index: 10;
+
+    .step {
+        color: white;
+        font-family: Pixel2;
+        font-size: 1.5rem;
+        .numero-etape {
+            float: right;
+        }
+    }
+
+    .indicator {
+        margin-top: 2%;
+        %star {
+            width: 45px;
+            height: 45px;
+            float: left;
+            background-size: 45px;
+        }
+        .star_fill {
+            @extend %star;
+            background-image: url("../img/star_fill.svg");
+        }
+        .star_empty {
+            @extend %star;
+            background-image: url("../img/star.svg");
+        }
+    }
+}
+
+    /* Responsive */
+@media screen and (max-width: 1500px) {
+    .stepping {
+        transform: scale(0.8) translate3d(-20%,-20%,0);
+    }
+}
+    /* Responsive */
+
+/* \STEPPING */
+
 
 /* BG */
 
@@ -271,12 +382,7 @@ body {
 
 /* \BG */ 
 
-.amount {
-    box-sizing: content-box;
-    background-color: #3fa9f5;
-    border-radius: 20px;
-    min-height: 300px;
-}
+
 
 .logo-circle {
     overflow: hidden;
@@ -397,15 +503,30 @@ body {
     }
       
     .w-credit {
-        font-family: Pixel;
-        font-size: 1.4rem;
-        color :white;
-        margin-top:18%;
-    }
-      
-    .w-credit-infos {
-        font-family: Pixel;
-        font-size: 1.1rem;
-        color:white;
+        position: absolute;
+        top: 48vh;
+        left: 50%;
+        transform: translateX(-50%);
+        .copyright {
+            font-family: Pixel;
+            font-size: 1.4rem;
+            color :white;
+        }
+        .credit-infos {
+            font-family: Pixel;
+            font-size: 1.1rem;
+            color:white;
+            display: block;
+        }
     }
 }
+
+    /* Responsive */
+@media screen and (max-width: 1500px) {
+    .start-but {
+        font-size: 1.1rem !important;
+    }
+}
+    /* Responsive */
+
+/* HOME PAGE */
