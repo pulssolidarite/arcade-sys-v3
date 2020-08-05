@@ -361,7 +361,7 @@ body {
     /* Responsive */
 @media screen and (max-width: 1500px) {
     .stepping {
-        transform: scale(0.8) translate3d(-20%,-20%,0);
+        transform: scale(0.8) translate3d(-12%,-15%,0);
     }
 }
     /* Responsive */
@@ -530,3 +530,142 @@ body {
     /* Responsive */
 
 /* HOME PAGE */
+
+/* DIDACTITIEL */
+
+%txt_d {
+    color: white;
+    font-family: pixel3;
+    font-size: 1.2rem;
+}
+
+.joystick_d {
+    position: absolute;
+    top: 34vh;
+    left: 13vw;
+    .j_left {
+        @extend %txt_d;
+        margin-right: 2vw;
+    }
+    .j_right {
+        @extend %txt_d;
+        margin-left: 2vw;
+    }
+    .j_up {
+        @extend %txt_d;
+        margin-bottom: 2vh;
+        display: block;
+        text-align: center;
+    }
+    .j_down {
+        @extend %txt_d;
+        margin-top: 2vh;
+        display: block;
+        text-align: center;
+    }
+}
+
+.button_d {
+    .txt_btn {
+        @extend %txt_d;
+        display: block;
+        text-align: center;
+        margin-top: 1vh;
+        width: 16vw;
+        margin-left: -4vw;
+    }
+    
+    .img_btn {
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+
+    %t_all {
+        position: absolute;
+        width: 8vw;
+    }
+
+    .t1 {
+        @extend %t_all;
+        top: 38vh;
+        left: 48vw;
+    }
+
+    .t2 {
+        @extend %t_all;
+        top: 30vh;
+        left: 64vw;
+    }
+    
+    .t3 {
+        @extend %t_all;
+        top: 26vh;
+        left: 80vw;
+    }
+    
+    .t4 {
+        @extend %t_all;
+        top: 62vh;
+        left: 47vw;
+    }
+    
+    .t5 {
+        @extend %t_all;
+        top: 54vh;
+        left: 63vw;
+    }
+    
+    .t6 {
+        @extend %t_all;
+        top: 50vh;
+        left: 79vw;
+    }
+}
+
+    /* Responsive */
+@media screen and (max-width: 1500px) {
+    $val_scale: scale(0.92);
+    .joystick_d {
+        transform: $val_scale;
+        left: 10vw !important;
+    }
+
+    .t1 {
+        transform: $val_scale;
+        top: 39vh !important;
+        left: 49vw !important;
+    }
+
+    .t2 {
+        transform: $val_scale;
+        top: 31vh !important;
+        left: 65vw !important;
+    }
+    
+    .t3 {
+        transform: $val_scale;
+        top: 27vh !important;
+        left: 81vw !important;
+    }
+    
+    .t4 {
+        transform: $val_scale;
+        top: 63vh !important;
+        left: 48vw !important;
+    }
+    
+    .t5 {
+        transform: $val_scale;
+        top: 55vh !important;
+        left: 64vw !important;
+    }
+    
+    .t6 {
+        transform: $val_scale;
+        top: 51vh !important;
+        left: 80vw !important;
+    }
+
+}
+    /* Responsive */
+/* \DIDACTITIEL*/

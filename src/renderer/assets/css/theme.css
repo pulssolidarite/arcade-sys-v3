@@ -350,7 +350,7 @@ body {
 /* Responsive */
 @media screen and (max-width: 1500px) {
   .stepping {
-    transform: scale(0.8) translate3d(-20%, -20%, 0);
+    transform: scale(0.8) translate3d(-12%, -15%, 0);
   }
 }
 /* Responsive */
@@ -487,5 +487,119 @@ body {
 }
 /* Responsive */
 /* HOME PAGE */
+/* DIDACTITIEL */
+.button_d .txt_btn, .joystick_d .j_down, .joystick_d .j_up, .joystick_d .j_right, .joystick_d .j_left {
+  color: white;
+  font-family: pixel3;
+  font-size: 1.2rem;
+}
+
+.joystick_d {
+  position: absolute;
+  top: 34vh;
+  left: 13vw;
+}
+.joystick_d .j_left {
+  margin-right: 2vw;
+}
+.joystick_d .j_right {
+  margin-left: 2vw;
+}
+.joystick_d .j_up {
+  margin-bottom: 2vh;
+  display: block;
+  text-align: center;
+}
+.joystick_d .j_down {
+  margin-top: 2vh;
+  display: block;
+  text-align: center;
+}
+
+.button_d .txt_btn {
+  display: block;
+  text-align: center;
+  margin-top: 1vh;
+  width: 16vw;
+  margin-left: -4vw;
+}
+.button_d .img_btn {
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+.button_d .t6, .button_d .t5, .button_d .t4, .button_d .t3, .button_d .t2, .button_d .t1 {
+  position: absolute;
+  width: 8vw;
+}
+.button_d .t1 {
+  top: 38vh;
+  left: 48vw;
+}
+.button_d .t2 {
+  top: 30vh;
+  left: 64vw;
+}
+.button_d .t3 {
+  top: 26vh;
+  left: 80vw;
+}
+.button_d .t4 {
+  top: 62vh;
+  left: 47vw;
+}
+.button_d .t5 {
+  top: 54vh;
+  left: 63vw;
+}
+.button_d .t6 {
+  top: 50vh;
+  left: 79vw;
+}
+
+/* Responsive */
+@media screen and (max-width: 1500px) {
+  .joystick_d {
+    transform: scale(0.92);
+    left: 10vw !important;
+  }
+
+  .t1 {
+    transform: scale(0.92);
+    top: 39vh !important;
+    left: 49vw !important;
+  }
+
+  .t2 {
+    transform: scale(0.92);
+    top: 31vh !important;
+    left: 65vw !important;
+  }
+
+  .t3 {
+    transform: scale(0.92);
+    top: 27vh !important;
+    left: 81vw !important;
+  }
+
+  .t4 {
+    transform: scale(0.92);
+    top: 63vh !important;
+    left: 48vw !important;
+  }
+
+  .t5 {
+    transform: scale(0.92);
+    top: 55vh !important;
+    left: 64vw !important;
+  }
+
+  .t6 {
+    transform: scale(0.92);
+    top: 51vh !important;
+    left: 80vw !important;
+  }
+}
+/* Responsive */
+/* \DIDACTITIEL*/
 
 /*# sourceMappingURL=theme.css.map */

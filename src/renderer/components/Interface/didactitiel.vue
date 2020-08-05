@@ -4,41 +4,45 @@
 
             <div class="s-title">
                 <div class="title">DIDACTITIEL</div>
-                <div class="subtitle"></div>
+                <div class="subtitle">
+                    Les touches par défauts de {{session.game.name}}. <br> 
+                    Certains jeux permettent de changer les touches 
+                    <img src="@/assets/img/didactitiel/smiley.png" alt="smiley clin d'oeil">
+                </div>
             </div>
 
             <div class="s-content">
                 <div class="joystick_d">
+                    <span class="j_up">{{pathToKeys.j_up}}</span>
+                    <span class="j_left">{{pathToKeys.j_left}}</span>
                     <img src="@/assets/img/didactitiel/joystick_d.svg" alt="joystick illustration">
-                    <span class="j1">Haut</span>
-                    <span class="j2">Gauche</span>
-                    <span class="j3">Droite</span>
-                    <span class="j4">Bas</span>
+                    <span class="j_right">{{pathToKeys.j_right}}</span>
+                    <span class="j_down">{{pathToKeys.j_down}}</span>
                 </div>
                 <div class="button_d">
                     <div class="t1">
-                        <img src="@/assets/img/didactitiel/touch_X.svg" alt="touch_X">
-                        <span class="sp_t1">Lancer</span>
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_X.svg" alt="touch_X">
+                        <span class="txt_btn sp_t1">{{pathToKeys.x}}</span>
                     </div>
                     <div class="t2">
-                        <img src="@/assets/img/didactitiel/touch_Y.svg" alt="touch_Y">
-                        <span class="sp_t2">Kick</span>
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_Y.svg" alt="touch_Y">
+                        <span class="txt_btn sp_t2">{{pathToKeys.y}}</span>
                     </div>
                     <div class="t3">
-                        <img src="@/assets/img/didactitiel/touch_L.svg" alt="touch_L">
-                        <span class="sp_t3">Dormir</span>
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_L.svg" alt="touch_L">
+                        <span class="txt_btn sp_t3">{{pathToKeys.l}}</span>
                     </div>
                     <div class="t4">
-                        <img src="@/assets/img/didactitiel/touch_A.svg" alt="touch_A">
-                        <span class="sp_t4">Courir</span>
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_A.svg" alt="touch_A">
+                        <span class="txt_btn sp_t4">{{pathToKeys.a}}</span>
                     </div>
                     <div class="t5">
-                        <img src="@/assets/img/didactitiel/touch_B.svg" alt="touch_B">
-                        <span class="sp_t5">Sauter</span>
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_B.svg" alt="touch_B">
+                        <span class="txt_btn sp_t5">{{pathToKeys.b}}</span>
                     </div>
                     <div class="t6">
-                        <img src="@/assets/img/didactitiel/touch_R.svg" alt="touch_R">
-                        <span class="sp_t6">Plonger</span>
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_R.svg" alt="touch_R">
+                        <span class="txt_btn sp_t6">{{pathToKeys.r}}</span>
                     </div>
                 </div>
             </div>
@@ -51,14 +55,25 @@
 
 <script>
 import helpGamepad from '@/components/helpGamepad.vue';
-
+import jsonKeys from './keysMapping.json';
 
 export default {
+    name:"Didactitiel",
+    props: ["session"],
+    data(){
+        return{
+            keysMapping: jsonKeys,
+            pathToKeys: {}
+        }
+    },
     components: {helpGamepad},
     computed: {
         a() {
             return this.$store.state.gamepad.A;
         },
+    },
+    mounted: function() {
+        this.pathToKeys = this.keysMapping[this.session.game.name];
     },
     watch: {
         a: function(val) {
@@ -75,7 +90,3 @@ export default {
     
 }
 </script>
-
-<style scoped>
-
-</style>
