@@ -22,10 +22,10 @@
                 <div
                   class="progress-bar bg-warning"
                   role="progressbar"
-                  :style="{ width: (this.session.amount/30)*100 + '%' }"
+                  :style="{ width: (this.session.amount/50)*100 + '%' }"
                   :aria-valuenow="this.session.amount"
                   aria-valuemin="0"
-                  :aria-valuemax="30"
+                  :aria-valuemax="50"
                 >
                 </div>
               </div>
@@ -38,7 +38,7 @@
             <div class="content-line" id="content-line">
               <!-- <span class="line1" :style="{ width: (this.session.amount/30)*100 + '%' }"></span> -->
               <span class="line1" id="line1"></span>
-              <span class="line2" :style="{ left: (this.session.amount/30)*100 -0.33 + '%' }"></span>
+              <span class="line2" :style="{ left: (this.session.amount/50)*100 -0.4 + '%' }"></span>
               <span class="line3" id="line3"></span>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default {
   data: function() {
     return {
       choosenIndexOf: 2,
-      amounts: [1, 5, 10, 20, 30],
+      amounts: [1, 5, 10, 20, 30, 50],
       value: 1,
       max: 100
     };
@@ -128,27 +128,27 @@ export default {
   methods: {
     line_right() {
       var line3 = document.getElementById("line3");
-      if (this.session.amount == 30) {
-        line3.style.width = "100%";
+      if (this.session.amount == 50) {
+        line3.style.width = "70vw"; //122%
       }
       else
       {
-        line3.style.width = "0%";
+        line3.style.width = "0vw";
       }
     },
     line_left() {
       var line1 = document.getElementById("line1");
       switch (this.session.amount) {
         case 1 : line1.style.width ="30%";
-                 line1.style.left = "3.1%";
+                 line1.style.left = "2%";
                 break;
-        case 5 : line1.style.width ="25%";
-                 line1.style.left = "16.3%";
+        case 5 : line1.style.width ="20%";
+                 line1.style.left = "9.8%";
                 break;
-        case 10 : line1.style.width ="5%";
-                  line1.style.left = "33%";
+        case 10 : line1.style.width ="10%";
+                  line1.style.left = "19.8%";
                 break;
-        default : line1.style.width = "0%";
+        default : line1.style.left = "40%";
                 break; 
       }
     },
@@ -184,6 +184,9 @@ export default {
       if (amount == 30) {
         return campaign.text30;
       }
+      if (amount == 50) {
+        return campaign.text30; //text50 when back ready
+      }
     },
     getActionPhoto: function(campaign, amount) {
       if (amount == 1) {
@@ -200,6 +203,9 @@ export default {
       }
       if (amount == 30) {
         return campaign.photo30;
+      }
+      if (amount == 50) {
+        return campaign.photo30; //photo50 when back ready
       }
     },
     chooseAmount: function(index) {
@@ -335,9 +341,8 @@ export default {
 
 .line3{
     position: relative;
-    /* top: 18.5%; */
     top : -101.5%;
-    left: 66.5%;
+    left: 59.5%;
     height: 100%;
     display: block;
     box-sizing: border-box;
@@ -349,7 +354,7 @@ export default {
     position: absolute;
     width:100%;
     height: 4px;
-    background: #F3CA30;
+    background: #ffc107;
 }
 
 .line2:before{
@@ -358,7 +363,7 @@ export default {
     left: -0.3%;
     width:4px;
     height: 30vh;
-    background: #F3CA30;
+    background: #ffc107;
 }
 
 .line3:before{
@@ -366,7 +371,7 @@ export default {
     position: absolute;
     width: 33.33%;
     height: 4px;
-    background: #F3CA30;
+    background: #ffc107;
 }
 
 .progress-bar, .line2, .line1, .line3{
