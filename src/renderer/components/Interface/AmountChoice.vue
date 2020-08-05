@@ -15,6 +15,15 @@
             <span class="h2 amount2">{{ session.amount }}€</span>
           </div>
 
+          <div class="content-flags">
+            <div id="flag1" class="full-flag"></div>
+            <div id="flag2" class="full-flag"></div>
+            <div id="flag3" class="full-flag"></div>
+            <div id="flag4" class="empty-flag"></div>
+            <div id="flag5" class="empty-flag"></div>
+            <div id="flag6" class="empty-flag"></div>
+          </div>
+
           <div class="slider">
             <!-- <div class="container mb-5 pb-3 mt-2 text-center" id="content-slidebar"> -->
             <div class="content-slidebar">
@@ -152,6 +161,36 @@ export default {
                 break; 
       }
     },
+    flags() {
+      // var flags;
+      // for (let i = 1; i < 7; i++) {
+      //   flags[i] = document.getElementById("flag"+i);
+      // }
+      var flag1 = document.getElementById("flag1");
+      var flag2 = document.getElementById("flag2");
+      var flag3 = document.getElementById("flag3");
+      var flag4 = document.getElementById("flag4");
+      var flag5 = document.getElementById("flag5");
+      var flag6 = document.getElementById("flag6");
+      switch (this.session.amount) {
+        case 1 : flag2.className = 'empty-flag';
+                break;
+        case 5 : setTimeout(function() { flag2.className = 'full-flag'; }, 350);
+                 flag3.className = 'empty-flag';
+                break;
+        case 10 : setTimeout(function() { flag3.className = 'full-flag'; }, 350);
+                  flag4.className = 'empty-flag';
+                break;
+        case 20 : setTimeout(function() { flag4.className = 'full-flag'; }, 350);
+                  flag5.className = 'empty-flag';
+                break;
+        case 30 : setTimeout(function() { flag5.className = 'full-flag'; }, 350);
+                  flag6.className = 'empty-flag';
+                break;
+        case 50 : setTimeout(function() { flag6.className = 'full-flag'; }, 350);
+                break;
+      }
+    },
     simulate_a() {
       this.proceed();
     },
@@ -217,6 +256,7 @@ export default {
       console.log("amount = "+ this.amounts[this.choosenIndexOf])
       this.line_right();
       this.line_left();
+      this.flags();
     },
     proceed: function() {
       if (this.choosenIndexOf != null) {
@@ -236,6 +276,47 @@ export default {
 
 <style scoped>
 
+.content-flags {
+  position: relative;
+}
+
+.full-flag {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  top: 11vh;
+  transform: scale(0.8);
+  background: no-repeat url("../../assets/img/drap_plein.svg");
+  z-index: 5;
+}
+
+.empty-flag {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  top: 11vh;
+  transform: scale(0.8);
+  background: no-repeat url("../../assets/img/drap_vide.svg");
+}
+
+#flag1 {
+  left: 21.4vw; 
+}
+#flag2 {
+  left: 26.1vw; 
+}
+#flag3 {
+  left: 31.9vw; /* -0.2 en media < 1500px*/
+}
+#flag4 {
+  left: 43.5vw; 
+}
+#flag5 {
+  left: 55.05vw; 
+}
+#flag6 {
+  left: 78.26vw; 
+}
 
 
 .content-amount {
@@ -288,9 +369,10 @@ export default {
 }
 
 .slider {
+  position: relative;
   width: 58%;
   margin-left: 21%;
-  margin-top: 12vh;
+  margin-top: 18vh;
 }
 
 .content-line {
@@ -384,8 +466,8 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 39%;
-  left: 81%;
+  top: -9%;
+  left: 60vw;
 }
 
 .less-but {
@@ -394,8 +476,8 @@ export default {
   width: 30px;
   position: absolute;
   text-align: center;
-  top: 39%;
-  left: 16.5%;
+  top: -9%;
+  left: -4.5vw; /* +1 for media < 1500px */
 }
 
 

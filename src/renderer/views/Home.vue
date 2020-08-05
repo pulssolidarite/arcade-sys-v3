@@ -165,7 +165,7 @@ export default {
         title: "",
         errors: {},
       },
-      viewIndex: -1, // Starting index 
+      viewIndex: 2, // Starting index 
       maxViewIndex: 7,
       isAdmin: this.$store.getters.isAdmin,
       isLoggedIn: this.$store.getters.isLoggedIn,
