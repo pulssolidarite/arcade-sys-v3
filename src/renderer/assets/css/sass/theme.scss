@@ -678,3 +678,93 @@ body {
 }
     /* Responsive */
 /* \DIDACTITIEL*/
+
+/* END */ 
+
+.end-content  {
+    height: 80%;
+    width: 100%;
+    position:absolute;
+    top: 25%;
+
+    .but-group {
+        width: 40%;
+        margin-left : 50%;
+        transform: translateX(-50%);
+        .e-button {
+            height: 100px;
+            margin-top:30px;
+            border : 3px solid  #C97005;
+            background-color: #7e79fa;
+            opacity: 0.6;
+            transition: 0.2s ease;
+        }
+        .selected {
+            opacity: 1 !important;
+            transform: scale(1.1);
+        }
+    }
+    
+  }
+
+.text-button {
+    margin-top: 32px;
+    font-family: Pixel3;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* \END */
+
+/* ABOUT */
+
+.about-content {
+    color: white;
+    font-size: 1.4rem;
+    margin-left: 15vw;
+    margin-top: 17vh;
+    width: fit-content;
+}
+
+%about-text, .QR {
+    max-width: 70vw;
+    text-align: center;
+    padding: 10px;
+}
+
+.infos-puls {
+    @extend %about-text;
+    border: solid 3px #ffc107;
+}
+
+.contact {
+    @extend %about-text;
+    width: fit-content;
+    margin-top: 5vh;
+    border: solid 3px #ffc107;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+    /* Resonsive */
+@media screen and (max-width: 1500px) {
+    .about-content {
+        margin-top: 22vh !important;
+        position: relative;
+    }
+
+    .contact {
+        position: absolute;
+        left: -13vw;
+    }
+
+    .QR {
+        position: absolute;
+        top: 29vh;
+        left: 42vw;
+    }
+}
+    /* Responsive */
+
+/* \ABOUT */

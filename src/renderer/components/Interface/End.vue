@@ -2,15 +2,17 @@
   <div class="component">
     <div class="view end">
             
-        <div class="end-title">
-            <span class="title">Fin de partie !</span><br>
-            <span class="subtitle">On réessaye ?</span>
+        <div class="s-title">
+            <div class="title">Fin de partie !</div><br>
+            <div class="subtitle">On réessaye ?</div>
         </div>
 
         <div class="end-content">          
           <div class="but-group">
             <div class="but-list"  v-for="(choice, i) in choices" :key="i" :for="i" @click.prevent="doChoice(i)">
-              <div :class="[selectedChoice == i ? 'selected' : '' ,'e-button']"> {{choice.name}} </div>
+              <div :class="[selectedChoice == i ? 'selected' : '' ,'e-button']"> 
+                <div class="text-button"> {{choice.name}} </div>
+              </div>
             </div>
           </div>
 
@@ -34,7 +36,8 @@ export default {
       choices : [
         { name : "Rejouer", id : 1},
         { name : "Revenir à l'accueil", id : 2},
-        { name : "Qui sommes-nous ?", id : 3},
+        { name : "Demande de reçu fiscal", id : 3},
+        { name : "Qui sommes-nous ?", id : 4},
       ],
       selectedChoice: ""
     };
@@ -61,7 +64,9 @@ export default {
               break;
           case 1: this.$emit("home"); 
               break;
-          case 2: this.$emit("moreInfo"); 
+          case 2: this.$emit("ticket_request"); 
+              break;
+          case 3: this.$emit("moreInfo"); 
               break;
         }
       }
@@ -101,7 +106,9 @@ export default {
             break;
         case 1: this.$emit("home"); 
             break;
-        case 2: this.$emit("moreInfo"); 
+        case 2: this.$emit("ticket_request"); 
+            break;
+        case 3: this.$emit("moreInfo"); 
             break;
       }
     },
@@ -109,10 +116,10 @@ export default {
       this.$emit("lastView");
     }, 
     doChoice(index) {
-      if (index > 2) {
+      if (index > 3) {
         this.selectedChoice = 0; 
       } else if (index < 0) {
-        this.selectedChoice = 2;
+        this.selectedChoice = 3;
       } else {
         this.selectedChoice = index;
       }
@@ -121,38 +128,3 @@ export default {
 };
 </script>
 
-<style scoped>
-
-.end-content  {
-  height: 80%;
-  width: 100%;
-  position:absolute;
-  top:10%;
-}
-
-.selected {
-  background-color : rgb(252, 236, 17) !important;
-}
-
-.end-title {
-  text-align: center;
-  color: white;
-  margin-top: 12vh;
-}
-
-.but-group {
-  width: 30%;
-  margin-left : 50%;
-  transform: translateX(-50%);
-}
-
-.e-button {
-  margin-top:30px;
-  border : 3px solid rgb(255, 56, 56);
-  background-color: rgb(255, 129, 129);
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-}
-
-</style>

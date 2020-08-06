@@ -91,13 +91,13 @@
           v-if="viewIndex == 5"
         ></Play>
 
-        <ticketProposition
+        <!-- <ticketProposition
           @error="handleError"
           @requestTicket="ticket_request"
           @nextView="nextView"
           @lastView="lastView"
           v-if="viewIndex == 6"
-        ></ticketProposition>
+        ></ticketProposition> -->
 
         <!-- 6TH VIEW -->
         <End
@@ -108,16 +108,22 @@
           @replay="replay"
           @moreInfo="moreInfo"
           @ticket_request="ticket_request"
-          v-if="viewIndex == 7"
+          v-if="viewIndex == 6"
         ></End>
 
         <requestTicket
           :session="session"
           @error="handleError"
-          @lastView="view6"
+          @lastView="endedView"
           @nextView="lastView"
-          v-if="viewIndex == 8"
+          v-if="viewIndex == 7"
         ></requestTicket>
+
+        <about
+          @lastView="endedView"
+          v-if="viewIndex == 8"
+        ></about>
+
       </transition>
     </div>
   </div>
@@ -138,6 +144,7 @@ import Play from "@/components/Interface/Play.vue";
 import ticketProposition from '@/components/Interface/ticketProposition.vue'
 import End from "@/components/Interface/End.vue";
 import requestTicket from "@/components/Interface/requestTicket.vue";
+import about from "@/components/Interface/about.vue";
 
 export default {
   name: "Home",
@@ -156,6 +163,7 @@ export default {
     ticketProposition,
     End,
     requestTicket,
+    about,
   },
   data: function() {
     return {
@@ -166,7 +174,7 @@ export default {
         errors: {},
       },
       viewIndex: -1, // Starting index 
-      maxViewIndex: 7,
+      maxViewIndex: 6,
       isAdmin: this.$store.getters.isAdmin,
       isLoggedIn: this.$store.getters.isLoggedIn,
       session: {
@@ -388,13 +396,13 @@ export default {
       this.viewIndex = 2; // 2 if you want to replay from amount choice
     },
     moreInfo: function() {
-      // add view for only that? ? 
+      this.viewIndex = 8; 
     },
-    view6() {
+    endedView() {
       this.viewIndex = 6;
     },
     ticket_request: function() {
-      this.viewIndex = 8;
+      this.viewIndex = 7;
     },
     shuffleArray: function(array) {
       for (let i = array.length - 1; i > 0; i--) {
