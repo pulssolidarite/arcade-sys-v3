@@ -22,26 +22,32 @@
                 <div class="button_d">
                     <div class="t1">
                         <img class="img_btn" src="@/assets/img/didactitiel/touch_X.svg" alt="touch_X">
+                        <span class="but_label_X">X</span>
                         <span class="txt_btn sp_t1">{{pathToKeys.x}}</span>
                     </div>
                     <div class="t2">
                         <img class="img_btn" src="@/assets/img/didactitiel/touch_Y.svg" alt="touch_Y">
+                        <span class="but_label_Y">Y</span>
                         <span class="txt_btn sp_t2">{{pathToKeys.y}}</span>
                     </div>
                     <div class="t3">
                         <img class="img_btn" src="@/assets/img/didactitiel/touch_L.svg" alt="touch_L">
+                        <span class="but_label_L">L</span>
                         <span class="txt_btn sp_t3">{{pathToKeys.l}}</span>
                     </div>
                     <div class="t4">
                         <img class="img_btn" src="@/assets/img/didactitiel/touch_A.svg" alt="touch_A">
+                        <span class="but_label_A">A</span>
                         <span class="txt_btn sp_t4">{{pathToKeys.a}}</span>
                     </div>
                     <div class="t5">
                         <img class="img_btn" src="@/assets/img/didactitiel/touch_B.svg" alt="touch_B">
+                        <span class="but_label_B">B</span>
                         <span class="txt_btn sp_t5">{{pathToKeys.b}}</span>
                     </div>
                     <div class="t6">
                         <img class="img_btn" src="@/assets/img/didactitiel/touch_R.svg" alt="touch_R">
+                        <span class="but_label_R">R</span>
                         <span class="txt_btn sp_t6">{{pathToKeys.r}}</span>
                     </div>
                 </div>
@@ -90,3 +96,4 @@ export default {
     
 }
 </script>
+

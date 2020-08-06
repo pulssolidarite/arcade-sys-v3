@@ -574,6 +574,15 @@ body {
         width: 16vw;
         margin-left: -4vw;
     }
+
+    .but_label_A, .but_label_B, .but_label_R, .but_label_L, .but_label_X, .but_label_Y {
+        color: white;
+        font-family: Pixel3;
+        font-size: 2.4rem;
+        position: absolute;
+        top: 2.2vh;
+        left: 3vw;
+    }
     
     .img_btn {
         margin-left: 50%;

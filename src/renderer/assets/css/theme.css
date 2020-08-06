@@ -523,6 +523,14 @@ body {
   width: 16vw;
   margin-left: -4vw;
 }
+.button_d .but_label_A, .button_d .but_label_B, .button_d .but_label_R, .button_d .but_label_L, .button_d .but_label_X, .button_d .but_label_Y {
+  color: white;
+  font-family: Pixel3;
+  font-size: 2.4rem;
+  position: absolute;
+  top: 2.2vh;
+  left: 3vw;
+}
 .button_d .img_btn {
   margin-left: 50%;
   transform: translateX(-50%);
