@@ -10,9 +10,11 @@
         <div class="s-content">
           
           <div class="content-amount">
-            <img class="amount-frame" src="@/assets/img/amount-frame.svg" alt="cadre">
-            <span class="h2 amount">{{ session.amount }}€</span>
-            <span class="h2 amount2">{{ session.amount }}€</span>
+            <img id="mario_bloc" class="amount-frame" src="@/assets/img/amount-frame.svg" alt="cadre">
+            <!-- <span class="h2 amount">{{ session.amount }}€</span>
+            <span class="h2 amount2">{{ session.amount }}€</span> -->
+            <span class="h2 amount"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350" :begin="run_anim" :complete="stop_anim"/>€</span>
+            <span class="h2 amount2"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350"/>€</span>
           </div>
 
           <div class="content-flags">
@@ -70,10 +72,11 @@
 
 <script>
 import helpGamepad from '@/components/helpGamepad.vue';
+import AnimatedNumber from "animated-number-vue"; 
 
 export default {
   name: "AmountChoice",
-  components: {helpGamepad},
+  components: {helpGamepad, AnimatedNumber},
   props: ["session"],
   data: function() {
     return {
@@ -121,7 +124,36 @@ export default {
           this.chooseAmount(this.choosenIndexOf + 1);
         }
       }
-    }
+    },
+    /*choosenIndexOf: function(val) {
+      var flag1 = document.getElementById("flag1");
+      var flag2 = document.getElementById("flag2");
+      var flag3 = document.getElementById("flag3");
+      var flag4 = document.getElementById("flag4");
+      var flag5 = document.getElementById("flag5");
+      var flag6 = document.getElementById("flag6");
+      switch (val) {
+        case 0 : flag2.className = 'empty-flag';
+                break;
+        case 1 : setTimeout(function() { flag2.className = 'full-flag'; }, 350);
+                 flag3.className = 'empty-flag';
+                 flag4.className = 'empty-flag';
+                 flag5.className = 'empty-flag';
+                 flag6.className = 'empty-flag';
+                break;
+        case 2 : setTimeout(function() { flag3.className = 'full-flag'; }, 350);
+                  flag4.className = 'empty-flag';
+                break;
+        case 3 : setTimeout(function() { flag4.className = 'full-flag'; }, 350);
+                  flag5.className = 'empty-flag';
+                break;
+        case 4 : setTimeout(function() { flag5.className = 'full-flag'; }, 350);
+                  flag6.className = 'empty-flag';
+                break;
+        case 5 : setTimeout(function() { flag6.className = 'full-flag'; }, 350);
+                break;
+      }
+    }*/
   },
   mounted: function() {
     if (!this.session.position_asso) {
@@ -162,10 +194,6 @@ export default {
       }
     },
     flags() {
-      // var flags;
-      // for (let i = 1; i < 7; i++) {
-      //   flags[i] = document.getElementById("flag"+i);
-      // }
       var flag1 = document.getElementById("flag1");
       var flag2 = document.getElementById("flag2");
       var flag3 = document.getElementById("flag3");
@@ -173,7 +201,7 @@ export default {
       var flag5 = document.getElementById("flag5");
       var flag6 = document.getElementById("flag6");
       switch (this.session.amount) {
-        case 1 : flag2.className = 'empty-flag';
+        case 1 : flag2.className = 'empty-flag'; 
                 break;
         case 5 : setTimeout(function() { flag2.className = 'full-flag'; }, 350);
                  flag3.className = 'empty-flag';
@@ -190,6 +218,14 @@ export default {
         case 50 : setTimeout(function() { flag6.className = 'full-flag'; }, 350);
                 break;
       }
+    },
+    run_anim() {
+      var mario = document.getElementById("mario_bloc");
+      mario.className= 'amount-frame shake-vertical';
+    },
+    stop_anim() {
+      var mario = document.getElementById("mario_bloc");
+      mario.className= 'amount-frame';
     },
     simulate_a() {
       this.proceed();
@@ -318,6 +354,14 @@ export default {
   left: 78.26vw; 
 }
 
+@media screen and (max-width: 1500px) {
+  .empty-flag, .full-flag {
+    margin-left: -4px;
+  }
+  .less-but {
+    left: -5.5vw !important;
+  }
+}
 
 .content-amount {
   width : 150px; 
@@ -477,9 +521,117 @@ export default {
   position: absolute;
   text-align: center;
   top: -9%;
-  left: -4.5vw; /* +1 for media < 1500px */
+  left: -4.5vw;
 }
 
+@keyframes shake-vertical {
+  2% {
+    transform: translate(-50%, -3px) rotate(0); }
+  4% {
+    transform: translate(-50%, -9px) rotate(0); }
+  6% {
+    transform: translate(-50%, 1px) rotate(0); }
+  8% {
+    transform: translate(-50%, -5px) rotate(0); }
+  10% {
+    transform: translate(-50%, 1px) rotate(0); }
+  12% {
+    transform: translate(-50%, -1px) rotate(0); }
+  14% {
+    transform: translate(-50%, -6px) rotate(0); }
+  16% {
+    transform: translate(-50%, 0px) rotate(0); }
+  18% {
+    transform: translate(-50%, 0px) rotate(0); }
+  20% {
+    transform: translate(-50%, 2px) rotate(0); }
+  22% {
+    transform: translate(-50%, 10px) rotate(0); }
+  24% {
+    transform: translate(-50%, 5px) rotate(0); }
+  26% {
+    transform: translate(-50%, 3px) rotate(0); }
+  28% {
+    transform: translate(-50%, 3px) rotate(0); }
+  30% {
+    transform: translate(-50%, 5px) rotate(0); }
+  32% {
+    transform: translate(-50%, 5px) rotate(0); }
+  34% {
+    transform: translate(-50%, -6px) rotate(0); }
+  36% {
+    transform: translate(-50%, 6px) rotate(0); }
+  38% {
+    transform: translate(-50%, -9px) rotate(0); }
+  40% {
+    transform: translate(-50%, 6px) rotate(0); }
+  42% {
+    transform: translate(-50%, 3px) rotate(0); }
+  44% {
+    transform: translate(-50%, 3px) rotate(0); }
+  46% {
+    transform: translate(-50%, 6px) rotate(0); }
+  48% {
+    transform: translate(-50%, -9px) rotate(0); }
+  50% {
+    transform: translate(-50%, 7px) rotate(0); }
+  52% {
+    transform: translate(-50%, 9px) rotate(0); }
+  54% {
+    transform: translate(-50%, 3px) rotate(0); }
+  56% {
+    transform: translate(-50%, -1px) rotate(0); }
+  58% {
+    transform: translate(-50%, -2px) rotate(0); }
+  60% {
+    transform: translate(-50%, -6px) rotate(0); }
+  62% {
+    transform: translate(-50%, -5px) rotate(0); }
+  64% {
+    transform: translate(-50%, 4px) rotate(0); }
+  66% {
+    transform: translate(-50%, -4px) rotate(0); }
+  68% {
+    transform: translate(-50%, -2px) rotate(0); }
+  70% {
+    transform: translate(-50%, -8px) rotate(0); }
+  72% {
+    transform: translate(-50%, -6px) rotate(0); }
+  74% {
+    transform: translate(-50%, -4px) rotate(0); }
+  76% {
+    transform: translate(-50%, 0px) rotate(0); }
+  78% {
+    transform: translate(-50%, 7px) rotate(0); }
+  80% {
+    transform: translate(-50%, -6px) rotate(0); }
+  82% {
+    transform: translate(-50%, 10px) rotate(0); }
+  84% {
+    transform: translate(-50%, -4px) rotate(0); }
+  86% {
+    transform: translate(-50%, 10px) rotate(0); }
+  88% {
+    transform: translate(-50%, -1px) rotate(0); }
+  90% {
+    transform: translate(-50%, 1px) rotate(0); }
+  92% {
+    transform: translate(-50%, 9px) rotate(0); }
+  94% {
+    transform: translate(-50%, -4px) rotate(0); }
+  96% {
+    transform: translate(-50%, -8px) rotate(0); }
+  98% {
+    transform: translate(-50%, 4px) rotate(0); }
+  0%, 100% {
+    transform: translate(-50%, 0) rotate(0); } 
+}
 
+.shake-vertical {
+  animation-name: shake-vertical;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite; 
+}
 
 </style>
