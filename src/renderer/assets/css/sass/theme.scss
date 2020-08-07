@@ -114,6 +114,7 @@ body {
     height: 75px;
     justify-content: center;
     align-self: center;
+    transition: ease 0.15s;
 }
 
 .right-arrow {
@@ -500,6 +501,155 @@ body {
                     0px -5px #2c2c2c,
                     5px 0px #2c2c2c,
                     0px 5px #2c2c2c;
+    }
+
+    %sides {
+        position: absolute;
+        -webkit-animation: 8s linear infinite;
+                animation: 8s linear infinite;
+    }
+   
+    .top {
+        @extend %sides;
+        top: -3px;
+        left: -3px;
+        height: 5px;
+        -webkit-animation-name: top;
+                animation-name: top;
+    }
+    @-webkit-keyframes top {
+        25% {
+        width: 0;
+        background: #ffdb00;
+        }
+        38% {
+        width: calc(100%);
+        background: #ffdb00;
+        }
+        50% {
+        background: #ffdb00;
+        }
+        62% {
+        background: #ffdb00;
+        }
+        75% {
+        width: calc(101%);
+        background: #ffdb00;
+        }
+        88% {
+        left: auto;
+        right: -3px;
+        width: 0;
+        background: #ffdb00;
+        }
+    }
+    
+    .bottom {
+        @extend %sides;
+        bottom: -3px;
+        right: -3px;
+        height: 5px;
+        -webkit-animation-name: bottom;
+                animation-name: bottom;
+    }
+    @-webkit-keyframes bottom {
+        0% {
+        width: 0;
+        }
+        12% {
+        width: calc(100%);
+        background: #ffdb00;
+        }
+        25% {
+        background: #ffdb00;
+        }
+        38% {
+        background: #ffdb00;
+        }
+        50% {
+        width: calc(101%);
+        background: #ffdb00;
+        }
+        62% {
+        left: -3px;
+        width: 0;
+        background: #ffdb00;
+        }
+        75% {
+        background: #ffdb00;
+        }
+    }
+    
+    .left {
+        @extend %sides;
+        bottom: -3px;
+        left: -3px;
+        width: 5px;
+        -webkit-animation-name: left;
+                animation-name: left;
+    }
+    @-webkit-keyframes left {
+        12% {
+        height: 0;
+        background: #ffdb00;
+        }
+        25% {
+        height: calc(103%);
+        background: #ffdb00;
+        }
+        38% {
+        background: #ffdb00;
+        }
+        50% {
+        background: #ffdb00;
+        }
+        62% {
+        height: calc(103%);
+        background: #ffdb00;
+        }
+        75% {
+        top: -3px;
+        height: 0;
+        background: #ffdb00;
+        }
+        88% {
+        background: #ffdb00;
+        }
+    }
+    
+    .right {
+        @extend %sides;
+        top: -3px;
+        right: -3px;
+        width: 5px;
+        -webkit-animation-name: right;
+                animation-name: right;
+    }
+    @-webkit-keyframes right {
+        38% {
+        height: 0;
+        background: #ffdb00;
+        }
+        50% {
+        height: calc(103%);
+        background: #ffdb00;
+        }
+        62% {
+        background: #ffdb00;
+        }
+        75% {
+        background: #ffdb00;
+        }
+        88% {
+        height: calc(103%);
+        background: #ffdb00;
+        }
+        100% {
+        top: auto;
+        bottom: -3px;
+        height: 0;
+        background: #ffdb00;
+        }
     }
       
     .w-credit {
