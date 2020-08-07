@@ -43,8 +43,8 @@
             </div>
             <!-- </div> -->
             
-            <span class="more-but" @click="simulate_right"><img src="@/assets/img/plus_btn.svg" alt="plus"></span>
-            <span class="less-but" @click="simulate_left"><img src="@/assets/img/moins_btn.svg" alt="moins"></span>
+            <span id="more-but" class="more-but" @click="simulate_right"><img src="@/assets/img/plus_btn.svg" alt="plus"></span>
+            <span id="less-but" class="less-but" @click="simulate_left"><img src="@/assets/img/moins_btn.svg" alt="moins"></span>
 
             <div class="content-line" id="content-line">
               <!-- <span class="line1" :style="{ width: (this.session.amount/30)*100 + '%' }"></span> -->
@@ -115,6 +115,7 @@ export default {
       if (val) {
         if (this.amounts[this.choosenIndexOf - 1]) {
           this.chooseAmount(this.choosenIndexOf - 1);
+          this.animateIcon('less');
         }
       }
     },
@@ -122,6 +123,7 @@ export default {
       if (val) {
         if (this.amounts[this.choosenIndexOf + 1]) {
           this.chooseAmount(this.choosenIndexOf + 1);
+          this.animateIcon('more');
         }
       }
     },
@@ -236,11 +238,13 @@ export default {
     simulate_left() {
         if (this.amounts[this.choosenIndexOf - 1]) {
           this.chooseAmount(this.choosenIndexOf - 1);
+          this.animateIcon('less');
         }
     },
     simulate_right() {
         if (this.amounts[this.choosenIndexOf + 1]) {
           this.chooseAmount(this.choosenIndexOf + 1);
+          this.animateIcon('more');
         }
     },
     getAction: function(campaign, amount) {
@@ -304,6 +308,15 @@ export default {
           errors: {}
         });
       }
+    },
+    animateIcon(dir) {
+      if (dir == 'less') {
+        var icon = document.getElementById("less-but");
+      } else {
+        var icon = document.getElementById("more-but");
+      }
+      icon.style.transform = "scale(1.4)";  
+      setTimeout(function() { icon.style.transform = "scale(1)"; }, 150);
     }
   }
 };
@@ -512,6 +525,7 @@ export default {
   text-align: center;
   top: -9%;
   left: 60vw;
+  transition: 0.15s ease;
 }
 
 .less-but {
@@ -522,6 +536,7 @@ export default {
   text-align: center;
   top: -9%;
   left: -4.5vw;
+  transition: 0.15s ease;
 }
 
 @keyframes shake-vertical {

@@ -10,14 +10,14 @@
                 </div>
                  <div class="gpio2" id="gpio2" style="display: none;">
                     <span class="up-gpio" @click="simulate_up"><img class="arrow-up-ft" src='@/assets/img/arrow_footer.svg' alt='arrow footer'></span>
-                    <span class="dot"><img src='@/assets/img/Joystick_footer.svg' alt='joystick'></span>
+                    <span class="dot" @click="simulate_down"><img src='@/assets/img/Joystick_footer.svg' alt='joystick'></span>
                     <!-- <span class="down-gpio"  @click="simulate_down"><img class="arrow-down-ft" src='@/assets/img/arrow_footer.svg' alt='arrow footer'></span> -->
                     <span class="gpio-help"> Se déplacer </span>
                 </div>
                  <div class="gpio3" id="gpio3" style="display: none;">
                     <span class="left-gpio" @click="simulate_left"><img class="arrow-left-ft" src='@/assets/img/arrow_footer.svg' alt='arrow footer'></span>
                     <span class="up-gpio" @click="simulate_up"><img class="arrow-up-ft" src='@/assets/img/arrow_footer.svg' alt='arrow footer'></span>
-                    <span class="dot"><img src='@/assets/img/Joystick_footer.svg' alt='joystick'></span>
+                    <span class="dot" @click="simulate_down"><img src='@/assets/img/Joystick_footer.svg' alt='joystick'></span>
                     <!-- <span class="down-gpio"  @click="simulate_down"><img class="arrow-down-ft" src='@/assets/img/arrow_footer.svg' alt='arrow footer'></span> -->
                     <span class="right-gpio"  @click="simulate_right"><img class="arrow-right-ft" src='@/assets/img/arrow_footer.svg' alt='arrow footer'></span>
                     <span class="gpio-help"> Se déplacer </span>

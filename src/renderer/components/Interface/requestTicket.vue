@@ -1,32 +1,36 @@
 <template>
     <div class="component">
         <div class="view request-ticket">
-            <div class="header-end">
+            <!-- <div class="header-end">
                 <span class="title-end">Demande de reçu fiscal</span> <br>
                 <span class="subtitle-end">Pour faire une demande de reçu fiscal, saise ton adresse mail à l'aide du clavier virtuel</span>
+            </div> -->
+            <div class="s-title">
+                <div class="title">Demande de reçu fiscal</div> <br>
+                <div class="subtitle">Pour faire une demande de reçu fiscal, saise ton adresse mail à l'aide du clavier virtuel</div>
             </div>
 
-            <div class="content"> 
+            <div class="content" style="margin-top: 30vh;"> 
                 <div class="prompt-email"> {{ email }} </div>
                 <div class="virtual-keyboard">
                     <div class="row row-keyboard">
                         <div v-for="(touch, i) in keys[0]" :key="i" :for="i" @click.prevent="selectTouch(i, 0)">
-                            <div :class="[selectedTouch == touch ? (touch == null ? '': 'selected') : '', 'col touch', touch]"> {{touch}} </div>
+                            <div :class="[selectedTouch == touch ? 'selected' : '', 'col touch', touch]"> {{touch}} </div>
                         </div>
                     </div>
                     <div class="row row-keyboard" style="top:25px;">
                         <div v-for="(touch, i) in keys[1]" :key="i" :for="i" @click.prevent="selectTouch(i, 1)">
-                            <div :class="[selectedTouch == touch ? (touch == null ? '': 'selected') : '', 'col touch', touch]"> {{touch}} </div>
+                            <div :class="[selectedTouch == touch ? 'selected' : '', 'col touch', touch]"> {{touch}} </div>
                         </div>
                     </div>
                     <div class="row row-keyboard" style="top:50px;">
                         <div v-for="(touch, i) in keys[2]" :key="i" :for="i" @click.prevent="selectTouch(i, 2)">
-                            <div :class="[selectedTouch == touch ? (touch == null ? '': 'selected') : '', 'col touch', touch]"> {{touch}} </div>
+                            <div :class="[selectedTouch == touch ? 'selected' : '', 'col touch', touch]"> {{touch}} </div>
                         </div>
                     </div>
                     <div class="row row-keyboard" style="top:75px;">
                         <div v-for="(touch, i) in keys[3]" :key="i" :for="i" @click.prevent="selectTouch(i, 3)">
-                            <div :class="[selectedTouch == touch ? (touch == null ? '': 'selected') : '', 'col touch', touch]"> {{touch}} </div>
+                            <div :class="[selectedTouch == touch ? 'selected' : '', 'col touch', touch]"> {{touch}} </div>
                         </div>
                     </div>
                 </div>
@@ -55,9 +59,9 @@ export default {
             errors: [],
             keys: [
                 ["1","2","3","4","5","6","7","8","9","0","@","<="],        // Line 1
-                [null,"a","z","e","r","t","y","u","i","o","p", null],      // Line 2
-                [null, "q", "s", "d", "f","g","h","j","k","l","m", null],  // Line 3
-                [null, null,".","w","x","c","v","b","n","-","_", null]     // Line 4
+                ["null","a","z","e","r","t","y","u","i","o","p", "null"],      // Line 2
+                ["null", "q", "s", "d", "f","g","h","j","k","l","m", "null"],  // Line 3
+                ["null", "null",".","w","x","c","v","b","n","-","_", "null"]     // Line 4
             ],
             email: "",
             selectedTouch: "1",
@@ -169,6 +173,7 @@ export default {
         },
         validate() {
             this.selectedTouch = 'valider';
+            console.log('ou ouu');
         },
         horizontalMove(dir) {
             if (this.line == 0){
@@ -246,7 +251,7 @@ export default {
             } else {                    // other col
                 if (dir ==1) {
                     if (this.line == 3) {
-                        this.line = 0;
+                        this.line = 4;
                     } else {
                         this.line +=1;
                     }
@@ -270,7 +275,11 @@ export default {
                 case 4 : this.verticalMove(1);     // bas
                     break;
             }
-            this.selectedTouch = this.keys[this.line][this.index];
+            if (this.line == 4) {
+                this.selectedTouch = 'valider';
+            } else {
+                this.selectedTouch = this.keys[this.line][this.index];
+            }
         }
     }
 }
@@ -278,27 +287,17 @@ export default {
 
 <style scoped>
 
-.header-end {
-    text-align: center;
-    color: white;
-    margin-top: 15vh;
-    margin-bottom: 10vh;
-}
-
-.title-end {
-    font-size: 4rem;
-    font-weight: 600;
-}
-
-.subtitle-end {
-    font-size: 1.2rem;
-}
 
 .prompt-email {
-    border: solid 3px #f00;
-    width: 40vw;
+    color: black;
+    background-color: white;
+    font-size: 1.8rem;
+    text-align: center;
+    border: 3px solid #C97005;
+    width: 50vw;
     height: 3rem;
     margin-left: 50%;
+    margin-bottom: 10vh;
     transform: translateX(-50%);
 }
 
@@ -309,14 +308,33 @@ export default {
     height: 55px;
     padding: 0px;
     margin:3px;
-    border: solid 0px rgba(0,0,0,0);
+    border : 3px solid  #C97005;
+    background-color: #7e79fa;
+    opacity: 0.8;
+    transition: 0.15s ease;
+}
+
+.submit-button {
+    margin-left: 33vw;
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 10px;
+    width: 34vw;
+    border: 3px solid #C97005;
+    background-color: #7e79fa;
+    opacity: 0.8;
+    transition: 0.15s ease;
+    margin-top: 5vh;
+}
+
+.null {
+    visibility: hidden;
 }
 
 .selected {
-    transition: all 0.15s ease;
-    margin-top:0px;
-    margin-bottom: 0px;
-    border: solid 3px #f00;
+    opacity: 1 !important;
+    transform: scale(1.1);
 }
 
 .virtual-keyboard {
@@ -330,5 +348,10 @@ export default {
     text-align: center;
 }
 
+@media screen and (max-width: 1500px) {
+   .subtitle {
+       font-size: 1.5rem !important;
+   } 
+}
 
 </style>
