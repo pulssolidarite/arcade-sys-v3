@@ -31,12 +31,14 @@
                     <div class="row picture">
                         <img :src=game.logo :alt=game.name class="slide-picture">
                     </div>
+                    <div class="c-line"></div>
                     <div class="row infos">
                       <div class="icon1"></div>
                       <div class="nb-j"></div>
                       <div class="icon2"></div>
                       <div class="type"></div>
                     </div>
+                    <div class="c-line"></div>
                     <div class="row descr">
                       <span class="slide-description">
                           {{ game.description }}

@@ -42,12 +42,14 @@
                     <div class="row picture">
                         <img :src=campaign.logo :alt=campaign.name class="slide-picture">
                     </div>
+                    <div class="c-line"></div>
                     <div class="row infos">
                       <div class="icon1"></div>
                       <div class="mission"></div>
                       <div class="icon2"></div>
                       <div class="lieux"></div>
                     </div>
+                    <div class="c-line"></div>
                     <div class="row descr">
                       <span class="slide-description">
                           {{ campaign.description }}
