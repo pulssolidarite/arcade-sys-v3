@@ -7,7 +7,6 @@
                 <div class="subtitle">
                     Les touches par défauts de {{session.game.name}}. <br> 
                     Certains jeux permettent de changer les touches 
-                    <img src="@/assets/img/didactitiel/smiley.png" alt="smiley clin d'oeil">
                 </div>
             </div>
 

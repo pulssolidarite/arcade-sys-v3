@@ -1,13 +1,15 @@
 <template>
   <div class="w-100 h-100 bg-gradient"  style="overflow :hidden;"> <!-- overflow for transition -->
-    <Error
-      class="w-100 h-100 position-absolute"
-      style="z-index: 999;"
-      :visible="errors.visible"
-      :title="errors.title"
-      :errors="errors.errors"
-      @lastView="lastView"
-    ></Error>
+    
+      <Error
+        class="w-100 h-100 position-absolute"
+        style="z-index: 999;"
+        :visible="errors.visible"
+        :title="errors.title"
+        :errors="errors.errors"
+        @homeView="homeView"
+        @lastView="lastView"
+      ></Error>
 
     <transition name="step-tr">
       <stepping :n_step="viewIndex" v-if="viewIndex >=0 && viewIndex<5"/>
@@ -103,7 +105,7 @@
         <End
           :session="session"
           @error="handleError"
-          @home="nextView"
+          @home="homeView"
           @lastView="lastView"
           @replay="replay"
           @moreInfo="moreInfo"
@@ -131,7 +133,7 @@
 
 <script>
 import VueElementLoading from "vue-element-loading";
-import Error from "@/components/Interface/Error.vue";
+import Error from "@/components/Interface/ErrorsPayement.vue";
 import Stepping from "@/components/stepping.vue";
 import Welcom from "@/components/Interface/Welcom.vue";
 import Start from "@/components/Interface/Start.vue";
@@ -400,6 +402,14 @@ export default {
     },
     endedView() {
       this.viewIndex = 6;
+    },
+    homeView() {
+      this.viewIndex =-1;
+      this.errors = {
+        visible: false,
+        title: "",
+        errors: [],
+      };
     },
     ticket_request: function() {
       this.viewIndex = 7;

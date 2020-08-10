@@ -110,6 +110,12 @@ export default {
             break;
         case 3: this.$emit("moreInfo"); 
             break;
+        default : this.$emit("error", {
+                            visible: true,
+                            title: "Aucun choix valide",
+                            errors: {}
+                        });
+            break;
       }
     },
     simulate_b() {

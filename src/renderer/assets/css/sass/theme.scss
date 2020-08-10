@@ -95,6 +95,23 @@ body {
     transform: translateY(-100%);
 }
 
+// error-tr is transition in and out of ErrorPayement component
+.error-tr-enter-active, .error-tr-leave-active {
+    transition: transform .4s cubic-bezier(.47,1.64,.41,.8); //cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.error-tr-enter {
+    transform: scale(0%);
+} 
+
+.error-tr-enter-to, .error-tr-leave {
+    transform: scale(100%);
+}
+
+.error-tr-leave-to {
+    transform: scale(0%);
+}
+
 /* \TRANSITIONS*/ 
 
 /* CAROUSEL */
@@ -182,7 +199,7 @@ body {
 
     /* Responsive */
 
-@keyframes moveSlideshow {
+@keyframes overflowVerticalText {
     20% {
         transform: translateY(0%);
     }
@@ -198,7 +215,7 @@ body {
     .vueperslide--active {
         .descr {
             .slide-description {
-                animation: moveSlideshow 10s linear infinite;
+                animation: overflowVerticalText 10s linear infinite;
             }
         }
     }
@@ -847,6 +864,22 @@ body {
 
 /* END */ 
 
+%menu-button {
+    height: 100px;
+    margin-top:30px;
+    border : 3px solid  #C97005;
+    background-color: #7e79fa;
+    opacity: 0.6;
+    transition: 0.2s ease;
+}
+
+%text-button {
+    margin-top: 32px;
+    font-family: Pixel3;
+    color: white;
+    text-align: center;
+}
+
 .end-content  {
     height: 80%;
     width: 100%;
@@ -858,12 +891,11 @@ body {
         margin-left : 50%;
         transform: translateX(-50%);
         .e-button {
-            height: 100px;
-            margin-top:30px;
-            border : 3px solid  #C97005;
-            background-color: #7e79fa;
-            opacity: 0.6;
-            transition: 0.2s ease;
+            @extend %menu-button;
+            .text-button {
+                @extend %text-button;
+                font-size: 1.5rem;
+            }
         }
         .selected {
             opacity: 1 !important;
@@ -871,14 +903,6 @@ body {
         }
     }
     
-  }
-
-.text-button {
-    margin-top: 32px;
-    font-family: Pixel3;
-    color: white;
-    font-size: 1.5rem;
-    text-align: center;
 }
 
 /* \END */
@@ -934,3 +958,114 @@ body {
     /* Responsive */
 
 /* \ABOUT */
+
+
+/* ERROR_PAYEMENT */
+
+.bg-error {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.bg-modal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #512FB5;
+    box-shadow: -5px 0px #775CE4,
+              0px -5px #775CE4,
+              5px 0px #372491,
+              0px 5px #372491;
+    opacity: 0.9;
+    z-index: -1;
+}
+
+.error-modal {
+    position: absolute;
+    text-align: center;
+    width: 70vw;
+    height: 46vh;
+    top: 24vh;
+    margin-left: 50vw;
+    transform: translateX(-50%);
+    .title {
+        font-family: Pixel3;
+        max-width: 80vw;
+        margin-top: 2vh;
+        font-size: 3.5vh;
+        color: white;
+    }
+    .subtitle {
+        font-family: Pixel2;
+        max-width: 80vw;
+        font-size: 2vh;
+        color: #C97005;
+    }
+    .error-line{
+        width: 98%;
+        height: 3vh;
+        margin-left: 1vh;
+        border-bottom: 3px solid white;
+        position: absolute;
+    }
+}
+
+.error-menu  {
+    width: 100%;
+    margin-top: 8vh;
+
+    .but-group {
+        width: 40%;
+        margin-left : 50%;
+        transform: translateX(-50%);
+        .e-button {
+            @extend %menu-button;
+            .text-button {
+                @extend %text-button;
+                font-size: 1.4rem;
+            }
+        }
+        .selected {
+            opacity: 1 !important;
+            transform: scale(1.1);
+        }
+    }
+    
+}
+
+    /* Responsive */
+
+@keyframes overflowHorizontalText {
+    20% {
+        transform: translateX(0%);
+    }
+    98% {
+        transform: translateX(-40%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+    
+@media screen and (max-width: 1500px) {
+    .error-modal {
+        width: 80vw !important;
+        .error-titles {
+            overflow: hidden;
+            max-width: 78vw !important;
+            margin-left: 1vw;
+            .subtitle {
+                white-space: nowrap;
+                animation: overflowHorizontalText 10s linear infinite;
+            }
+        }
+        
+    }
+}
+    
+    /* \Responsive */
+
+/* \ERROR_PAYEMENT */

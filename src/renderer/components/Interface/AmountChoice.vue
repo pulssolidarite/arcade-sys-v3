@@ -368,6 +368,13 @@ export default {
 }
 
 @media screen and (max-width: 1500px) {
+  /*.amount-choice {*/
+    .title {
+      max-width: 70vw !important;
+      margin-left: 15vw !important;
+      font-size: 2.4rem !important;
+    }
+  /* } */ 
   .empty-flag, .full-flag {
     margin-left: -4px;
   }

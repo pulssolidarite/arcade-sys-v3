@@ -67,7 +67,7 @@ export default {
 
     // FOR DEV PURPOSE ONLY
     // For skipping payment
-    setTimeout(() => this.skipPayment(this.session.amount), 6000);
+    setTimeout(() => this.skipPayment(this.session.amount), 2000);
   },
   methods: {
     skipPayment: function(amount) {
@@ -84,6 +84,27 @@ export default {
       };
 
       this.$emit("savePayment", { payment: this.payment });
+    },
+    skipPaymentError: function(amount) {
+      this.payment = {
+        donator: this.session.donator.id,
+        terminal: this.session.terminal.id,
+        campaign: this.session.campaign.id,
+        game: this.session.game.id,
+        date: new Date(),
+        method: "Manual",
+        status: "",
+        amount: amount,
+        currency: "EUR",
+      };
+
+      this.$emit("error", {
+              visible: true,
+              title: "Erreur de connexion",
+              errors: [
+                "Il y a un problème de connexion au terminal de paiement. Veuillez réessayer ou contacter le support.",
+              ],
+            });
     },
     launchPayment: function(amount) {
       // Here we use Electron Edge JS to execute a C# script (edje-script.csx) along with a Customized Payter DLL.
@@ -141,7 +162,7 @@ export default {
             // CONNECTION ERROR
             this.$emit("error", {
               visible: true,
-              title: "Erreur de connexion au terminal",
+              title: "Erreur de connexion",
               errors: [
                 "Il y a un problème de connexion au terminal de paiement. Veuillez réessayer ou contacter le support.",
               ],
