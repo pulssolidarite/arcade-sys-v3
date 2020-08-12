@@ -225,15 +225,11 @@ body {
     transform: translateY(0%);
   }
 }
+.vueperslide--active .descr .animVerticalText {
+  animation: overflowVerticalText 10s linear infinite;
+}
+
 @media screen and (max-width: 1500px) {
-  .vueperslide--active .descr .slide-description {
-    animation: overflowVerticalText 10s linear infinite;
-  }
-
-  .slide-description {
-    font-size: 1.2rem !important;
-  }
-
   .carousel-content .title-g, .carousel-content .title-a {
     font-size: 2rem !important;
   }

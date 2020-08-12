@@ -219,16 +219,17 @@ body {
     }
 }
 
-@media screen and (max-width: 1500px) {
-    .vueperslide--active {
-        .descr {
-            .slide-description {
-                animation: overflowVerticalText 10s linear infinite;
-            }
+.vueperslide--active {
+    .descr {
+        .animVerticalText {
+            animation: overflowVerticalText 10s linear infinite;
         }
     }
+}
+
+@media screen and (max-width: 1500px) {
     .slide-description {
-        font-size: 1.2rem !important;
+        // font-size: 1.2rem !important;
     }
     %title {
         font-size: 2rem !important;

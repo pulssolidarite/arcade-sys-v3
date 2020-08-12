@@ -119,6 +119,7 @@ export default {
     } else {
       this.chooseGame(0);
     }
+    this.overflowVerify();
   },
   methods: {
     // SIMULATE GAMEPAD METHODS
@@ -166,6 +167,15 @@ export default {
       }
       arrow.style.transform = "scale(1.4)";  
       setTimeout(function() { arrow.style.transform = "scale(1)"; }, 150);
+    },
+    overflowVerify() {
+      var text = document.getElementsByClassName('slide-description');
+      var box = document.getElementsByClassName('descr');
+      for(let i =0; i< text.length; i++) {
+        if (text[i].offsetHeight > box[i].offsetHeight) {
+          text[i].classList.add("animVerticalText");
+        }
+      }
     }
   }
 };

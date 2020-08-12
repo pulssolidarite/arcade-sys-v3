@@ -4,7 +4,7 @@
             
         <div class="s-title">
             <div class="title">Fin de partie !</div><br>
-            <div class="subtitle">On réessaye ?</div>
+            <div class="subtitle">Merci d'avoir joué, on réessaye ?</div>
         </div>
 
         <div class="end-content">          
