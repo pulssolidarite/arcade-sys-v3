@@ -41,9 +41,11 @@ $border-weight: 3px;
 	}
 }
 
-// .vueperslide--active {
-// 	background-color: #512FB5;
-// }
+.vueperslide--active {
+	.slide-picture {
+		display:none;
+	}
+}
 
 .vueperslides__arrow {
 	top : 48%;

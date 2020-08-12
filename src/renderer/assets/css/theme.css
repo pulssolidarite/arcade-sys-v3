@@ -130,6 +130,10 @@ body {
   -webkit-filter: grayscale(100%);
 }
 
+.vueperslide--active .slide-picture {
+  display: none;
+}
+
 .vueperslides__arrow {
   top: 48%;
   opacity: 1;
@@ -186,7 +190,6 @@ body {
   height: 43%;
   width: 100%;
   object-fit: cover;
-  border: solid #C97005 3px;
   overflow: hidden;
 }
 .carousel-content .picture .slide-picture {
@@ -210,13 +213,21 @@ body {
   text-align: justify;
 }
 
+.video-asso {
+  position: absolute;
+  z-index: 15;
+  top: 25.35vh;
+  left: 33.8vw;
+  transition: ease 0.15s;
+}
+
 /* Responsive */
 @keyframes overflowVerticalText {
   20% {
     transform: translateY(0%);
   }
   98% {
-    transform: translateY(-40%);
+    transform: translateY(-50%);
   }
   100% {
     transform: translateY(0%);
@@ -227,6 +238,11 @@ body {
 }
 
 @media screen and (max-width: 1500px) {
+  .video-asso {
+    top: 25vh !important;
+    left: 34.45vw !important;
+  }
+
   .carousel-content .title-g, .carousel-content .title-a {
     font-size: 2rem !important;
   }

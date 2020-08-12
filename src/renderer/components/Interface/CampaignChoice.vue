@@ -8,8 +8,8 @@
         </div>
 
         <div class="s-content">
-          <!-- <div class="video-asso">
-            <youtube
+          <div id="video-asso" class="video-asso">
+            <youtube id="player-ytb"
               :video-id="session.campaign.video"
               :player-vars="playerVars"
               :fitParent="true"
@@ -17,9 +17,9 @@
               @ready="playerReady()"
               @playing="playerPlaying()"
               @ended="playVideo()"
-              style="height:300px;"
+              style="height:315.3px; width: 621.22px;"
             ></youtube>
-          </div> -->
+          </div>
           <div class="carousel">
             <vueper-slides ref="carousel" class="no-shadow"
                           :infinite="false" :visibleSlides="1" 
@@ -86,18 +86,18 @@ export default {
       choosenIndexOf: {
         campaigns: ""
       },
-      // timer: 0,
-      // time: 0,
-      // duration: 0,
-      // playerVars: {
-      //   autoplay: 1,
-      //   iv_load_policy: 3, 
-      //   playsinline: 1,
-      //   controls: 0,
-      //   modestbranding: 1, 
-      //   showinfo: 0,
-      //   rel: 0
-      // }
+      timer: 0,
+      time: 0,
+      duration: 0,
+      playerVars: {
+        autoplay: 1,
+        iv_load_policy: 3, 
+        playsinline: 1,
+        controls: 0,
+        modestbranding: 1, 
+        showinfo: 0,
+        rel: 0
+      }
     };
   },
   computed: {
@@ -145,6 +145,7 @@ export default {
       this.chooseCampaign(0);
     }
     this.overflowVerify();
+    this.videoSize();
   },
   methods: {
     simulate_a() {
@@ -171,22 +172,29 @@ export default {
         indexOf: this.choosenIndexOf.campaigns + 1
       });
     },
-    // playerReady: function() {
-    //   this.$refs.youtube.player.mute();
-    //   this.$refs.youtube.player.getDuration().then(resp => {
-    //     this.duration = resp;
-    //     console.log("resp = "+ resp);
-    //   });
-    //   console.log("duration = " + this.duration);
-    // },
-    // playerPlaying: async function() {
-    //   let currentTime = this.$refs.youtube.player.getCurrentTime()
-    //   this.timer = (Math.ceil(currentTime) / this.duration) * 100;
-    //   console.log("duration = " + this.duration);
-    // },
-    // playVideo() {
-    //   this.$refs.youtube.player.playVideo()
-    // },
+    playerReady: function() {
+      this.$refs.youtube.player.mute();
+      this.$refs.youtube.player.getDuration().then(resp => {
+        this.duration = resp;
+        console.log("resp = "+ resp);
+      });
+      console.log("duration = " + this.duration);
+    },
+    playerPlaying: async function() {
+      let currentTime = this.$refs.youtube.player.getCurrentTime()
+      this.timer = (Math.ceil(currentTime) / this.duration) * 100;
+      console.log("duration = " + this.duration);
+    },
+    playVideo() {
+      this.$refs.youtube.player.playVideo()
+    },
+    videoSize() {
+      if(window.innerWidth/window.innerHeight< 1.4) {
+        var video = document.getElementById('player-ytb');
+        video.style.height="315.3px";
+        video.style.width="448.41px";
+      }
+    },
     gotoPayment: function() {
       if ((this.choosenCampaign != null)) {
         this.$emit("startSession"); // Important to start the session here, for nice timers
@@ -200,6 +208,7 @@ export default {
       }
     },
     animateArrow(dir) {
+      // Animate Arrows
       if (dir == 'left') {
         var arrow = document.getElementById("left-arrow");
       } else {
@@ -207,6 +216,10 @@ export default {
       }
       arrow.style.transform = "scale(1.4)";  
       setTimeout(function() { arrow.style.transform = "scale(1)"; }, 150);
+      // Animate video
+      var video = document.getElementById("video-asso");
+      video.style.transform = "scale(0)";  
+      setTimeout(function() { video.style.transform = "scale(1)"; }, 150);
     },
     overflowVerify() {
       var text = document.getElementsByClassName('slide-description');
@@ -222,13 +235,6 @@ export default {
 </script>
 
 <style scoped>
-/* 
-.video-border {
-    border: 2px solid #FFFF00;
-    width: fit-content;
-    height: 364px;
-    border-radius: 30px;
-    overflow: hidden;
-} */
+
 
 </style>
