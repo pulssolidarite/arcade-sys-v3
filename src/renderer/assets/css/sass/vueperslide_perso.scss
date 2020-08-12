@@ -20,6 +20,7 @@ $border-weight: 3px;
 	// 	left: solid $border-weight $border-color; 
 	// 	right: solid $border-weight $border-color;
 	// }
+	background-color: #512FB5;
 	box-shadow: -5px 0px #775CE4,
               0px -5px #775CE4,
               5px 0px #372491,
@@ -40,9 +41,9 @@ $border-weight: 3px;
 	}
 }
 
-.vueperslide--active {
-	background-color: #512FB5;
-}
+// .vueperslide--active {
+// 	background-color: #512FB5;
+// }
 
 .vueperslides__arrow {
 	top : 48%;
