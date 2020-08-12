@@ -463,19 +463,54 @@ body {
     
     .title {
         font-family: Pixel3;
-        max-width: 60vw;
-        font-size: 3.5vh;
+        max-width: 70vw;
+        font-size: 4.5vh;
         color: white;
-        margin-left: 20vw;
+        margin-left: 15vw;
+        // -webkit-text-stroke: 4px;
+        // -webkit-text-stroke-color: #000;
     }
 
     .subtitle {
         font-family: Pixel2;
-        font-size: 2.5vh;
-        color : #C97005;
+        font-size: 3.5vh;
+        margin-left: 15vw;
+        max-width: 70vw;
+        color: #C97005;
+        white-space: nowrap;
+        overflow: hidden;
     }
 }
 
+.animHorizontalText {
+    width: fit-content;
+    animation: overflowHorizontalText 10s linear infinite;
+}
+
+@keyframes overflowHorizontalText {
+    20% {
+        transform: translateX(0%);
+    }
+    98% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+    /* Responsive */
+@media screen and (max-width: 1500px) {
+    .s-title {
+        .title {
+            font-size: 4vh !important;
+        }
+        .subtitle {
+            font-size: 3vh !important;
+        }
+    }
+}
+    /* Responsive */
 
 /* \TITLES */
 
@@ -494,7 +529,7 @@ body {
 
     .title {
         font-family: Pixel;
-        font-size: 4.5rem;
+        font-size: 5.5rem;
         color : #FFF222;
         text-shadow: 5px 0px #C97005;
     }
@@ -506,26 +541,36 @@ body {
     }
 }
 
+@keyframes bounce{
+    from {transform: translateY(0);}
+    to   {transform: translateY(-20px);}
+}
+
 .w-content {
     text-align: center;
     position: relative;
     height: 53vh;
-    top: 44vh;
+    top: 40vh;
 
     .w-description {
         font-family: Pixel;
-        font-size: 1.8rem;
-        color : #9183BE;
-        margin-bottom: 3vh;
-      }
+        font-size: 2.5rem;
+        color : #775CE4;
+        margin-bottom: 10vh;
+        text-shadow: 2px 2px #FFF222 ;
+        animation: bounce 0.40s ease infinite alternate;
+    }
       
     .start-but {
         font-family: Pixel;
-        width: 36vw;
-        height: 80px;
-        padding-top: 23px;
-        
-        font-size: 1.4rem;
+        width: fit-content;
+        height: fit-content;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        white-space: nowrap;
+        font-size: 2.2rem;
         color: white; 
         background-color: #4B37AF;
         box-shadow: -5px 0px #775CE4,
@@ -693,10 +738,10 @@ body {
         background: #ffdb00;
         }
     }
-      
+    
     .w-credit {
         position: absolute;
-        top: 48vh;
+        top: 52vh;
         left: 50%;
         transform: translateX(-50%);
         .copyright {
@@ -715,8 +760,13 @@ body {
 
     /* Responsive */
 @media screen and (max-width: 1500px) {
+    .w-title {
+        .title {
+            font-size: 5rem !important;
+        }
+    }
     .start-but {
-        font-size: 1.1rem !important;
+        font-size: 1.8rem !important;
     }
 }
     /* Responsive */

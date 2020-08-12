@@ -2,33 +2,13 @@
   <div class="component">
     <div class="view payment">
 
-        <!-- <div class="row d-flex align-items-center justify-content-around mt-5 pt-5 w-100">
-          <span class="col-4 offset-1 h3 mt-3 text-uppercase text-center d-flex flex-column align-items-center">
-            <span class="text-white">On y est presque</span>
-            <span class="text-black">Glisse ton moyen de paiement</span>
-          </span>
-          <div class="col-2 offset-5">
-            <div class="logo-circle">
-              <img :src="session.campaign.logo" :alt="session.campaign.name" />
-            </div>
-          </div>
-          <span class="text-white"> {{ session.game.name }} </span>
-          <span class="text-white"> {{ session.amount }} </span>
-        </div>
-        <div class="container px-5 my-3 text-center">
-          <img
-            src="@/assets/img/payement.svg"
-            style="width: 80%; margin-top: -60px;"
-          />
-        </div> -->
-
       <div class="s-title">
           <div class="title">
             <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
             Realise ton don !
             <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
           </div>
-          <div class="subtitle">Place ton moyen de paiement sans contact sur le terminal de la borne. <br> Tu pourras récupérer un reçu après ta partie.</div>
+          <div class="subtitle"><div class="animHorizontalText" style="margin-bottom:-50px">Place ton moyen de paiement sans contact sur le terminal de la borne.</div> <br> Tu pourras récupérer un reçu après ta partie.</div>
       </div>
 
       <div class="s-content">
@@ -67,7 +47,7 @@ export default {
 
     // FOR DEV PURPOSE ONLY
     // For skipping payment
-    setTimeout(() => this.skipPayment(this.session.amount), 2000);
+    setTimeout(() => this.skipPayment(this.session.amount), 100000);
   },
   methods: {
     skipPayment: function(amount) {

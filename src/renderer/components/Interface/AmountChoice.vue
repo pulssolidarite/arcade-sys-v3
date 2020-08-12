@@ -3,8 +3,8 @@
     <div class="view amount-choice">
 
         <div class="s-title">
-          <div class="title">COMBIEN SOUHAITE-TU REVERSER À L'ASSOCIATION ?</div>
-          <div class="subtitle">Chaque don est déductible fiscalement</div>
+          <div class="title">CHOISI TON MONTANT</div>
+          <div class="subtitle"><div class="animHorizontalText">0.5€ Pour PULS Impact le reste pour l'assocation. Chaque don est déductible fiscalement.</div></div>
         </div>
 
         <div class="s-content">

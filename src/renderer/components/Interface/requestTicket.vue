@@ -7,7 +7,7 @@
             </div> -->
             <div class="s-title">
                 <div class="title">Demande de reçu fiscal</div> <br>
-                <div class="subtitle">Pour faire une demande de reçu fiscal, saise ton adresse mail à l'aide du clavier virtuel</div>
+                <div class="subtitle"><div class="animHorizontalText">Pour faire une demande de reçu, saisie ton adresse mail à l'aide du clavier virtuel.</div></div>
             </div>
 
             <div class="content" style="margin-top: 30vh;"> 
