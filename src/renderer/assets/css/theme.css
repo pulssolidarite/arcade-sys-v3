@@ -130,7 +130,7 @@ body {
   -webkit-filter: grayscale(100%);
 }
 
-.vueperslide--active .slide-picture {
+.campaign-choice .vueperslide--active .slide-picture {
   display: none;
 }
 

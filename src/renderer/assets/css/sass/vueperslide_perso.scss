@@ -41,9 +41,11 @@ $border-weight: 3px;
 	}
 }
 
-.vueperslide--active {
-	.slide-picture {
-		display:none;
+.campaign-choice {
+	.vueperslide--active {
+		.slide-picture {
+			display:none;
+		}
 	}
 }
 
