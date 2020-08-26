@@ -195,10 +195,36 @@ body {
 .carousel-content .picture .slide-picture {
   height: 100%;
   margin-left: 50%;
+  max-width: 100%;
   transform: translateX(-50%);
 }
 .carousel-content .infos {
   height: 14%;
+}
+.carousel-content .infos .icon1, .carousel-content .infos .icon2 {
+  max-height: 100%;
+}
+.carousel-content .infos .icon1 {
+  margin-left: 5%;
+}
+.carousel-content .infos .nb-j {
+  font-family: pixel2;
+  font-size: 3.5rem;
+  margin-top: 10px;
+  color: white;
+  margin-left: 20px;
+}
+.carousel-content .infos .type {
+  font-family: pixel2;
+  font-size: 2rem;
+  color: white;
+  margin-left: 15%;
+  margin-top: 5.5%;
+}
+.carousel-content .infos .pictogramme {
+  height: 60%;
+  margin-top: 65%;
+  transform: translateY(-50%);
 }
 .carousel-content .descr {
   height: 31%;
@@ -390,12 +416,12 @@ body {
 /* Responsive */
 /* \STEPPING */
 /* BG */
-.bg-gradient2 {
+.bg-gradient {
   background: #221848;
   background: linear-gradient(90deg, #001174 0%, #18045e 100%);
 }
 
-.bg-gradient {
+.bg-gradient2 {
   background: linear-gradient(-45deg, #1a5fa0, #10bce2, #3dd6ad, #8be27e);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;

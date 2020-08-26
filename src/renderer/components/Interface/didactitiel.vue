@@ -60,7 +60,7 @@
 
 <script>
 import helpGamepad from '@/components/helpGamepad.vue';
-import jsonKeys from './keysMapping.json';
+import jsonKeys from './games_infos.json';
 
 export default {
     name:"Didactitiel",
@@ -78,7 +78,7 @@ export default {
         },
     },
     mounted: function() {
-        this.pathToKeys = this.keysMapping[this.session.game.name];
+        this.pathToKeys = this.keysMapping[this.session.game.name].touch;
     },
     watch: {
         a: function(val) {

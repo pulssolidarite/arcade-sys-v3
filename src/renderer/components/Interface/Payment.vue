@@ -47,7 +47,7 @@ export default {
 
     // FOR DEV PURPOSE ONLY
     // For skipping payment
-    setTimeout(() => this.skipPayment(this.session.amount), 3000);
+    setTimeout(() => this.skipPayment(this.session.amount), 8000);
   },
   methods: {
     skipPayment: function(amount) {
