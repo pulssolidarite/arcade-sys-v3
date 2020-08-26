@@ -39,11 +39,11 @@ export default {
   mounted: function() {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
-    // if (this.session.amount) {
-    //   setTimeout(() => this.pay(this.session.amount), 1000); // Adding a one second timeout to wait for divs to load
-    // } else {
-    //   this.$emit("lastView");
-    // }
+    if (this.session.amount) {
+      this.pay(this.session.amount);
+    } else {
+      this.$emit("lastView");
+    }
 
     // FOR DEV PURPOSE ONLY
     // For skipping payment
@@ -87,21 +87,21 @@ export default {
             });
     },
     launchPayment: function(amount) {
-      // Here we use Electron Edge JS to execute a C# script (edje-script.csx) along with a Customized Payter DLL.
-      // This script only launches a series of functions in the PayPay customized DLL and receives bunch of error code.
-      var edge = require("electron-edge-js");
-      var pay = edge.func({ 
-        source: "edje-script.csx",
-        references: ["PayterPay.dll"],
-      });
+      const { execSync } = require('child_process');
 
-      var payload = {
-        amount: amount,
-        timeout: 15, // Default timeout
-      };
+      // get terminal IP
+      var shellCmd = "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
+      var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
+      var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
+      console.log(TPEip);
 
-      var result = pay(payload, true);
-      return result;
+      // make transaction (amount in cents)
+      shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + (amount * 100);
+      var transaction = execSync(shellCmd).toString().replace(/\n|\r|(\n\r)/g, '');
+        
+      console.log(transaction);
+        
+      return(transaction);
     },
     pay: function(amount) {
       if (this.session.amount != null) {
@@ -122,7 +122,7 @@ export default {
 
         // Checking response from the Payter Pay DLL
         switch (result) {
-          case 0:
+          case 0 || "APPROVED":
             // APPROVED
             this.payment.status = "Accepted";
             this.$emit("savePayment", { payment: this.payment });
