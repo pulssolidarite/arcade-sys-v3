@@ -1,44 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 492.004 492.004" style="enable-background:new 0 0 492.004 492.004;" xml:space="preserve">
-<g>
-	<g>
-		<path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
-			c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002
-			v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864
-			c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872
-			l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z"/>
-	</g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<svg id="fleche_droite" data-name="fleche droite" xmlns="http://www.w3.org/2000/svg" width="47.736" height="70.01" viewBox="0 0 47.736 70.01">
+  <g id="fleche" transform="translate(0 0.241)">
+    <path id="Tracé_795" data-name="Tracé 795" d="M106,109.508V104h5.508v5.508Z" transform="translate(-69.28 -83.804)" fill="#707070"/>
+    <path id="Tracé_796" data-name="Tracé 796" d="M133.736,122.229V105.7H122.72v-9.18h-5.508V91.016H111.7V85.508h-3.672V80H91.508v5.508H86v58.753h5.508v5.508h16.524v-5.508H111.7v-5.692l5.508.184v-5.508h5.508v-5.508h5.508v-5.508Z" transform="translate(-86 -80)" fill="#c97005"/>
+  </g>
+  <g id="fleche-2" data-name="fleche" transform="translate(4.186)">
+    <path id="Tracé_795-2" data-name="Tracé 795" d="M106,109.508V104h5.508v5.508Z" transform="translate(-73.651 -86.166)" fill="#eee128"/>
+    <path id="Tracé_796-2" data-name="Tracé 796" d="M129.365,117.679V102.935H119.358V94.744h-5V89.829h-5V84.915h-3.336V80H91v4.915H86v52.422h5v4.915h15.011v-4.915h3.336v-5.078l5,.164v-4.915h5v-4.915h5v-4.915Z" transform="translate(-86 -80)" fill="#eee128"/>
+  </g>
 </svg>

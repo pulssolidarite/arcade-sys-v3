@@ -12,27 +12,33 @@
           <div class="carousel">
             <vueper-slides ref="carousel" class="no-shadow"
                           :infinite="false" :visibleSlides="1" 
-                          :fixedHeight="true" :bulletsOutside="true" 
+                          :fixedHeight="true" :bullets="false" 
                           :touchable="false" :gap=30 :transition-speed="300"
                           @ready="chooseGame($event.currentSlide.index)" 
                           @slide="chooseGame($event.currentSlide.index)">
               
               <template v-slot:arrow-left>
-                <div class="left-arrow"></div>
+                <div id="left-arrow" class="left-arrow"></div>
               </template>
               <template v-slot:arrow-right>
-                <div class="right-arrow"></div>
+                <div id="right-arrow" class="right-arrow"></div>
               </template>
 
               <vueper-slide v-for="(game, i) in games" :key="i">
                 <template v-slot:content>
                   <div class="carousel-content">
-                    <div class="row title"> {{ game.name }} </div>
+                    <div class="row title-g"> {{ game.name }} </div>
                     <div class="row picture">
                         <img :src=game.logo :alt=game.name class="slide-picture">
                     </div>
+                    <div class="c-line"></div>
                     <div class="row infos">
+                      <div class="icon1"></div>
+                      <div class="nb-j"></div>
+                      <div class="icon2"></div>
+                      <div class="type"></div>
                     </div>
+                    <div class="c-line"></div>
                     <div class="row descr">
                       <span class="slide-description">
                           {{ game.description }}
@@ -97,11 +103,13 @@ export default {
     left: function(val) {
       if (val) {
           this.$refs.carousel.previous();
+          this.animateArrow('left');
       }
     },
     right: function(val) {
       if (val) {
           this.$refs.carousel.next();
+          this.animateArrow('right');
        }
     }
   },
@@ -111,6 +119,7 @@ export default {
     } else {
       this.chooseGame(0);
     }
+    this.overflowVerify();
   },
   methods: {
     // SIMULATE GAMEPAD METHODS
@@ -122,9 +131,11 @@ export default {
     },
     simulate_left() {
       this.$refs.carousel.previous();
+      this.animateArrow('left');
     },
     simulate_right() {
       this.$refs.carousel.next();
+      this.animateArrow('right');
     },
 
     // OTHER METHODS
@@ -147,14 +158,25 @@ export default {
           errors: {}
         });
       }
+    },
+    animateArrow(dir) {
+      if (dir == 'left') {
+        var arrow = document.getElementById("left-arrow");
+      } else {
+        var arrow = document.getElementById("right-arrow");
+      }
+      arrow.style.transform = "scale(1.4)";  
+      setTimeout(function() { arrow.style.transform = "scale(1)"; }, 150);
+    },
+    overflowVerify() {
+      var text = document.getElementsByClassName('slide-description');
+      var box = document.getElementsByClassName('descr');
+      for(let i =0; i< text.length; i++) {
+        if (text[i].offsetHeight > box[i].offsetHeight) {
+          text[i].classList.add("animVerticalText");
+        }
+      }
     }
   }
 };
 </script>
-
-
-<style scoped>
-
-
-
-</style>

@@ -2,25 +2,31 @@
   <div class="component">
     <div class="view payment">
 
-        <div class="row d-flex align-items-center justify-content-around mt-5 pt-5 w-100">
-          <span class="col-4 offset-1 h3 mt-3 text-uppercase text-center d-flex flex-column align-items-center">
-            <span class="text-white">On y est presque</span>
-            <span class="text-black">Glisse ton moyen de paiement</span>
-          </span>
-          <div class="col-2 offset-5">
-            <div class="logo-circle">
-              <img :src="session.campaign.logo" :alt="session.campaign.name" />
-            </div>
+      <div class="s-title">
+          <div class="title">
+            <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
+            Realise ton don !
+            <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
           </div>
-          <span class="text-white"> {{ session.game.name }} </span>
-          <span class="text-white"> {{ session.amount }} </span>
+          <div class="subtitle"><div class="animHorizontalText" style="margin-bottom:-50px">Place ton moyen de paiement sans contact sur le terminal de la borne.</div> <br> Tu pourras récupérer un reçu après ta partie.</div>
+      </div>
+
+      <div class="s-content">
+        <img class="nfc-illustration" src="@/assets/img/payement.svg"/>
+
+        <div class="recap">
+          <div class="game-icon">
+            <img class="logo-circle" :src="session.game.logo" :alt="session.game.name" />
+          </div>
+          <span class="txt-recap">Je reverse <span style="color:#C97005;">{{session.amount}} €</span> 
+                                  à l’association  <span style="color:#C97005;">{{session.campaign.name}}</span> 
+                                  en jouant à  <span style="color:#C97005;">{{session.game.name}}</span>
+          </span>
+          <div class="asso-icon">
+            <img class="logo-circle" :src="session.campaign.logo" :alt="session.campaign.name" /> 
+          </div>
         </div>
-        <div class="container px-5 my-3 text-center">
-          <img
-            src="@/assets/img/nfc.png"
-            style="width: 80%; margin-top: -60px;"
-          />
-        </div>
+      </div>
                 
     </div>
   </div>
@@ -33,15 +39,15 @@ export default {
   mounted: function() {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
-    if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 1000); // Adding a one second timeout to wait for divs to load
-    } else {
-      this.$emit("lastView");
-    }
+    // if (this.session.amount) {
+    //   setTimeout(() => this.pay(this.session.amount), 1000); // Adding a one second timeout to wait for divs to load
+    // } else {
+    //   this.$emit("lastView");
+    // }
 
     // FOR DEV PURPOSE ONLY
     // For skipping payment
-    //setTimeout(() => this.skipPayment(this.session.amount), 6000);
+    setTimeout(() => this.skipPayment(this.session.amount), 3000);
   },
   methods: {
     skipPayment: function(amount) {
@@ -58,6 +64,27 @@ export default {
       };
 
       this.$emit("savePayment", { payment: this.payment });
+    },
+    skipPaymentError: function(amount) {
+      this.payment = {
+        donator: this.session.donator.id,
+        terminal: this.session.terminal.id,
+        campaign: this.session.campaign.id,
+        game: this.session.game.id,
+        date: new Date(),
+        method: "Manual",
+        status: "",
+        amount: amount,
+        currency: "EUR",
+      };
+
+      this.$emit("error", {
+              visible: true,
+              title: "Erreur de connexion",
+              errors: [
+                "Il y a un problème de connexion au terminal de paiement. Veuillez réessayer ou contacter le support.",
+              ],
+            });
     },
     launchPayment: function(amount) {
       // Here we use Electron Edge JS to execute a C# script (edje-script.csx) along with a Customized Payter DLL.
@@ -115,7 +142,7 @@ export default {
             // CONNECTION ERROR
             this.$emit("error", {
               visible: true,
-              title: "Erreur de connexion au terminal",
+              title: "Erreur de connexion",
               errors: [
                 "Il y a un problème de connexion au terminal de paiement. Veuillez réessayer ou contacter le support.",
               ],
@@ -157,3 +184,54 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+
+
+.nfc-illustration {
+    height: 70%;
+    margin-top: 50vh;
+    margin-left: 50%;
+    transform: translate3d(-50%,-50%,0);
+}
+
+.recap {
+  position: relative;
+  margin-left: 50%;
+  margin-top: -18vh;
+  transform: translateX(-50%);
+  background-color: #512FB5;
+  box-shadow: -5px 0px #775CE4,
+              0px -5px #775CE4,
+              5px 0px #372491,
+              0px 5px #372491;
+  text-align: center;
+  width: 50vw;
+  height: 10vh;
+  z-index: 4;
+}
+
+.txt-recap {
+  font-family: pixel3;
+  color: white;
+  font-size: 0.8rem;
+  position: absolute;
+  left :50%;
+  width: 36vw;
+  top: 50%;
+  transform: translate3d(-50%,-50%,0);
+}
+
+.game-icon {
+  position: absolute;
+  left: 100%;
+  transform: translateX(-100%) scale(0.8);
+}
+.asso-icon {
+  position: absolute;
+  left: 0%;
+  transform: scale(0.8);
+}
+
+</style>
