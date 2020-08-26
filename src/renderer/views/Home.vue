@@ -219,7 +219,7 @@ export default {
     }
 
     // Start timer for return to home 
-    var timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
+    // var timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
 
     // Loading all the data from API
     this.loading = true;
@@ -250,18 +250,18 @@ export default {
         this.loading = false;
       });
   },
-  computed: {
-    a() {
-      return this.$store.state.gamepad.A;
-    }
-  },
-  watch : {
-    a: function(val) {
-        if (val) {
-            this.resetTimer();
-        }
-    }
-  },
+  // computed: {
+  //   a() {
+  //     return this.$store.state.gamepad.A;
+  //   }
+  // },
+  // watch : {
+  //   a: function(val) {
+  //       if (val) {
+  //           this.resetTimer();
+  //       }
+  //   }
+  // },
   methods: {
     // CHOICE METHODS
     saveGame: function(payload) {
@@ -387,12 +387,12 @@ export default {
           console.log("timourend 10sec");
         }
     },
-    resetTimer(){
-      console.log("reset");
-      window.clearTimeout(timeoutHandle);
-      timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
+    // resetTimer(){
+    //   console.log("reset");
+    //   window.clearTimeout(timeoutHandle);
+    //   timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
 
-    },
+    // },
     replay: function() {
       this.startSession();
       this.viewIndex = 2; // 2 if you want to replay from amount choice
