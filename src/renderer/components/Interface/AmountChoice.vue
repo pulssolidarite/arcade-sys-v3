@@ -11,10 +11,10 @@
           
           <div class="content-amount">
             <img id="mario_bloc" class="amount-frame" src="@/assets/img/amount-frame.svg" alt="cadre">
-            <!-- <span class="h2 amount">{{ session.amount }}€</span>
-            <span class="h2 amount2">{{ session.amount }}€</span> -->
-            <span class="h2 amount"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350" :begin="run_anim" :complete="stop_anim"/>€</span>
-            <span class="h2 amount2"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350"/>€</span>
+            <span class="h2 amount">{{ session.amount }}€</span>
+            <span class="h2 amount2">{{ session.amount }}€</span>
+            <!-- <span class="h2 amount"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350" :begin="run_anim" :complete="stop_anim"/>€</span>
+            <span class="h2 amount2"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350"/>€</span> -->
           </div>
 
           <div class="content-flags">
