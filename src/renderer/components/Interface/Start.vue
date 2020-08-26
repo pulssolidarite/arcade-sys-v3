@@ -33,10 +33,10 @@
                     </div>
                     <div class="c-line"></div>
                     <div class="row infos">
-                      <div class="icon1"></div>
-                      <div class="nb-j"></div>
+                      <div class="icon1"> <img src="@/assets/img/picto/gamepad.png" alt="gamepad pictograme" class="pictogramme"></div>
+                      <div class="nb-j"> {{gameInfos[game.name].nb_player}}</div>
                       <div class="icon2"></div>
-                      <div class="type"></div>
+                      <div class="type"> {{gameInfos[game.name].type}} </div>
                     </div>
                     <div class="c-line"></div>
                     <div class="row descr">
@@ -61,7 +61,8 @@
 
 <script>
 import helpGamepad from '@/components/helpGamepad.vue';
-import { VueperSlides, VueperSlide } from 'vueperslides'
+import { VueperSlides, VueperSlide } from 'vueperslides';
+import jsonKeys from './games_infos.json';
 
 export default {
   name: "Start",
@@ -72,7 +73,8 @@ export default {
       choosenGame: {},
       choosenIndexOf: {
         games: "",
-      }
+      },
+      gameInfos: jsonKeys,
     };
   },
   computed: {

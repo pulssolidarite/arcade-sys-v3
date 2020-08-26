@@ -176,14 +176,11 @@ export default {
       this.$refs.youtube.player.mute();
       this.$refs.youtube.player.getDuration().then(resp => {
         this.duration = resp;
-        console.log("resp = "+ resp);
       });
-      console.log("duration = " + this.duration);
     },
     playerPlaying: async function() {
       let currentTime = this.$refs.youtube.player.getCurrentTime()
       this.timer = (Math.ceil(currentTime) / this.duration) * 100;
-      console.log("duration = " + this.duration);
     },
     playVideo() {
       this.$refs.youtube.player.playVideo()

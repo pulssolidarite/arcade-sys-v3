@@ -38,6 +38,7 @@
 body {
     font-family: "Futura Std";
     font-weight: normal;
+    cursor: none; 
 }
 
 .h1,.h2, .h3, .h4, .h5 {
@@ -185,11 +186,37 @@ body {
         .slide-picture {
             height: 100%;
             margin-left: 50%;
+            max-width: 100%;
             transform: translateX(-50%);
         }
     }
     .infos {
         height: 14%;
+        .icon1, .icon2 {
+            max-height: 100%;
+        }
+        .icon1 {
+            margin-left:5%;
+        }
+        .nb-j {
+            font-family: pixel2;
+            font-size: 3.5rem;
+            margin-top: 10px;
+            color: white;
+            margin-left: 20px;
+        }
+        .type {
+            font-family: pixel2;
+            font-size: 2rem;
+            color: white;
+            margin-left: 15%;
+            margin-top: 5.5%;
+        }
+        .pictogramme {
+            height: 60%;
+            margin-top: 65%;
+            transform: translateY(-50%);
+        }
     }
     .descr {
         height: 31%;
@@ -410,7 +437,7 @@ body {
 
 /* BG */
 
-.bg-gradient2 {
+.bg-gradient {
     background: rgb(34, 24, 72);
     background: linear-gradient(
       90deg,
@@ -419,7 +446,7 @@ body {
     );
 }
 
-.bg-gradient {
+.bg-gradient2 {
     // background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background: linear-gradient(-45deg, #1a5fa0, #10bce2, #3dd6ad, #8be27e);
 	background-size: 400% 400%;
