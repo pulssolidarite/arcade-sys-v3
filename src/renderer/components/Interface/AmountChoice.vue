@@ -293,7 +293,6 @@ export default {
         amount: this.amounts[this.choosenIndexOf],
         indexOf: this.choosenIndexOf + 1
       });
-      console.log("amount = "+ this.amounts[this.choosenIndexOf])
       this.line_right();
       this.line_left();
       this.flags();
