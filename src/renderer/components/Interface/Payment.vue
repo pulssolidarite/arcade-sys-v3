@@ -47,7 +47,7 @@ export default {
 
     // FOR DEV PURPOSE ONLY
     // For skipping payment
-    setTimeout(() => this.skipPayment(this.session.amount), 8000);
+    // setTimeout(() => this.skipPayment(this.session.amount), 8000);
   },
   methods: {
     skipPayment: function(amount) {
@@ -87,21 +87,32 @@ export default {
             });
     },
     launchPayment: function(amount) {
-      const { execSync } = require('child_process');
+      try {
+          const { execSync } = require('child_process');
 
-      // get terminal IP
-      var shellCmd = "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
-      var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
-      var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
-      console.log(TPEip);
+          // get terminal IP
+          var shellCmd = "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
+          var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
+          var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
+          console.log(TPEip);
 
-      // make transaction (amount in cents)
-      shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + (amount * 100);
-      var transaction = execSync(shellCmd).toString().replace(/\n|\r|(\n\r)/g, '');
-        
-      console.log(transaction);
-        
-      return(transaction);
+          // make transaction (amount in cents)
+          shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + (amount * 100);
+          var transaction = execSync(shellCmd).toString().replace(/\n|\r|(\n\r)/g, '');
+            
+          console.log(transaction);
+            
+          return(transaction);
+      }
+      catch(e) {
+          this.$emit("error", {
+              visible: true,
+              title: "Erreur inconnue",
+              errors: [
+                "Un problème inconnu est survenu. Veuillez réessayer ou contacter le support.",
+              ],
+            });
+      }
     },
     pay: function(amount) {
       if (this.session.amount != null) {
