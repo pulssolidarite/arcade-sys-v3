@@ -61,7 +61,7 @@ export default {
   },
   watch: {
     a: function(val) {
-      if (val) {
+      if (val & this.visible) {
         switch (this.selectedChoice) {
         case 0: this.$emit("lastView"); 
             break;
@@ -71,17 +71,17 @@ export default {
       }
     },
     b: function(val) {
-      if (val) {
+      if (val & this.visible) {
         this.$emit("lastView");
       }
     },
     up: function(val) {
-        if (val) {
+        if (val & this.visible) {
             this.doChoice(this.selectedChoice - 1);
         }
     },
     down: function(val) {
-        if (val) {
+        if (val & this.visible) {
             this.doChoice(this.selectedChoice + 1);
         }
     }
