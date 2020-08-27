@@ -27,16 +27,24 @@
               <vueper-slide v-for="(game, i) in games" :key="i">
                 <template v-slot:content>
                   <div class="carousel-content">
-                    <div class="row title-g"> {{ game.name }} </div>
+                    <div class="row title-g"> {{game.name }} </div>
                     <div class="row picture">
                         <img :src=game.logo :alt=game.name class="slide-picture">
                     </div>
                     <div class="c-line"></div>
                     <div class="row infos">
-                      <div class="icon1"> <img src="@/assets/img/picto/gamepad.png" alt="gamepad pictograme" class="pictogramme"></div>
+                      <!-- <div class="icon1"> <img src="@/assets/img/picto/gamepad.png" alt="gamepad pictograme" class="pictogramme"></div>
                       <div class="nb-j"> {{gameInfos[game.name].nb_player}}</div>
-                      <div class="icon2"></div>
-                      <div class="type"> {{gameInfos[game.name].type}} </div>
+                      <div class="icon2"> <img src="@/assets/img/picto/gamepad.png" alt="gamepad pictograme" class="pictogramme"></div>
+                      <div class="type"> {{gameInfos[game.name].type}} </div> -->
+                        <div class="icon1"><img class="pictogramme" src="@/assets/img/picto/gamepad.png" alt="gamepad pictograme"></div>
+                        <div class="nb-j">{{gameInfos[game.name].nb_player}}</div>
+                        <div class="type">{{gameInfos[game.name].type}}</div>
+                        <div class="icon2">
+                            <!-- <img class="pictogramme" :src="'@/assets/img/picto/' + gameInfos[game.name].type + '.png'" :alt=game.name> -->
+                            <!-- {{pathToPicto + gameInfos[game.name].type + '.png" alt="gamepad pictograme">'}} -->
+                            <img class="pictogramme" :src="getPictoUrl(game)" :alt=game.name>
+                        </div>
                     </div>
                     <div class="c-line"></div>
                     <div class="row descr">
@@ -75,6 +83,7 @@ export default {
         games: "",
       },
       gameInfos: jsonKeys,
+      pathToPicto: '<img class="pictogramme" src="@/assets/img/picto/',
     };
   },
   computed: {
@@ -139,6 +148,11 @@ export default {
       this.$refs.carousel.next();
       this.animateArrow('right');
     },
+    getPictoUrl(game) {
+    var images = require.context('@/assets/img/picto', false, /\.png$/);
+    return images('./' + this.gameInfos[game.name].type + ".png")
+    // return '@/assets/img/picto/' +  this.gameInfos[game.name].type + '.png';
+  },
 
     // OTHER METHODS
     chooseGame: function(index) {

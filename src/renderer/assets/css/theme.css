@@ -200,32 +200,36 @@ body {
   transform: translateX(-50%);
 }
 .carousel-content .infos {
+  display: table;
+  width: 100%;
   height: 14%;
 }
-.carousel-content .infos .icon1, .carousel-content .infos .icon2 {
-  max-height: 100%;
+.carousel-content .infos .type, .carousel-content .infos .nb-j {
+  font-family: pixel2;
+  color: white;
 }
 .carousel-content .infos .icon1 {
-  margin-left: 5%;
+  display: table-cell;
+  vertical-align: middle;
+}
+.carousel-content .infos .icon2 {
+  display: table-cell;
+  vertical-align: middle;
 }
 .carousel-content .infos .nb-j {
-  font-family: pixel2;
-  font-size: 3.5rem;
-  margin-top: 10px;
-  color: white;
-  margin-left: 20px;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 2rem;
+  text-align: left;
 }
 .carousel-content .infos .type {
-  font-family: pixel2;
-  font-size: 2rem;
-  color: white;
-  margin-left: 15%;
-  margin-top: 5.5%;
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  text-align: right;
 }
 .carousel-content .infos .pictogramme {
-  height: 60%;
-  margin-top: 65%;
-  transform: translateY(-50%);
+  max-height: 50%;
 }
 .carousel-content .descr {
   height: 31%;
