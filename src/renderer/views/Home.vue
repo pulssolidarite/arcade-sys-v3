@@ -380,13 +380,13 @@ export default {
         errors: [],
       };
     },
-    goBackHome() {
-        if(this.viewIndex == 5) { // in Game
-            clearTimeout(10000);
-        } else {
-          console.log("timourend 10sec");
-        }
-    },
+    // goBackHome() {
+    //     if(this.viewIndex == 5) { // in Game
+    //         clearTimeout(10000);
+    //     } else {
+    //       console.log("timourend 10sec");
+    //     }
+    // },
     // resetTimer(){
     //   console.log("reset");
     //   window.clearTimeout(timeoutHandle);
