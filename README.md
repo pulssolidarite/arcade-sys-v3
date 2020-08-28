@@ -54,7 +54,7 @@ Accept the clipit security question.
 
 ## Download & Install Retroarch
 
-`$ sudo apt-get install build-essential libasound2-dev libudev-dev`
+`$ sudo apt-get install build-essential libasound2-dev libudev-dev libgl-dev libxxf86vm-dev`
 
 `$ curl -LOk 'https://github.com/libretro/RetroArch/archive/v1.7.7.tar.gz'`
 
@@ -62,11 +62,11 @@ Accept the clipit security question.
 
 `$ cd RetroArch-1.7.7`
 
-`$ sudo ./configure --enable-alsa --enable-udev --enable-floathard --enable-neon --enable-dispmanx --disable-opengl1`
+`$ ./configure ; ./configure --enable-alsa --enable-udev --enable-floathard --enable-neon --enable-dispmanx --disable-opengl1`
 
-`$ sudo make`
+`$ make`
 
-`$ sudo make install`
+`$ make install`
 
 `$ retroarch`
 
@@ -80,7 +80,7 @@ $`cd`
 
 ## Download and install Puls Impact Overlay
 
-`$ curl -LOk "https://github.com/hilaliMoncef/arcade-sys/releases/download/v2.0.4/PULS-Front-end-2.0.4-armv7l.AppImage"`
+`$ curl -LOk "https://github.com/pulssolidarite/arcade-sys-v2/releases/download/v2.0.4/PULS-Front-end-2.0.4-armv7l.AppImage"`
 
 `$ chmod a+x PULS-Front-end-2.0.4-armv7l.AppImage`
 
@@ -96,7 +96,7 @@ Add these two lines at the end of `/etc/profile` as root :
 
 Download games
 
-`$ git clone https://github.com/hilaliMoncef/arcade-sys-games.git`
+`$ git clone https://github.com/pulssolidarite/arcade-sys-games.git`
 
 Test the overlay
 
