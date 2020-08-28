@@ -8,31 +8,48 @@
         </div>
 
         <div class="s-content">
-
+          <div id="video-asso" class="video-asso">
+            <youtube id="player-ytb"
+              :video-id="session.campaign.video"
+              :player-vars="playerVars"
+              :fitParent="true"
+              ref="youtube"
+              @ready="playerReady()"
+              @playing="playerPlaying()"
+              @ended="playVideo()"
+              style="height:315.3px; width: 621.22px;"
+            ></youtube>
+          </div>
           <div class="carousel">
             <vueper-slides ref="carousel" class="no-shadow"
                           :infinite="false" :visibleSlides="1" 
-                          :fixedHeight="true"  :bulletsOutside="true" 
+                          :fixedHeight="true"  :bullets="false" 
                           :touchable="false" :gap=30 transition-speed="250"
                           @ready="chooseCampaign($event.currentSlide.index)" 
                           @slide="chooseCampaign($event.currentSlide.index)">
 
               <template v-slot:arrow-left>
-                <div class="left-arrow"></div>
+                <div id="left-arrow" class="left-arrow"></div>
               </template>
               <template v-slot:arrow-right>
-                <div class="right-arrow"></div>
+                <div id="right-arrow" class="right-arrow"></div>
               </template>
 
               <vueper-slide v-for="(campaign, i) in campaigns" :key="i">
                 <template v-slot:content>
                   <div class="carousel-content">
-                    <div class="row title"> {{ campaign.name }} </div>
+                    <div class="row title-a"> {{ campaign.name }} </div>
                     <div class="row picture">
                         <img :src=campaign.logo :alt=campaign.name class="slide-picture">
                     </div>
+                    <div class="c-line"></div>
                     <div class="row infos">
+                      <div class="icon1"></div>
+                      <div class="mission"></div>
+                      <div class="icon2"></div>
+                      <div class="lieux"></div>
                     </div>
+                    <div class="c-line"></div>
                     <div class="row descr">
                       <span class="slide-description">
                           {{ campaign.description }}
@@ -111,11 +128,13 @@ export default {
     left: function(val) {
       if (val) {
         this.$refs.carousel.previous();
+        this.animateArrow('left');
       }
     },
     right: function(val) {
       if (val) {
         this.$refs.carousel.next();
+        this.animateArrow('right');
       }
     }
   },
@@ -125,6 +144,8 @@ export default {
     } else {
       this.chooseCampaign(0);
     }
+    this.overflowVerify();
+    this.videoSize();
   },
   methods: {
     simulate_a() {
@@ -135,9 +156,11 @@ export default {
     },
     simulate_left() {
       this.$refs.carousel.previous();
+      this.animateArrow('left');
     },
     simulate_right() {
       this.$refs.carousel.next();
+      this.animateArrow('right');
     },
     chooseCampaign: function(index) {
       this.choosenCampaign = this.campaigns[index];
@@ -153,17 +176,21 @@ export default {
       this.$refs.youtube.player.mute();
       this.$refs.youtube.player.getDuration().then(resp => {
         this.duration = resp;
-        console.log("resp = "+ resp);
       });
-      console.log("duration = " + this.duration);
     },
     playerPlaying: async function() {
       let currentTime = this.$refs.youtube.player.getCurrentTime()
       this.timer = (Math.ceil(currentTime) / this.duration) * 100;
-      console.log("duration = " + this.duration);
     },
     playVideo() {
       this.$refs.youtube.player.playVideo()
+    },
+    videoSize() {
+      if(window.innerWidth/window.innerHeight< 1.4) {
+        var video = document.getElementById('player-ytb');
+        video.style.height="315.3px";
+        video.style.width="448.41px";
+      }
     },
     gotoPayment: function() {
       if ((this.choosenCampaign != null)) {
@@ -176,6 +203,29 @@ export default {
           errors: {}
         });
       }
+    },
+    animateArrow(dir) {
+      // Animate Arrows
+      if (dir == 'left') {
+        var arrow = document.getElementById("left-arrow");
+      } else {
+        var arrow = document.getElementById("right-arrow");
+      }
+      arrow.style.transform = "scale(1.4)";  
+      setTimeout(function() { arrow.style.transform = "scale(1)"; }, 150);
+      // Animate video
+      var video = document.getElementById("video-asso");
+      video.style.transform = "scale(0)";  
+      setTimeout(function() { video.style.transform = "scale(1)"; }, 150);
+    },
+    overflowVerify() {
+      var text = document.getElementsByClassName('slide-description');
+      var box = document.getElementsByClassName('descr');
+      for(let i =0; i< text.length; i++) {
+        if (text[i].offsetHeight > box[i].offsetHeight) {
+          text[i].classList.add("animVerticalText");
+        }
+      }
     }
   }
 };
@@ -183,12 +233,5 @@ export default {
 
 <style scoped>
 
-.video-border {
-    border: 2px solid #FFFF00;
-    width: fit-content;
-    height: 364px;
-    border-radius: 30px;
-    overflow: hidden;
-}
 
 </style>

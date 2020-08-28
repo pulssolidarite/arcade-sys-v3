@@ -1,45 +1,10 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
-<g>
-	<g>
-		<path d="M464.344,207.418l0.768,0.168H135.888l103.496-103.724c5.068-5.064,7.848-11.924,7.848-19.124
-			c0-7.2-2.78-14.012-7.848-19.088L223.28,49.538c-5.064-5.064-11.812-7.864-19.008-7.864c-7.2,0-13.952,2.78-19.016,7.844
-			L7.844,226.914C2.76,231.998-0.02,238.77,0,245.974c-0.02,7.244,2.76,14.02,7.844,19.096l177.412,177.412
-			c5.064,5.06,11.812,7.844,19.016,7.844c7.196,0,13.944-2.788,19.008-7.844l16.104-16.112c5.068-5.056,7.848-11.808,7.848-19.008
-			c0-7.196-2.78-13.592-7.848-18.652L134.72,284.406h329.992c14.828,0,27.288-12.78,27.288-27.6v-22.788
-			C492,219.198,479.172,207.418,464.344,207.418z"/>
-	</g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
+<svg id="Fleche_jaune" data-name="Fleche jaune" xmlns="http://www.w3.org/2000/svg" width="47.737" height="70.01" viewBox="0 0 47.737 70.01">
+  <g id="fleche" transform="translate(133.737 150.01) rotate(180)">
+    <path id="Tracé_795" data-name="Tracé 795" d="M106,104v5.508h5.508V104Z" transform="translate(16.721 20.065)" fill="#707070"/>
+    <path id="Tracé_796" data-name="Tracé 796" d="M133.737,107.54v16.524H122.721v9.18h-5.508v5.508H111.7v5.508h-3.672v5.508H91.508v-5.508H86V85.508h5.508V80h16.524v5.508H111.7V91.2l5.508-.184v5.508h5.508v5.508h5.508v5.508Z" transform="translate(0)" fill="#c97005"/>
+  </g>
+  <g id="fleche-2" data-name="fleche" transform="translate(129.551 142.251) rotate(180)">
+    <path id="Tracé_795-2" data-name="Tracé 795" d="M106,104v5.508h5.508V104Z" transform="translate(12.349 14.91)" fill="#eee128"/>
+    <path id="Tracé_796-2" data-name="Tracé 796" d="M129.366,104.573v14.744H119.358v8.191h-5v4.915h-5v4.915h-3.336v4.915H91v-4.915H86V84.915h5V80h15.011v4.915h3.336v5.078l5-.164v4.915h5v4.915h5v4.915Z" transform="translate(0)" fill="#eee128"/>
+  </g>
 </svg>

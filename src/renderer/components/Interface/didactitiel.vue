@@ -4,7 +4,52 @@
 
             <div class="s-title">
                 <div class="title">DIDACTITIEL</div>
-                <div class="subtitle"></div>
+                <div class="subtitle">
+                    Les touches par défauts de {{session.game.name}}. <br> 
+                    Certains jeux permettent de changer les touches 
+                </div>
+            </div>
+
+            <div class="s-content">
+                <div class="joystick_d">
+                    <span class="j_up">{{pathToKeys.j_up}}</span>
+                    <span class="j_left">{{pathToKeys.j_left}}</span>
+                    <img src="@/assets/img/didactitiel/joystick_d.svg" alt="joystick illustration">
+                    <span class="j_right">{{pathToKeys.j_right}}</span>
+                    <span class="j_down">{{pathToKeys.j_down}}</span>
+                </div>
+                <div class="button_d">
+                    <div class="t1">
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_X.svg" alt="touch_X">
+                        <span class="but_label_X">X</span>
+                        <span class="txt_btn sp_t1">{{pathToKeys.x}}</span>
+                    </div>
+                    <div class="t2">
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_Y.svg" alt="touch_Y">
+                        <span class="but_label_Y">Y</span>
+                        <span class="txt_btn sp_t2">{{pathToKeys.y}}</span>
+                    </div>
+                    <div class="t3">
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_L.svg" alt="touch_L">
+                        <span class="but_label_L">L</span>
+                        <span class="txt_btn sp_t3">{{pathToKeys.l}}</span>
+                    </div>
+                    <div class="t4">
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_A.svg" alt="touch_A">
+                        <span class="but_label_A">A</span>
+                        <span class="txt_btn sp_t4">{{pathToKeys.a}}</span>
+                    </div>
+                    <div class="t5">
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_B.svg" alt="touch_B">
+                        <span class="but_label_B">B</span>
+                        <span class="txt_btn sp_t5">{{pathToKeys.b}}</span>
+                    </div>
+                    <div class="t6">
+                        <img class="img_btn" src="@/assets/img/didactitiel/touch_R.svg" alt="touch_R">
+                        <span class="but_label_R">R</span>
+                        <span class="txt_btn sp_t6">{{pathToKeys.r}}</span>
+                    </div>
+                </div>
             </div>
 
 
@@ -15,14 +60,25 @@
 
 <script>
 import helpGamepad from '@/components/helpGamepad.vue';
-
+import jsonKeys from './games_infos.json';
 
 export default {
+    name:"Didactitiel",
+    props: ["session"],
+    data(){
+        return{
+            keysMapping: jsonKeys,
+            pathToKeys: {}
+        }
+    },
     components: {helpGamepad},
     computed: {
         a() {
             return this.$store.state.gamepad.A;
         },
+    },
+    mounted: function() {
+        this.pathToKeys = this.keysMapping[this.session.game.name].touch;
     },
     watch: {
         a: function(val) {
@@ -40,6 +96,3 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>

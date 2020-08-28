@@ -103,3 +103,20 @@ Test the overlay
 `$ ./PULS-Front-end-2.0.4-armv7l.AppImage`
 
 > Info : If the first screen stays white, please reload the overlay
+
+
+## Autostart AppImage 
+
+Go into autostart file in LXDE-pi directory :
+
+`sudo nano /etc/xdg/lxsession/LXDE-pi/autostart`
+
+And add at the end, the path to AppImage : 
+
+`@/home/pi/PULS-Front-end-X.X.X-armv7l.AppImage`
+
+WARNING : The version number need to be change for each update of the application. 
+
+You can comment the @lxpanel line to disable the toolbar on desktop
+You can comment the @pcmanfm line to disable desktop
+You can comment the @screensaver line to disable screensaver

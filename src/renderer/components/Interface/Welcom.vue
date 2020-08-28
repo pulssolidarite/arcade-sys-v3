@@ -10,11 +10,17 @@
             <div class="w-content">
                   <div class="w-description">1 Jeu, 1 Association, 1 Don</div>
                   <div class="cadre">
-                    <div class="start-but">PRESSE A POUR CHOISIR TON JEU</div>
+                    <div class="top"></div>
+                    <div class="bottom"></div>
+                    <div class="left"></div>
+                    <div class="right"></div>
+                    <div class="start-but">PRESSE <span style="font-size:1.8rem;">A</span> POUR CHOISIR TON JEU</div>
                   </div>
 
-                  <div class="w-credit">© PULS IMPACT · 2019 - 2020</div>
-                  <div class="w-credit-infos">Agence en innovations solidaires</div>
+                  <div class="w-credit">
+                    <span class="copyright">© PULS IMPACT · 2019 - 2020</span>
+                    <span class="credit-infos">Agence en innovations solidaires</span>
+                  </div>
             </div>
 
 
@@ -59,20 +65,17 @@ export default {
     },
     left: function(val) {
       if (val) {
-          //Nothing
+        this.start();
       }
     },
     right: function(val) {
       if (val) {
-          // Nothing
+        this.start();
        }
     }
   },
   methods: {
     simulate_a() {
-      this.start();
-    },
-    simulate_b() {
       this.start();
     },
     start: function() {
@@ -84,81 +87,11 @@ export default {
 
 
 <style scoped>
-.screensaver {
-  z-index: 10;
-}
-
-.w-title {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    top: 8vh;
-}
-
-.title {
-  font-family: Pixel;
-  font-size: 4.5rem;
-  color : #FFF222;
-  text-shadow: 5px 0px #C97005;
-}
-
-.subtitle {
-  font-family: Pixel;
-  font-size: 2.2rem;
-  color :#C97005;
-}
-
-.w-content {
-    text-align: center;
-    position: relative;
-    height: 53vh;
-    top: 44vh;
-}
-
-.w-description {
-  font-family: Pixel;
-  font-size: 1.8rem;
-  color : #9183BE;
-  margin-bottom: 3vh;
-}
-
-.start-but {
-  font-family: Pixel;
-  width: 36vw;
-  height: 80px;
-  padding-top: 23px;
-
-  font-size: 1.4rem;
-  color: white; 
-  background-color: #4B37AF;
-  box-shadow: -5px 0px #775CE4,
-              0px -5px #775CE4,
-              5px 0px #372491,
-              0px 5px #372491;
-}
-
-.cadre{
-  width: fit-content; 
-  margin-left: 50%;
-  transform: translateX(-50%);
-  padding: 5px;
-  box-shadow: -5px 0px #2c2c2c,
-              0px -5px #2c2c2c,
-              5px 0px #2c2c2c,
-              0px 5px #2c2c2c;
-}
-
-.w-credit {
-  font-family: Pixel;
-  font-size: 1.4rem;
-  color :white;
-  margin-top:18%;
-}
-
-.w-credit-infos {
-  font-family: Pixel;
-  font-size: 1.1rem;
-  color:white;
-}
+/* 
+.cadre {
+  position: relative;
+  margin: 0 auto;
+  border: 5px solid transparent;
+} */
 
 </style>

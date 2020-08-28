@@ -1,13 +1,15 @@
 <template>
   <div class="w-100 h-100 bg-gradient"  style="overflow :hidden;"> <!-- overflow for transition -->
-    <Error
-      class="w-100 h-100 position-absolute"
-      style="z-index: 999;"
-      :visible="errors.visible"
-      :title="errors.title"
-      :errors="errors.errors"
-      @lastView="lastView"
-    ></Error>
+    
+      <Error
+        class="w-100 h-100 position-absolute"
+        style="z-index: 999;"
+        :visible="errors.visible"
+        :title="errors.title"
+        :errors="errors.errors"
+        @homeView="homeView"
+        @lastView="lastView"
+      ></Error>
 
     <transition name="step-tr">
       <stepping :n_step="viewIndex" v-if="viewIndex >=0 && viewIndex<5"/>
@@ -31,6 +33,7 @@
           @saveGame="saveGame"
           @error="handleError"
           @nextView="nextView"
+          @lastView="lastView"
           v-if="viewIndex == 0"
         ></Start>
 
@@ -76,6 +79,7 @@
         ></CampaignDetail> -->
         
         <didactitiel
+          :session="session"
           @nextView="nextView"
           v-if="viewIndex == 4"
         ></didactitiel>
@@ -89,33 +93,39 @@
           v-if="viewIndex == 5"
         ></Play>
 
-        <ticketProposition
+        <!-- <ticketProposition
           @error="handleError"
           @requestTicket="ticket_request"
           @nextView="nextView"
           @lastView="lastView"
           v-if="viewIndex == 6"
-        ></ticketProposition>
+        ></ticketProposition> -->
 
         <!-- 6TH VIEW -->
         <End
           :session="session"
           @error="handleError"
-          @home="nextView"
+          @home="homeView"
           @lastView="lastView"
           @replay="replay"
           @moreInfo="moreInfo"
           @ticket_request="ticket_request"
-          v-if="viewIndex == 7"
+          v-if="viewIndex == 6"
         ></End>
 
         <requestTicket
           :session="session"
           @error="handleError"
-          @lastView="view6"
+          @lastView="endedView"
           @nextView="lastView"
-          v-if="viewIndex == 8"
+          v-if="viewIndex == 7"
         ></requestTicket>
+
+        <about
+          @lastView="endedView"
+          v-if="viewIndex == 8"
+        ></about>
+
       </transition>
     </div>
   </div>
@@ -123,7 +133,7 @@
 
 <script>
 import VueElementLoading from "vue-element-loading";
-import Error from "@/components/Interface/Error.vue";
+import Error from "@/components/Interface/ErrorsPayement.vue";
 import Stepping from "@/components/stepping.vue";
 import Welcom from "@/components/Interface/Welcom.vue";
 import Start from "@/components/Interface/Start.vue";
@@ -136,6 +146,7 @@ import Play from "@/components/Interface/Play.vue";
 import ticketProposition from '@/components/Interface/ticketProposition.vue'
 import End from "@/components/Interface/End.vue";
 import requestTicket from "@/components/Interface/requestTicket.vue";
+import about from "@/components/Interface/about.vue";
 
 export default {
   name: "Home",
@@ -154,6 +165,7 @@ export default {
     ticketProposition,
     End,
     requestTicket,
+    about,
   },
   data: function() {
     return {
@@ -164,7 +176,7 @@ export default {
         errors: {},
       },
       viewIndex: -1, // Starting index 
-      maxViewIndex: 7,
+      maxViewIndex: 6,
       isAdmin: this.$store.getters.isAdmin,
       isLoggedIn: this.$store.getters.isLoggedIn,
       session: {
@@ -207,7 +219,7 @@ export default {
     }
 
     // Start timer for return to home 
-    var timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
+    // var timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
 
     // Loading all the data from API
     this.loading = true;
@@ -238,18 +250,18 @@ export default {
         this.loading = false;
       });
   },
-  computed: {
-    a() {
-      return this.$store.state.gamepad.A;
-    }
-  },
-  watch : {
-    a: function(val) {
-        if (val) {
-            this.resetTimer();
-        }
-    }
-  },
+  // computed: {
+  //   a() {
+  //     return this.$store.state.gamepad.A;
+  //   }
+  // },
+  // watch : {
+  //   a: function(val) {
+  //       if (val) {
+  //           this.resetTimer();
+  //       }
+  //   }
+  // },
   methods: {
     // CHOICE METHODS
     saveGame: function(payload) {
@@ -359,7 +371,7 @@ export default {
       }
     },
     lastView: function() {
-      if (this.viewIndex > 0) {
+      if (this.viewIndex > -1) {
         this.viewIndex -= 1;
       }
       this.errors = {
@@ -368,31 +380,39 @@ export default {
         errors: [],
       };
     },
-    goBackHome() {
-        if(this.viewIndex == 5) { // in Game
-            clearTimeout(10000);
-        } else {
-          console.log("timourend 10sec");
-        }
-    },
-    resetTimer(){
-      console.log("reset");
-      window.clearTimeout(timeoutHandle);
-      timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
+    // goBackHome() {
+    //     if(this.viewIndex == 5) { // in Game
+    //         clearTimeout(10000);
+    //     } else {
+    //       console.log("timourend 10sec");
+    //     }
+    // },
+    // resetTimer(){
+    //   console.log("reset");
+    //   window.clearTimeout(timeoutHandle);
+    //   timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
 
-    },
+    // },
     replay: function() {
       this.startSession();
       this.viewIndex = 2; // 2 if you want to replay from amount choice
     },
     moreInfo: function() {
-      // add view for only that? ? 
+      this.viewIndex = 8; 
     },
-    view6() {
+    endedView() {
       this.viewIndex = 6;
     },
+    homeView() {
+      this.viewIndex =-1;
+      this.errors = {
+        visible: false,
+        title: "",
+        errors: [],
+      };
+    },
     ticket_request: function() {
-      this.viewIndex = 8;
+      this.viewIndex = 7;
     },
     shuffleArray: function(array) {
       for (let i = array.length - 1; i > 0; i--) {
