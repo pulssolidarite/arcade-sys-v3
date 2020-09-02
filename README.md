@@ -8,7 +8,7 @@ Go to src > renderer > assets > css and execute :
 
 ## Installation nouvelle borne
 
-Download the raspberry OS **Lite** from [https://www.raspberrypi.org/downloads/raspberry-pi-os/](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
+Download the raspberry OS **FULL** from [https://www.raspberrypi.org/downloads/raspberry-pi-os/](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 
 Download the imager for your OS (Windows, Linux, Mac) from [https://www.raspberrypi.org/downloads/](https://www.raspberrypi.org/downloads/)
 
@@ -48,13 +48,11 @@ Go to **7 - Advanced Options**
 
 `$ sudo atp-get install git`
 
-`$ sudo apt-get install lxde ; reboot`
-
 Accept the clipit security question.
 
 ## Download & Install Retroarch
 
-`$ sudo apt-get install build-essential libasound2-dev libudev-dev`
+`$ sudo apt-get install build-essential libasound2-dev libudev-dev libgl-dev`
 
 `$ curl -LOk 'https://github.com/libretro/RetroArch/archive/v1.7.7.tar.gz'`
 
