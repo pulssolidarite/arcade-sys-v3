@@ -40,7 +40,7 @@ export default {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
     if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 15000);
+      setTimeout(() => this.pay(this.session.amount), 20000);
     } else {
       this.$emit("lastView");
     }
@@ -94,9 +94,12 @@ export default {
           var shellCmd = "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
           var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
           var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
+          
+          console.log(TPEip)
 
           // make transaction (amount in cents)
           shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + (amount * 100);
+          console.log(shellCmd)
           var transaction = execSync(shellCmd).toString().replace(/\n|\r|(\n\r)/g, '');
                         
           console.log(transaction);
@@ -132,49 +135,18 @@ export default {
 
         // Checking response from the Payter Pay DLL
         switch (result) {
-          case 0 || "APPROVED":
+          case "APPROVED":
             // APPROVED
             this.payment.status = "Accepted";
             this.$emit("savePayment", { payment: this.payment });
             break;
-          case 1:
-            // DECLINED
-            this.$emit("error", {
-              visible: true,
-              title: "Paiement décliné",
-              errors: [
-                "Votre paiement a été refusé. Veuillez contacter votre émetteur de carte.",
-              ],
-            });
-            this.$emit("savePayment", { payment: this.payment });
-            break;
-          case -1:
-            // CONNECTION ERROR
-            this.$emit("error", {
-              visible: true,
-              title: "Erreur de connexion",
-              errors: [
-                "Il y a un problème de connexion au terminal de paiement. Veuillez réessayer ou contacter le support.",
-              ],
-            });
-            break;
-          case -5:
+          case "TIMEOUT":
             // TIMEOUT
             this.$emit("error", {
               visible: true,
               title: "Temps écoulé",
               errors: [
                 "Vous avez mis trop de temps à passer votre carte. L'opération est annulée, veuillez réessayer.",
-              ],
-            });
-            break;
-          case -6:
-            // INVALID CARD
-            this.$emit("error", {
-              visible: true,
-              title: "Carte invalide",
-              errors: [
-                "Votre carte est invalide. Veuillez réessayer ou contacter le support.",
               ],
             });
             break;
