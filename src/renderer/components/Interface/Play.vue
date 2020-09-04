@@ -68,11 +68,11 @@ export default {
           this.endGame();
         }
       });
-      // We use a global timer to kill the game after 300000ms
+      // We use a global timer to kill the game after 10 minutes
       // TO-DO : maybe add a message that the time is out
       var timer = setTimeout(function() {
         exec('killall "retroarch"');
-      }, 300000);
+      }, 1000*60*10); // milisecond*second*minute
     },
     endGame: function() {
       this.loading = false;
