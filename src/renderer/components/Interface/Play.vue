@@ -49,7 +49,7 @@ export default {
     const pathToGame =
       "/home/pi/arcade-sys-games/roms/" + this.session.game.path;
 
-    let command = 'retroarch -L "' + pathToCore + '" "' + pathToGame + '"';
+    let command = 'retroarch -f -L "' + pathToCore + '" "' + pathToGame + '"';
     this.startShell(command);
   },
   methods: {
