@@ -49,7 +49,7 @@ export default {
     const pathToGame =
       "/home/pi/arcade-sys-games/roms/" + this.session.game.path;
 
-    let command = 'retroarch -L "' + pathToCore + '" "' + pathToGame + '"';
+    let command = 'retroarch -f -L "' + pathToCore + '" "' + pathToGame + '"';
     this.startShell(command);
   },
   methods: {
@@ -68,11 +68,11 @@ export default {
           this.endGame();
         }
       });
-      // We use a global timer to kill the game after 300000ms
+      // We use a global timer to kill the game after 10 minutes
       // TO-DO : maybe add a message that the time is out
       var timer = setTimeout(function() {
         exec('killall "retroarch"');
-      }, 300000);
+      }, 1000*60*10); // milisecond*second*minute
     },
     endGame: function() {
       this.loading = false;

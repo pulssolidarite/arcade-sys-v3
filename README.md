@@ -8,7 +8,7 @@ Go to src > renderer > assets > css and execute :
 
 ## Installation nouvelle borne
 
-Download the raspberry OS **Lite** from [https://www.raspberrypi.org/downloads/raspberry-pi-os/](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
+Download the raspberry OS **FULL** from [https://www.raspberrypi.org/downloads/raspberry-pi-os/](https://www.raspberrypi.org/downloads/raspberry-pi-os/)
 
 Download the imager for your OS (Windows, Linux, Mac) from [https://www.raspberrypi.org/downloads/](https://www.raspberrypi.org/downloads/)
 
@@ -48,8 +48,6 @@ Go to **7 - Advanced Options**
 
 `$ sudo atp-get install git`
 
-`$ sudo apt-get install lxde ; reboot`
-
 Accept the clipit security question.
 
 ## Download & Install Retroarch
@@ -80,7 +78,7 @@ $`cd`
 
 ## Download and install Puls Impact Overlay
 
-`$ curl -LOk "https://github.com/pulssolidarite/arcade-sys-v2/releases/download/v2.0.4/PULS-Front-end-2.0.4-armv7l.AppImage"`
+`$ curl -LOk "https://github.com/pulssolidarite/arcade-sys/releases/download/v2.0.4/PULS-Front-end-2.0.4-armv7l.AppImage"`
 
 `$ chmod a+x PULS-Front-end-2.0.4-armv7l.AppImage`
 

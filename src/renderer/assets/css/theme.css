@@ -229,7 +229,7 @@ body {
   text-align: right;
 }
 .carousel-content .infos .pictogramme {
-  max-height: 50%;
+  height: 50%;
 }
 .carousel-content .descr {
   height: 31%;
