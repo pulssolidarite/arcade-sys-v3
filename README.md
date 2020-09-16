@@ -78,6 +78,8 @@ $`cd`
 
 ## Download and install Puls Impact Overlay
 
+`$ sudo apt-get install arp-scan xscreensaver`
+
 `$ curl -LOk "https://github.com/pulssolidarite/arcade-sys/releases/download/v2.0.4/PULS-Front-end-2.0.4-armv7l.AppImage"`
 
 `$ chmod a+x PULS-Front-end-2.0.4-armv7l.AppImage`
