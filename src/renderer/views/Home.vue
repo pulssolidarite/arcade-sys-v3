@@ -242,6 +242,7 @@ export default {
         this.loading = false;
       })
       .catch((err) => {
+	console.log(err.response);
         this.errors = {
           visible: true,
           title: "Erreur de chargement",
