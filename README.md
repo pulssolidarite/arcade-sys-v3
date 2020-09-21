@@ -50,6 +50,8 @@ Go to **7 - Advanced Options**
 
 `$ sudo snap install core`
 
+`$ sudo reboot now`
+
 ## Download & Install Retroarch
 
 `$ sudo snap install retroarch`
