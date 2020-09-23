@@ -66,6 +66,7 @@
     "vue-card-carousel": "^1.0.0",
     "vue-electron": "^1.0.6",
     "vue-element-loading": "^1.1.5",
+    "vue-gamepad": "^1.1.1",
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.1",
     "vue-simple-keyboard": "^2.0.1",

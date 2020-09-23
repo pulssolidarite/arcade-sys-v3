@@ -23,6 +23,9 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import VueProgressBar from "vue-progressbar";
 import VueYoutube from "vue-youtube";
 import interceptors from "./axios/index.js";
+import VueGamepad from "vue-gamepad";
+
+Vue.use(VueGamepad);
 
 Vue.use(VueYoutube);
 

@@ -129,9 +129,10 @@
 
 <script>
 import VueElementLoading from "vue-element-loading";
+import Welcom from "@/components/Interface/Welcom.vue";
+
 import Error from "@/components/Interface/ErrorsPayement.vue";
 import Stepping from "@/components/stepping.vue";
-import Welcom from "@/components/Interface/Welcom.vue";
 import Start from "@/components/Interface/Start.vue";
 import CampaignChoice from "@/components/Interface/CampaignChoice.vue";
 import AmountChoice from "@/components/Interface/AmountChoice.vue";

@@ -17,53 +17,8 @@ export default new Vuex.Store({
     refreshToken: localStorage.getItem("refreshToken") || "",
     maxGames: 3,
     maxCampaigns: 3,
-    gamepad: {
-      listening: true,
-      A: false,
-      B: false,
-      X: false,
-      Y: false,
-      Right: false,
-      Left: false,
-      Top: false,
-      Bottom: false,
-      Start: false,
-    },
   },
   mutations: {
-    stopListening(state) {
-      state.gamepad.listening = false;
-    },
-    startListening(state) {
-      state.gamepad.listening = true;
-    },
-    toggleA(state, value) {
-      state.gamepad.A = value;
-    },
-    toggleB(state, value) {
-      state.gamepad.B = value;
-    },
-    toggleX(state, value) {
-      state.gamepad.X = value;
-    },
-    toggleY(state, value) {
-      state.gamepad.Y = value;
-    },
-    toggleRight(state, value) {
-      state.gamepad.Right = value;
-    },
-    toggleLeft(state, value) {
-      state.gamepad.Left = value;
-    },
-    toggleTop(state, value) {
-      state.gamepad.Top = value;
-    },
-    toggleBottom(state, value) {
-      state.gamepad.Bottom = value;
-    },
-    toggleStart(state, value) {
-      state.gamepad.Start = value;
-    },
     auth_success(state, payload) {
       state.status = "success";
       state.token = payload.token;
