@@ -46,25 +46,15 @@ Go to **7 - Advanced Options**
 
 `$ sudo apt-get upgrade`
 
-`$ sudo atp-get install git`
+`$ sudo atp-get install git snapd`
 
-Accept the clipit security question.
+`$ sudo snap install core`
+
+`$ sudo reboot now`
 
 ## Download & Install Retroarch
 
-`$ sudo apt-get install build-essential libasound2-dev libudev-dev libgl-dev`
-
-`$ curl -LOk 'https://github.com/libretro/RetroArch/archive/v1.7.7.tar.gz'`
-
-`$ tar -zxvf v1.7.7.tar.gz`
-
-`$ cd RetroArch-1.7.7`
-
-`$ sudo ./configure --enable-alsa --enable-udev --enable-floathard --enable-neon --enable-dispmanx --disable-opengl1`
-
-`$ sudo make`
-
-`$ sudo make install`
+`$ sudo snap install retroarch`
 
 `$ retroarch`
 
@@ -74,23 +64,23 @@ Go to **Online Updater**
 - esc to exit
 - Reexecute retroarch and configure joypads
 
-$`cd`
-
 ## Download and install Puls Impact Overlay
 
-`$ curl -LOk "https://github.com/pulssolidarite/arcade-sys/releases/download/v2.0.4/PULS-Front-end-2.0.4-armv7l.AppImage"`
+`$ sudo apt-get install arp-scan`
 
-`$ chmod a+x PULS-Front-end-2.0.4-armv7l.AppImage`
+`$ curl -LOk "https://github.com/pulssolidarite/arcade-sys/releases/download/v2.0.4/PULS-Front-end-X.X.X-armv7l.AppImage"`
 
-Add these two lines at the end of `/etc/profile` as root :
+`$ chmod a+x PULS-Front-end-X.X.X-armv7l.AppImage`
 
-> Warning : Make sure to create a new terminal on the Heroku's Admin Panel and use the login for following step.
+Add these two lines at the end of `.bashrc` :
+
+> Warning : Make sure to create a new terminal (and activate it) on the Admin Panel and use the logins for following step.
 
 `export PULS_LOGIN=???`
 
 `export PULS_MDP=???`
 
-`$ source /etc/profile`
+`$ source .bashrc`
 
 Download games
 
@@ -98,9 +88,9 @@ Download games
 
 Test the overlay
 
-`$ ./PULS-Front-end-2.0.4-armv7l.AppImage`
+`$ ./PULS-Front-end-X.X.X-armv7l.AppImage`
 
-> Info : If the first screen stays white, please reload the overlay
+> Info : If the first screen stays white, restart the overlay
 
 
 ## Autostart AppImage 
