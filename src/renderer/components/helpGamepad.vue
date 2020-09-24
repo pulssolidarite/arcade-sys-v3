@@ -145,19 +145,15 @@ export default {
   },
   methods: {
     simulate_a() {
-      console.log("Simulate A launched");
       this.$emit("simulate_a");
     },
     simulate_b() {
-      console.log("Simulate B launched");
       this.$emit("simulate_b");
     },
     simulate_left() {
-      console.log("Simulate Left launched");
       this.$emit("simulate_left");
     },
     simulate_right() {
-      console.log("Simulate Right launched");
       this.$emit("simulate_right");
     },
     simulate_up() {
