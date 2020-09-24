@@ -114,20 +114,12 @@ export default new Vuex.Store({
                 });
               });
           })
-<<<<<<< HEAD
           .catch((err) => {
             console.error(err.response);
             reject({
               message:
                 "Impossible de se connecter avec ces identifiants. Veuillez réessayer.",
             });
-=======
-          .catch(err => {
-            console.log(err.response);
-            commit("auth_error", err);
-            localStorage.removeItem("token");
-            reject(err);
->>>>>>> b71daab9c2ad451820404e647dcf88b40b9f1f60
           });
       });
     },
