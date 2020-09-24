@@ -246,18 +246,6 @@ export default {
         this.loading = false;
       });
   },
-  // computed: {
-  //   a() {
-  //     return this.$store.state.gamepad.A;
-  //   }
-  // },
-  // watch : {
-  //   a: function(val) {
-  //       if (val) {
-  //           this.resetTimer();
-  //       }
-  //   }
-  // },
   methods: {
     // CHOICE METHODS
     saveGame: function(payload) {

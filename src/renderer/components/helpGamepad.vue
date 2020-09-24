@@ -110,7 +110,7 @@
         <div
           class="B-but"
           id="B-but"
-          v-gamepad:button-a="simulate_b"
+          v-gamepad:button-x="simulate_b"
           @click="simulate_b"
         >
           <img src="@/assets/img/btn_footer.svg" alt="btn" />
