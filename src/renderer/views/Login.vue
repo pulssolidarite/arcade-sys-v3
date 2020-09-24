@@ -49,7 +49,12 @@ export default {
       this.$store
         .dispatch("login", this.credentials)
         .then(() => this.$router.push("/start"))
+<<<<<<< HEAD
         .catch((err) => {
+=======
+        .catch(err => {
+		console.log(err.response);
+>>>>>>> b71daab9c2ad451820404e647dcf88b40b9f1f60
           this.loading = false;
           this.error = err.response;
         });

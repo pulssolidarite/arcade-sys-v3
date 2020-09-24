@@ -55,10 +55,15 @@ Vue.config.productionTip = false;
 // Axios stuff
 Vue.prototype.$http = axios;
 //Vue.prototype.$http.defaults.baseURL = process.env.SERVER_URL;
+<<<<<<< HEAD
 Vue.prototype.$http.defaults.baseURL =
   "https://puls-back-preprod.herokuapp.com/";
 //Vue.prototype.$http.defaults.baseURL = "http://127.0.0.1:8000/";
 const token = localStorage.getItem("accessToken");
+=======
+Vue.prototype.$http.defaults.baseURL = "https://puls-back-prod.herokuapp.com/";
+const token = localStorage.getItem("token");
+>>>>>>> b71daab9c2ad451820404e647dcf88b40b9f1f60
 if (token) {
   Vue.prototype.$http.defaults.headers.common[
     "Authorization"
