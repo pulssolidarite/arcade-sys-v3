@@ -5,9 +5,9 @@
         <div class="gpio1" id="gpio1" style="display: none;">
           <span
             class="left-gpio"
-            v-gamepad:button-dpad-right="simulate_left"
-            v-gamepad:left-analog-right="simulate_left"
-            v-gamepad:right-analog-right="simulate_left"
+            v-gamepad:button-dpad-left="simulate_left"
+            v-gamepad:left-analog-left="simulate_left"
+            v-gamepad:right-analog-left="simulate_left"
             @click="simulate_left"
             ><img
               class="arrow-left-ft"
@@ -19,9 +19,9 @@
           /></span>
           <span
             class="right-gpio"
-            v-gamepad:button-dpad-left="simulate_right"
-            v-gamepad:left-analog-left="simulate_right"
-            v-gamepad:right-analog-left="simulate_right"
+            v-gamepad:button-dpad-right="simulate_right"
+            v-gamepad:left-analog-right="simulate_right"
+            v-gamepad:right-analog-right="simulate_right"
             @click="simulate_right"
             ><img
               class="arrow-right-ft"
@@ -57,9 +57,9 @@
         <div class="gpio3" id="gpio3" style="display: none;">
           <span
             class="left-gpio"
-            v-gamepad:button-dpad-right="simulate_left"
-            v-gamepad:left-analog-right="simulate_left"
-            v-gamepad:right-analog-right="simulate_left"
+            v-gamepad:button-dpad-left="simulate_left"
+            v-gamepad:left-analog-left="simulate_left"
+            v-gamepad:right-analog-left="simulate_left"
             @click="simulate_left"
             ><img
               class="arrow-left-ft"
@@ -88,9 +88,9 @@
           <!-- <span class="down-gpio"  @click="simulate_down"><img class="arrow-down-ft" src='@/assets/img/arrow_footer.svg' alt='arrow footer'></span> -->
           <span
             class="right-gpio"
-            v-gamepad:button-dpad-left="simulate_right"
-            v-gamepad:left-analog-left="simulate_right"
-            v-gamepad:right-analog-left="simulate_right"
+            v-gamepad:button-dpad-right="simulate_right"
+            v-gamepad:left-analog-right="simulate_right"
+            v-gamepad:right-analog-right="simulate_right"
             @click="simulate_right"
             ><img
               class="arrow-right-ft"
@@ -145,15 +145,19 @@ export default {
   },
   methods: {
     simulate_a() {
+      console.log("Simulate A launched");
       this.$emit("simulate_a");
     },
     simulate_b() {
+      console.log("Simulate B launched");
       this.$emit("simulate_b");
     },
     simulate_left() {
+      console.log("Simulate Left launched");
       this.$emit("simulate_left");
     },
     simulate_right() {
+      console.log("Simulate Right launched");
       this.$emit("simulate_right");
     },
     simulate_up() {
