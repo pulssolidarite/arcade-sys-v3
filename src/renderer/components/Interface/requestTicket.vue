@@ -105,20 +105,6 @@
 
       <helpGamepad
         :gpio_help="3"
-        v-gamepad:button-a="simulate_a"
-        v-gamepad:button-b="simulate_b"
-        v-gamepad:button-dpad-up="navigOnKeyboard(3)"
-        v-gamepad:button-dpad-down="navigOnKeyboard(4)"
-        v-gamepad:left-analog-down="navigOnKeyboard(4)"
-        v-gamepad:left-analog-up="navigOnKeyboard(3)"
-        v-gamepad:right-analog-down="navigOnKeyboard(4)"
-        v-gamepad:right-analog-up="navigOnKeyboard(3)"
-        v-gamepad:button-dpad-left="navigOnKeyboard(2)"
-        v-gamepad:button-dpad-right="navigOnKeyboard(1)"
-        v-gamepad:left-analog-left="navigOnKeyboard(2)"
-        v-gamepad:left-analog-right="navigOnKeyboard(1)"
-        v-gamepad:right-analog-left="navigOnKeyboard(2)"
-        v-gamepad:right-analog-right="navigOnKeyboard(1)"
         @simulate_a="simulate_a"
         @simulate_b="simulate_b"
         @simulate_right="navigOnKeyboard(1)"
@@ -151,67 +137,6 @@ export default {
       index: 0,
       line: 0,
     };
-  },
-  computed: {
-    a() {
-      return this.$store.state.gamepad.A;
-    },
-    b() {
-      return this.$store.state.gamepad.B;
-    },
-    up() {
-      return this.$store.state.gamepad.Up;
-    },
-    down() {
-      return this.$store.state.gamepad.Down;
-    },
-    left() {
-      return this.$store.state.gamepad.Left;
-    },
-    right() {
-      return this.$store.state.gamepad.Right;
-    },
-  },
-  watch: {
-    a: function(val) {
-      if (val) {
-        if (this.selectedTouch == "valider") {
-          if (this.checkForm()) {
-            console.log("l'email enregistré est : " + this.email);
-            this.$emit("nextView");
-          } else {
-            console.log("erreur : email invalide");
-          }
-        } else {
-          this.email += this.selectedTouch;
-        }
-      }
-    },
-    b: function(val) {
-      if (val) {
-        this.$emit("lastView");
-      }
-    },
-    right: function(val) {
-      if (val) {
-        this.navigOnKeyboard(1);
-      }
-    },
-    left: function(val) {
-      if (val) {
-        this.navigOnKeyboard(2);
-      }
-    },
-    up: function(val) {
-      if (val) {
-        this.navigOnKeyboard(3);
-      }
-    },
-    down: function(val) {
-      if (val) {
-        this.navigOnKeyboard(4);
-      }
-    },
   },
   methods: {
     simulate_a() {

@@ -5,7 +5,8 @@
         <div class="d-flex align-items-center justify-content-between">
           <span id="message">Une nouvelle version est disponible !</span>
           <button
-            class="btn btn-primary d-none"
+            class="btn btn-primary"
+            v-if="updateAvailable"
             id="restart-app"
             @click.prevent="restartApp"
             v-gamepad:button-start="restartApp"
@@ -35,6 +36,7 @@ export default {
     return {
       gamepads: [],
       requestID: null,
+      updateAvailable: false,
     };
   },
   mounted: function() {
@@ -53,13 +55,13 @@ export default {
     ipcRenderer.on("update_available", () => {
       ipcRenderer.removeAllListeners("update_available");
       message.innerText = "A new update is available. Downloading now...";
-      notification.classList.remove("d-none");
+      this.updateAvailable = true;
     });
     ipcRenderer.on("update_downloaded", () => {
       ipcRenderer.removeAllListeners("update_downloaded");
       message.innerText =
         "Update Downloaded. It will be installed on restart. Restart now?";
-      restartButton.classList.remove("d-none");
+      this.updateAvailable = true;
       notification.classList.remove("d-none");
     });
   },

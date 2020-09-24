@@ -74,14 +74,6 @@
 
       <!-- GAMEPAD -->
       <helpGamepad
-        v-gamepad:button-a="simulate_a"
-        v-gamepad:button-b="simulate_b"
-        v-gamepad:button-dpad-left="simulate_left"
-        v-gamepad:button-dpad-right="simulate_right"
-        v-gamepad:left-analog-left="simulate_left"
-        v-gamepad:left-analog-right="simulate_right"
-        v-gamepad:right-analog-left="simulate_left"
-        v-gamepad:right-analog-right="simulate_right"
         @simulate_a="simulate_a"
         @simulate_b="simulate_b"
         @simulate_right="simulate_right"
@@ -118,44 +110,6 @@ export default {
         rel: 0,
       },
     };
-  },
-  computed: {
-    a() {
-      return this.$store.state.gamepad.A;
-    },
-    b() {
-      return this.$store.state.gamepad.B;
-    },
-    left() {
-      return this.$store.state.gamepad.Left;
-    },
-    right() {
-      return this.$store.state.gamepad.Right;
-    },
-  },
-  watch: {
-    a: function(val) {
-      if (val) {
-        this.gotoPayment();
-      }
-    },
-    b: function(val) {
-      if (val) {
-        this.$emit("lastView");
-      }
-    },
-    left: function(val) {
-      if (val) {
-        this.$refs.carousel.previous();
-        this.animateArrow("left");
-      }
-    },
-    right: function(val) {
-      if (val) {
-        this.$refs.carousel.next();
-        this.animateArrow("right");
-      }
-    },
   },
   mounted: function() {
     if (this.session.position_asso) {
