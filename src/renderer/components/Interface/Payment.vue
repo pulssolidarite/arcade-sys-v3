@@ -64,7 +64,7 @@ export default {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
     if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 20000);
+      setTimeout(() => this.pay(this.session.amount), 30000);
     } else {
       this.$emit("lastView");
     }
@@ -112,37 +112,32 @@ export default {
     },
     launchPayment: function(amount) {
       try {
-        const { execSync } = require("child_process");
+          const { execSync } = require('child_process');
 
-        // get terminal IP
-        var shellCmd =
-          "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
-        var TPEip = (execSync(shellCmd).toString() + ":3183").replace(
-          /\n|\r|(\n\r)/g,
-          ""
-        );
-        var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
+          // get terminal IP
+          var shellCmd = "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
+          var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
+          var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
+          
+          //console.log(TPEip)
 
-        console.log(TPEip);
-
-        // make transaction (amount in cents)
-        shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + amount * 100;
-        console.log(shellCmd);
-        var transaction = execSync(shellCmd)
-          .toString()
-          .replace(/\n|\r|(\n\r)/g, "");
-
-        console.log(transaction);
-
-        return transaction;
-      } catch (e) {
-        this.$emit("error", {
-          visible: true,
-          title: "Connexion impossible au TPE",
-          errors: [
-            "Un problème inconnu est survenu. Veuillez réessayer ou contacter le support.",
-          ],
-        });
+          // make transaction (amount in cents)
+          shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + (amount * 100);
+          //console.log(shellCmd)
+          var transaction = execSync(shellCmd).toString().replace(/\n|\r|(\n\r)/g, '');
+                        
+          //console.log(transaction);
+                        
+          return(transaction);
+      }
+      catch(e) {
+          this.$emit("error", {
+              visible: true,
+              title: "Connexion impossible au TPE",
+              errors: [
+                "Un problème inconnu est survenu. Veuillez réessayer ou contacter le support.",
+              ],
+            });
       }
     },
     pay: function(amount) {
