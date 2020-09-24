@@ -220,13 +220,11 @@ export default {
 
     // Loading all the data from API
     this.loading = true;
-    this.$store.commit("startListening");
     this.$http
       .get("terminal/mine/")
       .then((resp) => {
         this.terminal = resp.data.terminal;
         this.campaigns = resp.data.campaigns;
-        console.log(resp.data);
         this.games = resp.data.games;
 
         // Random appearance of games and campaigns

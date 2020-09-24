@@ -74,14 +74,6 @@
 
       <!-- GAMEPAD -->
       <helpGamepad
-        v-gamepad:button-b="simulate_a"
-        v-gamepad:button-x="simulate_b"
-        v-gamepad:button-dpad-right="simulate_left"
-        v-gamepad:button-dpad-left="simulate_right"
-        v-gamepad:left-analog-right="simulate_left"
-        v-gamepad:left-analog-left="simulate_right"
-        v-gamepad:right-analog-right="simulate_left"
-        v-gamepad:right-analog-left="simulate_right"
         @simulate_a="simulate_a"
         @simulate_b="simulate_b"
         @simulate_right="simulate_right"

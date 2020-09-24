@@ -61,7 +61,6 @@ export default {
     };
   },
   mounted: function() {
-    this.$store.commit("startListening");
     this.$emit("endGameSession");
     this.$emit("endSession");
     this.doChoice(1);
