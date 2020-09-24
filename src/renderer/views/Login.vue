@@ -23,16 +23,16 @@ import VueElementLoading from "vue-element-loading";
 export default {
   name: "Auth",
   components: {
-    VueElementLoading
+    VueElementLoading,
   },
   data: function() {
     return {
       credentials: {
         username: process.env.PULS_LOGIN,
-        password: process.env.PULS_MDP
+        password: process.env.PULS_MDP,
       },
       loading: false,
-      error: ""
+      error: "",
     };
   },
   mounted: function() {
@@ -49,12 +49,11 @@ export default {
       this.$store
         .dispatch("login", this.credentials)
         .then(() => this.$router.push("/start"))
-        .catch(err => {
-		console.log(err.response);
+        .catch((err) => {
           this.loading = false;
           this.error = err.response;
         });
-    }
-  }
+    },
+  },
 };
 </script>

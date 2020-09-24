@@ -1,142 +1,115 @@
 <template>
   <div class="component">
     <div class="view campaign-choice">
+      <div class="s-title">
+        <div class="title">CHOISI TON ASSOCIATION</div>
+        <div class="subtitle"></div>
+      </div>
 
-        <div class="s-title">
-          <div class="title">CHOISI TON ASSOCIATION</div>
-          <div class="subtitle"></div>
+      <div class="s-content">
+        <div id="video-asso" class="video-asso">
+          <youtube
+            id="player-ytb"
+            :video-id="session.campaign.video"
+            :player-vars="playerVars"
+            :fitParent="true"
+            ref="youtube"
+            @ready="playerReady()"
+            @playing="playerPlaying()"
+            @ended="playVideo()"
+            style="height:315.3px; width: 621.22px;"
+          ></youtube>
         </div>
+        <div class="carousel">
+          <vueper-slides
+            ref="carousel"
+            class="no-shadow"
+            :infinite="false"
+            :visibleSlides="1"
+            :fixedHeight="true"
+            :bullets="false"
+            :touchable="false"
+            :gap="30"
+            transition-speed="250"
+            @ready="chooseCampaign($event.currentSlide.index)"
+            @slide="chooseCampaign($event.currentSlide.index)"
+          >
+            <template v-slot:arrow-left>
+              <div id="left-arrow" class="left-arrow"></div>
+            </template>
+            <template v-slot:arrow-right>
+              <div id="right-arrow" class="right-arrow"></div>
+            </template>
 
-        <div class="s-content">
-          <div id="video-asso" class="video-asso">
-            <youtube id="player-ytb"
-              :video-id="session.campaign.video"
-              :player-vars="playerVars"
-              :fitParent="true"
-              ref="youtube"
-              @ready="playerReady()"
-              @playing="playerPlaying()"
-              @ended="playVideo()"
-              style="height:315.3px; width: 621.22px;"
-            ></youtube>
-          </div>
-          <div class="carousel">
-            <vueper-slides ref="carousel" class="no-shadow"
-                          :infinite="false" :visibleSlides="1" 
-                          :fixedHeight="true"  :bullets="false" 
-                          :touchable="false" :gap=30 transition-speed="250"
-                          @ready="chooseCampaign($event.currentSlide.index)" 
-                          @slide="chooseCampaign($event.currentSlide.index)">
-
-              <template v-slot:arrow-left>
-                <div id="left-arrow" class="left-arrow"></div>
-              </template>
-              <template v-slot:arrow-right>
-                <div id="right-arrow" class="right-arrow"></div>
-              </template>
-
-              <vueper-slide v-for="(campaign, i) in campaigns" :key="i">
-                <template v-slot:content>
-                  <div class="carousel-content">
-                    <div class="row title-a"> {{ campaign.name }} </div>
-                    <div class="row picture">
-                        <img :src=campaign.logo :alt=campaign.name class="slide-picture">
-                    </div>
-                    <div class="c-line"></div>
-                    <div class="row infos">
-                      <div class="icon1"></div>
-                      <div class="mission"></div>
-                      <div class="icon2"></div>
-                      <div class="lieux"></div>
-                    </div>
-                    <div class="c-line"></div>
-                    <div class="row descr">
-                      <span class="slide-description">
-                          {{ campaign.description }}
-                        </span>
-                    </div>
+            <vueper-slide v-for="(campaign, i) in campaigns" :key="i">
+              <template v-slot:content>
+                <div class="carousel-content">
+                  <div class="row title-a">{{ campaign.name }}</div>
+                  <div class="row picture">
+                    <img
+                      :src="campaign.logo"
+                      :alt="campaign.name"
+                      class="slide-picture"
+                    />
                   </div>
-                </template>
-              </vueper-slide>
-            </vueper-slides>
-          </div>
-
+                  <div class="c-line"></div>
+                  <div class="row infos">
+                    <div class="icon1"></div>
+                    <div class="mission"></div>
+                    <div class="icon2"></div>
+                    <div class="lieux"></div>
+                  </div>
+                  <div class="c-line"></div>
+                  <div class="row descr">
+                    <span class="slide-description">
+                      {{ campaign.description }}
+                    </span>
+                  </div>
+                </div>
+              </template>
+            </vueper-slide>
+          </vueper-slides>
         </div>
+      </div>
 
-        <!-- GAMEPAD -->
-        <helpGamepad @simulate_a="simulate_a" @simulate_b="simulate_b" @simulate_right="simulate_right" @simulate_left="simulate_left" />
-
+      <!-- GAMEPAD -->
+      <helpGamepad
+        @simulate_a="simulate_a"
+        @simulate_b="simulate_b"
+        @simulate_right="simulate_right"
+        @simulate_left="simulate_left"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { VueperSlides, VueperSlide } from 'vueperslides'
-import helpGamepad from '@/components/helpGamepad.vue';
-
-
+import { VueperSlides, VueperSlide } from "vueperslides";
+import helpGamepad from "@/components/helpGamepad.vue";
 
 export default {
   name: "CampaignChoice",
-  components: {VueperSlides, VueperSlide, helpGamepad},
+  components: { VueperSlides, VueperSlide, helpGamepad },
   props: ["campaigns", "session"],
   data: function() {
     return {
       choosenCampaign: {},
       choosenIndexOf: {
-        campaigns: ""
+        campaigns: "",
       },
       timer: 0,
       time: 0,
       duration: 0,
       playerVars: {
         autoplay: 1,
-        iv_load_policy: 3, 
+        iv_load_policy: 3,
         playsinline: 1,
         controls: 0,
-        modestbranding: 1, 
+        modestbranding: 1,
         showinfo: 0,
-        rel: 0
-      }
+        rel: 0,
+      },
     };
-  },
-  computed: {
-    a() {
-      return this.$store.state.gamepad.A;
-    },
-    b() {
-      return this.$store.state.gamepad.B;
-    },
-    left() {
-      return this.$store.state.gamepad.Left;
-    },
-    right() {
-      return this.$store.state.gamepad.Right;
-    },
-  },
-  watch: {
-    a: function(val) {
-      if (val) {
-        this.gotoPayment();
-      }
-    },
-    b: function(val) {
-      if (val) {
-        this.$emit("lastView");
-      }
-    },
-    left: function(val) {
-      if (val) {
-        this.$refs.carousel.previous();
-        this.animateArrow('left');
-      }
-    },
-    right: function(val) {
-      if (val) {
-        this.$refs.carousel.next();
-        this.animateArrow('right');
-      }
-    }
   },
   mounted: function() {
     if (this.session.position_asso) {
@@ -156,11 +129,11 @@ export default {
     },
     simulate_left() {
       this.$refs.carousel.previous();
-      this.animateArrow('left');
+      this.animateArrow("left");
     },
     simulate_right() {
       this.$refs.carousel.next();
-      this.animateArrow('right');
+      this.animateArrow("right");
     },
     chooseCampaign: function(index) {
       this.choosenCampaign = this.campaigns[index];
@@ -169,69 +142,70 @@ export default {
       // Saving
       this.$emit("saveCampaign", {
         campaign: this.choosenCampaign,
-        indexOf: this.choosenIndexOf.campaigns + 1
+        indexOf: this.choosenIndexOf.campaigns + 1,
       });
     },
     playerReady: function() {
       this.$refs.youtube.player.mute();
-      this.$refs.youtube.player.getDuration().then(resp => {
+      this.$refs.youtube.player.getDuration().then((resp) => {
         this.duration = resp;
       });
     },
     playerPlaying: async function() {
-      let currentTime = this.$refs.youtube.player.getCurrentTime()
+      let currentTime = this.$refs.youtube.player.getCurrentTime();
       this.timer = (Math.ceil(currentTime) / this.duration) * 100;
     },
     playVideo() {
-      this.$refs.youtube.player.playVideo()
+      this.$refs.youtube.player.playVideo();
     },
     videoSize() {
-      if(window.innerWidth/window.innerHeight< 1.4) {
-        var video = document.getElementById('player-ytb');
-        video.style.height="315.3px";
-        video.style.width="448.41px";
+      if (window.innerWidth / window.innerHeight < 1.4) {
+        var video = document.getElementById("player-ytb");
+        video.style.height = "315.3px";
+        video.style.width = "448.41px";
       }
     },
     gotoPayment: function() {
-      if ((this.choosenCampaign != null)) {
+      if (this.choosenCampaign != null) {
         this.$emit("startSession"); // Important to start the session here, for nice timers
         this.$emit("nextView");
       } else {
         this.$emit("error", {
           visible: true,
           title: "Aucun choix valide",
-          errors: {}
+          errors: {},
         });
       }
     },
     animateArrow(dir) {
       // Animate Arrows
-      if (dir == 'left') {
+      if (dir == "left") {
         var arrow = document.getElementById("left-arrow");
       } else {
         var arrow = document.getElementById("right-arrow");
       }
-      arrow.style.transform = "scale(1.4)";  
-      setTimeout(function() { arrow.style.transform = "scale(1)"; }, 150);
+      arrow.style.transform = "scale(1.4)";
+      setTimeout(function() {
+        arrow.style.transform = "scale(1)";
+      }, 150);
       // Animate video
       var video = document.getElementById("video-asso");
-      video.style.transform = "scale(0)";  
-      setTimeout(function() { video.style.transform = "scale(1)"; }, 150);
+      video.style.transform = "scale(0)";
+      setTimeout(function() {
+        video.style.transform = "scale(1)";
+      }, 150);
     },
     overflowVerify() {
-      var text = document.getElementsByClassName('slide-description');
-      var box = document.getElementsByClassName('descr');
-      for(let i =0; i< text.length; i++) {
+      var text = document.getElementsByClassName("slide-description");
+      var box = document.getElementsByClassName("descr");
+      for (let i = 0; i < text.length; i++) {
         if (text[i].offsetHeight > box[i].offsetHeight) {
           text[i].classList.add("animVerticalText");
         }
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

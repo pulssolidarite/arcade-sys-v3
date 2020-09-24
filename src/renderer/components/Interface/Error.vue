@@ -32,7 +32,13 @@
               </li>
             </ul>
             <button class="btn btn-success" data-dismiss="modal">
-              <span class="g-btn" @click="simulate_b">B</span> <span>Revenir</span>
+              <span
+                class="g-btn"
+                v-gamepad:button-b="simulate_b"
+                @click="simulate_b"
+                >B</span
+              >
+              <span>Revenir</span>
             </button>
           </div>
         </div>
@@ -45,23 +51,11 @@
 export default {
   name: "Error",
   props: ["visible", "title", "errors"],
-  computed: {
-    b() {
-      return this.$store.state.gamepad.B;
-    }
-  },
-  watch: {
-    b: function(val) {
-      if (val) {
-        this.$emit("lastView");
-      }
-    }
-  },
   methods: {
     simulate_b() {
       this.$emit("lastView");
-    }
-  }
+    },
+  },
 };
 </script>
 
