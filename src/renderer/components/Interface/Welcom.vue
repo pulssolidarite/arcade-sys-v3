@@ -27,7 +27,7 @@
       <!-- GAMEPAD -->
       <helpGamepad
         :gpio_help="4"
-        v-gamepad:button-a="start"
+        v-gamepad:button-b="start"
         @simulate_a="simulate_a"
         :B_but="false"
       />
