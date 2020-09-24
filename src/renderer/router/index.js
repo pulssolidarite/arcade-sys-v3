@@ -15,12 +15,12 @@ const routes = [
     component: Test
   },
   {
-    path: "/login",
+    path: "/",
     name: "login",
     component: Login
   },
   {
-    path: "/",
+    path: "/start",
     name: "home",
     component: Home,
     meta: {

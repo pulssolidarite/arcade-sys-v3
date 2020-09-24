@@ -50,6 +50,7 @@ export default {
         .dispatch("login", this.credentials)
         .then(() => this.$router.push("/start"))
         .catch(err => {
+		console.log(err.response);
           this.loading = false;
           this.error = err.response;
         });
