@@ -1,20 +1,20 @@
 <template>
-  <div class="w-100 h-100 bg-gradient"  style="overflow :hidden;"> <!-- overflow for transition -->
-    
-      <Error
-        class="w-100 h-100 position-absolute"
-        style="z-index: 999;"
-        :visible="errors.visible"
-        :title="errors.title"
-        :errors="errors.errors"
-        @homeView="homeView"
-        @lastView="lastView"
-      ></Error>
+  <div class="w-100 h-100 bg-gradient" style="overflow :hidden;">
+    <!-- overflow for transition -->
+
+    <Error
+      class="w-100 h-100 position-absolute"
+      style="z-index: 999;"
+      :visible="errors.visible"
+      :title="errors.title"
+      :errors="errors.errors"
+      @homeView="homeView"
+      @lastView="lastView"
+    ></Error>
 
     <transition name="step-tr">
-      <stepping :n_step="viewIndex" v-if="viewIndex >=0 && viewIndex<5"/>
+      <stepping :n_step="viewIndex" v-if="viewIndex >= 0 && viewIndex < 5" />
     </transition>
-
 
     <vue-element-loading :active="loading" is-full-screen />
     <div class="w-100 h-100" v-if="!loading">
@@ -77,7 +77,7 @@
           @lastView="lastView"
           v-if="viewIndex == 4"
         ></CampaignDetail> -->
-        
+
         <didactitiel
           :session="session"
           @nextView="nextView"
@@ -121,11 +121,7 @@
           v-if="viewIndex == 7"
         ></requestTicket>
 
-        <about
-          @lastView="endedView"
-          v-if="viewIndex == 8"
-        ></about>
-
+        <about @lastView="endedView" v-if="viewIndex == 8"></about>
       </transition>
     </div>
   </div>
@@ -133,17 +129,18 @@
 
 <script>
 import VueElementLoading from "vue-element-loading";
+import Welcom from "@/components/Interface/Welcom.vue";
+
 import Error from "@/components/Interface/ErrorsPayement.vue";
 import Stepping from "@/components/stepping.vue";
-import Welcom from "@/components/Interface/Welcom.vue";
 import Start from "@/components/Interface/Start.vue";
 import CampaignChoice from "@/components/Interface/CampaignChoice.vue";
 import AmountChoice from "@/components/Interface/AmountChoice.vue";
 import Payment from "@/components/Interface/Payment.vue";
-import didactitiel from '@/components/Interface/didactitiel.vue';
+import didactitiel from "@/components/Interface/didactitiel.vue";
 import CampaignDetail from "@/components/Interface/CampaignDetail.vue";
 import Play from "@/components/Interface/Play.vue";
-import ticketProposition from '@/components/Interface/ticketProposition.vue'
+import ticketProposition from "@/components/Interface/ticketProposition.vue";
 import End from "@/components/Interface/End.vue";
 import requestTicket from "@/components/Interface/requestTicket.vue";
 import about from "@/components/Interface/about.vue";
@@ -175,7 +172,7 @@ export default {
         title: "",
         errors: {},
       },
-      viewIndex: -1, // Starting index 
+      viewIndex: -1, // Starting index
       maxViewIndex: 6,
       isAdmin: this.$store.getters.isAdmin,
       isLoggedIn: this.$store.getters.isLoggedIn,
@@ -218,7 +215,7 @@ export default {
       this.$router.push("/login");
     }
 
-    // Start timer for return to home 
+    // Start timer for return to home
     // var timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
 
     // Loading all the data from API
@@ -229,6 +226,7 @@ export default {
       .then((resp) => {
         this.terminal = resp.data.terminal;
         this.campaigns = resp.data.campaigns;
+        console.log(resp.data);
         this.games = resp.data.games;
 
         // Random appearance of games and campaigns
@@ -398,13 +396,13 @@ export default {
       this.viewIndex = 2; // 2 if you want to replay from amount choice
     },
     moreInfo: function() {
-      this.viewIndex = 8; 
+      this.viewIndex = 8;
     },
     endedView() {
       this.viewIndex = 6;
     },
     homeView() {
-      this.viewIndex =-1;
+      this.viewIndex = -1;
       this.errors = {
         visible: false,
         title: "",

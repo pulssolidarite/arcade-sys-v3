@@ -12,47 +12,47 @@ const routes = [
   {
     path: "/test",
     name: "test",
-    component: Test
-  },
-  {
-    path: "/login",
-    name: "login",
-    component: Login
+    component: Test,
   },
   {
     path: "/",
+    name: "login",
+    component: Login,
+  },
+  {
+    path: "/start",
     name: "home",
     component: Home,
     meta: {
-      requiresAuth: true
-    }
-  }
+      requiresAuth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({
-  routes
+  routes,
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.onlyFrom)) {
+  if (to.matched.some((record) => record.meta.onlyFrom)) {
     if (from.name == to.meta.onlyFrom) {
       next();
       return;
     }
     next("/start");
-  } else if (to.matched.some(record => record.meta.requiresAdmin)) {
+  } else if (to.matched.some((record) => record.meta.requiresAdmin)) {
     if (store.getters.isAdmin) {
       next();
       return;
     }
     next("/");
-  } else if (to.matched.some(record => record.meta.requiresAuth)) {
+  } else if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
       next();
       return;
     }
     next("/login");
-  } else if (to.matched.some(record => record.meta.requiresAnon)) {
+  } else if (to.matched.some((record) => record.meta.requiresAnon)) {
     if (!store.getters.isLoggedIn) {
       next();
       return;
