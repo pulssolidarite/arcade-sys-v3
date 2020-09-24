@@ -25,16 +25,7 @@
 
       <helpGamepad
         :gpio_help="2"
-        v-gamepad:button-a="simulate_a"
-        v-gamepad:button-b="simulate_b"
-        v-gamepad:button-dpad-up="simulate_up"
-        v-gamepad:button-dpad-down="simulate_down"
-        v-gamepad:left-analog-down="simulate_down"
-        v-gamepad:left-analog-up="simulate_up"
-        v-gamepad:right-analog-down="simulate_down"
-        v-gamepad:right-analog-up="simulate_up"
         @simulate_a="simulate_a"
-        @simulate_b="simulate_b"
         @simulate_up="simulate_up"
         @simulate_down="simulate_down"
       />

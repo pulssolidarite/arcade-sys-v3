@@ -36,12 +36,7 @@
           />
         </div>
       </div>
-      <helpGamepad
-        :gpio_help="4"
-        :A_but="false"
-        v-gamepad:button-b="simulate_b"
-        @simulate_b="simulate_b"
-      />
+      <helpGamepad :gpio_help="4" :A_but="false" @simulate_b="simulate_b" />
     </div>
   </div>
 </template>
