@@ -15,6 +15,7 @@ thumbs.db
 .vs/
 .vscode/
 *.log
+*.local
 *.pyc
 *.sln
 *.swp
