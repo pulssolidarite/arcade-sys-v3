@@ -144,6 +144,10 @@ import ticketProposition from "@/components/Interface/ticketProposition.vue";
 import End from "@/components/Interface/End.vue";
 import requestTicket from "@/components/Interface/requestTicket.vue";
 import about from "@/components/Interface/about.vue";
+const fs = require("fs");
+import axios from "axios";
+
+const request = require("request");
 
 export default {
   name: "Home",
@@ -172,6 +176,9 @@ export default {
         title: "",
         errors: {},
       },
+      terminal: {},
+      campaigns: [],
+      games: [],
       viewIndex: -1, // Starting index
       maxViewIndex: 6,
       isAdmin: this.$store.getters.isAdmin,
@@ -227,6 +234,24 @@ export default {
         this.campaigns = resp.data.campaigns;
         this.games = resp.data.games;
 
+        // Core & Game management
+        // Here we check if have all the required game files before turning the terminal on
+        const path = "D:\\hilal\\Documents\\Web Dev\\PULS\\roms\\";
+
+        this.games.forEach((game) => {
+          const currentPath = path + game.path;
+
+          try {
+            if (fs.existsSync(currentPath)) {
+              console.log("It exists !");
+            } else {
+              request(game.file.file).pipe(fs.createWriteStream(currentPath));
+            }
+          } catch (err) {
+            console.error("Catched error on try : " + err);
+          }
+        });
+
         // Random appearance of games and campaigns
         this.shuffleArray(this.campaigns);
         this.shuffleArray(this.games);
@@ -238,7 +263,7 @@ export default {
         this.loading = false;
       })
       .catch((err) => {
-	console.log(err.response);
+        console.log(err.response);
         this.errors = {
           visible: true,
           title: "Erreur de chargement",
