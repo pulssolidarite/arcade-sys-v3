@@ -43,10 +43,8 @@ export default {
     this.$emit("startGameSession");
 
     // We then prepare the command and we launch it in a separate Node.js shell
-    const pathToCore =
-      "/home/pi/arcade-sys-games/cores/genesis_plus_gx_libretro.so";
-    const pathToGame =
-      "/home/pi/arcade-sys-games/roms/" + this.session.game.path;
+    const pathToCore = "/home/pi/games/cores/" + this.session.game.core.path;
+    const pathToGame = "/home/pi/games/roms/" + this.session.game.path;
 
     let command = 'retroarch -f -L "' + pathToCore + '" "' + pathToGame + '"';
     this.startShell(command);

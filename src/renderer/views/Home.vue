@@ -284,17 +284,19 @@ export default {
           }
 
           // Checking if the Core exists
-          currentPath = pathBios + game.core.bios_path;
-          try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Bios exists !");
-            } else {
-              request(game.core.bios.file).pipe(
-                fs.createWriteStream(currentPath)
-              );
+          if (game.core.bios_path) {
+            currentPath = pathBios + game.core.bios_path;
+            try {
+              if (fs.existsSync(currentPath)) {
+                console.log("Bios exists !");
+              } else {
+                request(game.core.bios.file).pipe(
+                  fs.createWriteStream(currentPath)
+                );
+              }
+            } catch (err) {
+              console.error("Catched error on try : " + err);
             }
-          } catch (err) {
-            console.error("Catched error on try : " + err);
           }
         });
 
