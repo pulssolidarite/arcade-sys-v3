@@ -45,7 +45,7 @@ export default {
       choices: [
         { name: "Rejouer", id: 1 },
         { name: "Revenir à l'accueil", id: 2 },
-        { name: "Demande de reçu fiscal", id: 3 },
+        //{ name: "Demande de reçu fiscal", id: 3 },
         { name: "Qui sommes-nous ?", id: 4 },
       ],
       selectedChoice: "",
