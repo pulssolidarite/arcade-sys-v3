@@ -236,16 +236,49 @@ export default {
 
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
-        const path = "D:\\hilal\\Documents\\Web Dev\\PULS\\roms\\";
+        const pathRoms = "D:\\hilal\\Documents\\Web Dev\\PULS\\roms\\";
+        const pathCores = "D:\\hilal\\Documents\\Web Dev\\PULS\\cores\\";
+        const pathBios = "D:\\hilal\\Documents\\Web Dev\\PULS\\bios\\";
+
+        console.log("here");
 
         this.games.forEach((game) => {
-          const currentPath = path + game.path;
+          // Checking if the game exists
+          var currentPath = pathRoms + game.path;
 
           try {
             if (fs.existsSync(currentPath)) {
-              console.log("It exists !");
+              console.log("Game exists !");
             } else {
               request(game.file.file).pipe(fs.createWriteStream(currentPath));
+            }
+          } catch (err) {
+            console.error("Catched error on try : " + err);
+          }
+
+          // Checking if the Core exists
+          currentPath = pathCores + game.core.path;
+          try {
+            if (fs.existsSync(currentPath)) {
+              console.log("Core exists !");
+            } else {
+              request(game.core.file.file).pipe(
+                fs.createWriteStream(currentPath)
+              );
+            }
+          } catch (err) {
+            console.error("Catched error on try : " + err);
+          }
+
+          // Checking if the Core exists
+          currentPath = pathBios + game.core.bios_path;
+          try {
+            if (fs.existsSync(currentPath)) {
+              console.log("Bios exists !");
+            } else {
+              request(game.core.bios.file).pipe(
+                fs.createWriteStream(currentPath)
+              );
             }
           } catch (err) {
             console.error("Catched error on try : " + err);
