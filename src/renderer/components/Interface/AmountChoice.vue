@@ -5,8 +5,7 @@
         <div class="title">CHOISI TON MONTANT</div>
         <div class="subtitle">
           <div class="animHorizontalText">
-            0.5€ Pour PULS Impact le reste pour l'assocation. Chaque don est
-            déductible fiscalement.
+            100% des dons reversés à Habitat Humanisme.
           </div>
         </div>
       </div>
@@ -23,6 +22,10 @@
           <span class="h2 amount2">{{ session.amount }}€</span>
           <!-- <span class="h2 amount"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350" :begin="run_anim" :complete="stop_anim"/>€</span>
             <span class="h2 amount2"><animated-number :value="amounts[choosenIndexOf]" :round="true" :duration="350"/>€</span> -->
+        </div>
+
+        <div>
+          <span class="h2 time">10 min.</span>
         </div>
 
         <div class="content-flags">
@@ -59,12 +62,11 @@
 
           <div class="content-line" id="content-line">
             <!-- <span class="line1" :style="{ width: (this.session.amount/30)*100 + '%' }"></span> -->
-            <span class="line1" id="line1"></span>
+            <!-- <span class="line1" id="line1"></span>
             <span
               class="line2"
-              :style="{ left: (this.session.amount / 50) * 100 - 0.4 + '%' }"
             ></span>
-            <span class="line3" id="line3"></span>
+            <span class="line3" id="line3"></span> -->
           </div>
         </div>
         <!-- amount DETAILS -->
@@ -123,34 +125,34 @@ export default {
     }
   },
   methods: {
-    line_right() {
-      var line3 = document.getElementById("line3");
-      if (this.session.amount == 50) {
-        line3.style.width = "70vw"; //122%
-      } else {
-        line3.style.width = "0vw";
-      }
-    },
-    line_left() {
-      var line1 = document.getElementById("line1");
-      switch (this.session.amount) {
-        case 1:
-          line1.style.width = "30%";
-          line1.style.left = "2%";
-          break;
-        case 5:
-          line1.style.width = "20%";
-          line1.style.left = "9.8%";
-          break;
-        case 10:
-          line1.style.width = "10%";
-          line1.style.left = "19.8%";
-          break;
-        default:
-          line1.style.left = "40%";
-          break;
-      }
-    },
+    // line_right() {
+    //   var line3 = document.getElementById("line3");
+    //   if (this.session.amount == 50) {
+    //     line3.style.width = "70vw"; //122%
+    //   } else {
+    //     line3.style.width = "0vw";
+    //   }
+    // },
+    // line_left() {
+    //   var line1 = document.getElementById("line1");
+    //   switch (this.session.amount) {
+    //     case 1:
+    //       line1.style.width = "30%";
+    //       line1.style.left = "2%";
+    //       break;
+    //     case 5:
+    //       line1.style.width = "20%";
+    //       line1.style.left = "9.8%";
+    //       break;
+    //     case 10:
+    //       line1.style.width = "10%";
+    //       line1.style.left = "19.8%";
+    //       break;
+    //     default:
+    //       line1.style.left = "40%";
+    //       break;
+    //   }
+    // },
     flags() {
       var flag1 = document.getElementById("flag1");
       var flag2 = document.getElementById("flag2");
@@ -265,8 +267,8 @@ export default {
         amount: this.amounts[this.choosenIndexOf],
         indexOf: this.choosenIndexOf + 1,
       });
-      this.line_right();
-      this.line_left();
+      // this.line_right();
+      // this.line_left();
       this.flags();
     },
     proceed: function() {
@@ -300,22 +302,21 @@ export default {
   position: relative;
 }
 
-.full-flag {
+.full-flag,
+.empty-flag {
   position: absolute;
   width: 80px;
   height: 100px;
-  top: 11vh;
+  top: 18vh;
   transform: scale(0.8);
+}
+
+.full-flag {
   background: no-repeat url("../../assets/img/drap_plein.svg");
   z-index: 5;
 }
 
 .empty-flag {
-  position: absolute;
-  width: 80px;
-  height: 100px;
-  top: 11vh;
-  transform: scale(0.8);
   background: no-repeat url("../../assets/img/drap_vide.svg");
 }
 
@@ -402,11 +403,22 @@ export default {
   z-index: 4;
 }
 
+.time {
+  z-index: 5;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8vh;
+  font-family: pixel2;
+  font-size: 2.5rem;
+  color: white;
+}
+
 .slider {
   position: relative;
   width: 58%;
   margin-left: 21%;
-  margin-top: 18vh;
+  margin-top: 25vh;
 }
 
 .content-line {
@@ -434,9 +446,8 @@ export default {
   border-radius: 0;
 }
 
-.line1 {
+/* .line1 {
   position: relative;
-  /* top: 118.8%; */
   top: 78.8%;
   height: 100%;
   display: block;
@@ -485,7 +496,7 @@ export default {
   width: 33.33%;
   height: 4px;
   background: #ffc107;
-}
+} */
 
 .progress-bar,
 .line2,
