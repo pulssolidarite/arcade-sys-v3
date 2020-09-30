@@ -66,6 +66,8 @@ Go to **Online Updater**
 
 ## Download and install Puls Impact Overlay
 
+Install mono-complete : https://www.mono-project.com/download/stable/#download-lin-raspbian
+
 `$ sudo apt-get install arp-scan`
 
 `$ curl -LOk "https://github.com/pulssolidarite/arcade-sys/releases/download/v2.0.4/PULS-Front-end-X.X.X-armv7l.AppImage"`
