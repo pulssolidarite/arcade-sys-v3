@@ -46,7 +46,7 @@ Go to **7 - Advanced Options**
 
 `$ sudo apt-get upgrade`
 
-`$ sudo atp-get install git snapd`
+`$ sudo apt-get install git snapd`
 
 `$ sudo snap install core`
 
