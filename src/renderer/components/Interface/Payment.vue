@@ -63,15 +63,15 @@ export default {
   mounted: function() {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
-    if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 1000 * 30);
-    } else {
-      this.$emit("lastView");
-    }
+    // if (this.session.amount) {
+    //   setTimeout(() => this.pay(this.session.amount), 1000 * 30);
+    // } else {
+    //   this.$emit("lastView");
+    // }
 
     // FOR DEV PURPOSE ONLY
     // For skipping payment
-    //setTimeout(() => this.skipPayment(this.session.amount), 8000);
+    setTimeout(() => this.skipPayment(this.session.amount), 8000);
   },
   methods: {
     skipPayment: function(amount) {
@@ -119,14 +119,14 @@ export default {
           var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
           var TPEbin = "/home/pi/Payter/PayterPay.exe";
           
-          console.log(TPEip)
+          //console.log(TPEip)
 
           // make transaction (amount in cents)
           shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + (amount * 100);
-          console.log(shellCmd)
+          //console.log(shellCmd)
           var transaction = execSync(shellCmd).toString().replace(/\n|\r|(\n\r)/g, '');
                         
-          console.log(transaction);
+          //console.log(transaction);
                         
           return(transaction);
       }
