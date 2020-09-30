@@ -236,11 +236,24 @@ export default {
 
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
-        const pathRoms = "D:\\hilal\\Documents\\Web Dev\\PULS\\roms\\";
-        const pathCores = "D:\\hilal\\Documents\\Web Dev\\PULS\\cores\\";
-        const pathBios = "D:\\hilal\\Documents\\Web Dev\\PULS\\bios\\";
+        const pathGlobal = "/home/pi/games/";
+        const pathRoms = "/home/pi/games/roms/";
+        const pathCores = "/home/pi/games/cores/";
+        const pathBios = "/home/pi/games/bios/";
 
-        console.log("here");
+        // Creating folders if they don't exist
+        if (!fs.existsSync(pathGlobal)) {
+          fs.mkdirSync(pathGlobal);
+        }
+        if (!fs.existsSync(pathRoms)) {
+          fs.mkdirSync(pathRoms);
+        }
+        if (!fs.existsSync(pathCores)) {
+          fs.mkdirSync(pathCores);
+        }
+        if (!fs.existsSync(pathBios)) {
+          fs.mkdirSync(pathBios);
+        }
 
         this.games.forEach((game) => {
           // Checking if the game exists
