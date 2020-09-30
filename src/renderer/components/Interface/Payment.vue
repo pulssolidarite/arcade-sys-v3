@@ -119,14 +119,14 @@ export default {
           var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
           var TPEbin = "/home/pi/Payter/PayterPay.exe";
           
-          //console.log(TPEip)
+          console.log(TPEip)
 
           // make transaction (amount in cents)
           shellCmd = "mono " + TPEbin + " -u " + TPEip + " -a " + (amount * 100);
-          //console.log(shellCmd)
+          console.log(shellCmd)
           var transaction = execSync(shellCmd).toString().replace(/\n|\r|(\n\r)/g, '');
                         
-          //console.log(transaction);
+          console.log(transaction);
                         
           return(transaction);
       }
