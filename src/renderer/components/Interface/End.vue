@@ -46,7 +46,7 @@ export default {
         { name: "Rejouer", id: 1 },
         { name: "Revenir à l'accueil", id: 2 },
         //{ name: "Demande de reçu fiscal", id: 3 },
-        { name: "Qui sommes-nous ?", id: 4 },
+        { name: "Qui sommes-nous ?", id: 3 },
       ],
       selectedChoice: "",
     };
@@ -54,6 +54,7 @@ export default {
   mounted: function() {
     this.$emit("endGameSession");
     this.$emit("endSession");
+    setTimeout(() => this.$emit("home"), 1000 * 60);
     this.doChoice(1);
   },
   methods: {
@@ -71,10 +72,10 @@ export default {
         case 1:
           this.$emit("home");
           break;
+        // case 2:
+        //   this.$emit("ticket_request");
+        //   break;
         case 2:
-          this.$emit("ticket_request");
-          break;
-        case 3:
           this.$emit("moreInfo");
           break;
         default:
