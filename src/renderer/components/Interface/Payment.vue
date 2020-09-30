@@ -64,7 +64,7 @@ export default {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
     if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 30000);
+      setTimeout(() => this.pay(this.session.amount), 1000 * 30);
     } else {
       this.$emit("lastView");
     }
@@ -117,7 +117,7 @@ export default {
           // get terminal IP
           var shellCmd = "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
           var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
-          var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
+          var TPEbin = "/home/pi/Payter/PayterPay.exe";
           
           //console.log(TPEip)
 
