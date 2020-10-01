@@ -52,8 +52,8 @@
                         alt="gamepad pictograme"
                       />
                     </div>
-                    <div class="nb-j">{{ gameInfos[game.name].nb_player }}</div>
-                    <div class="type">{{ gameInfos[game.name].type }}</div>
+                    <!-- <div class="nb-j">{{ gameInfos[game.name].nb_player }}</div> -->
+                    <!-- <div class="type">{{ gameInfos[game.name].type }}</div> -->
                     <div class="icon2">
                       <!-- <img class="pictogramme" :src="'@/assets/img/picto/' + gameInfos[game.name].type + '.png'" :alt=game.name> -->
                       <!-- {{pathToPicto + gameInfos[game.name].type + '.png" alt="gamepad pictograme">'}} -->
