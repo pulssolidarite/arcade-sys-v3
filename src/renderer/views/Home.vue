@@ -121,7 +121,7 @@
           v-if="viewIndex == 6"
         ></requestTicket>
 
-        <about @lastView="endedView" v-if="viewIndex == 8"></about>
+        <about @lastView="endedView" v-if="viewIndex == 7"></about>
       </transition>
     </div>
   </div>
