@@ -431,9 +431,10 @@ export default {
     0px 8px #372491;
 }
 
-.amount-icon {
-  margin-left: 50%;
-  transform: translateX(-50%);
+.amount-icon .rounded{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .amount-description {
