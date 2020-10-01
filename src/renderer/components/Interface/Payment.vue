@@ -1,33 +1,57 @@
 <template>
   <div class="component">
     <div class="view payment">
-
       <div class="s-title">
-          <div class="title">
-            <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
-            Realise ton don !
-            <img class="padlock-icon" src="@/assets/img/padlock.svg" alt="padlock">
+        <div class="title">
+          <img
+            class="padlock-icon"
+            src="@/assets/img/padlock.svg"
+            alt="padlock"
+          />
+          Realise ton don !
+          <img
+            class="padlock-icon"
+            src="@/assets/img/padlock.svg"
+            alt="padlock"
+          />
+        </div>
+        <div class="subtitle">
+          <div class="animHorizontalText" style="margin-bottom:-50px">
+            Place ton moyen de paiement sans contact sur le terminal de la
+            borne.
           </div>
-          <div class="subtitle"><div class="animHorizontalText" style="margin-bottom:-50px">Place ton moyen de paiement sans contact sur le terminal de la borne.</div> <br> Tu pourras récupérer un reçu après ta partie.</div>
+          <!-- <br />
+          Tu pourras récupérer un reçu après ta partie. -->
+        </div>
       </div>
 
       <div class="s-content">
-        <img class="nfc-illustration" src="@/assets/img/payement.svg"/>
+        <img class="nfc-illustration" src="@/assets/img/payement.svg" />
 
         <div class="recap">
           <div class="game-icon">
-            <img class="logo-circle" :src="session.game.logo" :alt="session.game.name" />
+            <img
+              class="logo-circle"
+              :src="session.game.logo"
+              :alt="session.game.name"
+            />
           </div>
-          <span class="txt-recap">Je reverse <span style="color:#C97005;">{{session.amount}} €</span> 
-                                  à l’association  <span style="color:#C97005;">{{session.campaign.name}}</span> 
-                                  en jouant à  <span style="color:#C97005;">{{session.game.name}}</span>
+          <span class="txt-recap"
+            >Je reverse
+            <span style="color:#C97005;">{{ session.amount }} €</span> à
+            l’association
+            <span style="color:#C97005;">{{ session.campaign.name }}</span> en
+            jouant à <span style="color:#C97005;">{{ session.game.name }}</span>
           </span>
           <div class="asso-icon">
-            <img class="logo-circle" :src="session.campaign.logo" :alt="session.campaign.name" /> 
+            <img
+              class="logo-circle"
+              :src="session.campaign.logo"
+              :alt="session.campaign.name"
+            />
           </div>
         </div>
       </div>
-                
     </div>
   </div>
 </template>
@@ -40,7 +64,7 @@ export default {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
     if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 30000);
+      setTimeout(() => this.pay(this.session.amount), 1000 * 30);
     } else {
       this.$emit("lastView");
     }
@@ -79,12 +103,12 @@ export default {
       };
 
       this.$emit("error", {
-              visible: true,
-              title: "Erreur de connexion",
-              errors: [
-                "Il y a un problème de connexion au terminal de paiement. Veuillez réessayer ou contacter le support.",
-              ],
-            });
+        visible: true,
+        title: "Erreur de connexion",
+        errors: [
+          "Il y a un problème de connexion au terminal de paiement. Veuillez réessayer ou contacter le support.",
+        ],
+      });
     },
     launchPayment: function(amount) {
       try {
@@ -93,7 +117,7 @@ export default {
           // get terminal IP
           var shellCmd = "sudo arp-scan --localnet | grep 'Payter BV' | awk '{print $1}'";
           var TPEip = (execSync(shellCmd).toString() + ":3183").replace(/\n|\r|(\n\r)/g, '');
-          var TPEbin = "/home/pi/PayterPay/PayterPay/bin/Release/PayterPay.exe";
+          var TPEbin = "/home/pi/Payter/PayterPay.exe";
           
           //console.log(TPEip)
 
@@ -167,15 +191,12 @@ export default {
 };
 </script>
 
-
 <style scoped>
-
-
 .nfc-illustration {
-    height: 70%;
-    margin-top: 50vh;
-    margin-left: 50%;
-    transform: translate3d(-50%,-50%,0);
+  height: 70%;
+  margin-top: 50vh;
+  margin-left: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .recap {
@@ -183,11 +204,9 @@ export default {
   margin-left: 50%;
   margin-top: -18vh;
   transform: translateX(-50%);
-  background-color: #512FB5;
-  box-shadow: -5px 0px #775CE4,
-              0px -5px #775CE4,
-              5px 0px #372491,
-              0px 5px #372491;
+  background-color: #512fb5;
+  box-shadow: -5px 0px #775ce4, 0px -5px #775ce4, 5px 0px #372491,
+    0px 5px #372491;
   text-align: center;
   width: 50vw;
   height: 10vh;
@@ -199,10 +218,10 @@ export default {
   color: white;
   font-size: 0.8rem;
   position: absolute;
-  left :50%;
+  left: 50%;
   width: 36vw;
   top: 50%;
-  transform: translate3d(-50%,-50%,0);
+  transform: translate3d(-50%, -50%, 0);
 }
 
 .game-icon {
@@ -215,5 +234,4 @@ export default {
   left: 0%;
   transform: scale(0.8);
 }
-
 </style>

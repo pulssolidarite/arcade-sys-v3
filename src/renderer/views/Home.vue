@@ -1,20 +1,20 @@
 <template>
-  <div class="w-100 h-100 bg-gradient"  style="overflow :hidden;"> <!-- overflow for transition -->
-    
-      <Error
-        class="w-100 h-100 position-absolute"
-        style="z-index: 999;"
-        :visible="errors.visible"
-        :title="errors.title"
-        :errors="errors.errors"
-        @homeView="homeView"
-        @lastView="lastView"
-      ></Error>
+  <div class="w-100 h-100 bg-gradient" style="overflow :hidden;">
+    <!-- overflow for transition -->
+
+    <Error
+      class="w-100 h-100 position-absolute"
+      style="z-index: 999;"
+      :visible="errors.visible"
+      :title="errors.title"
+      :errors="errors.errors"
+      @homeView="homeView"
+      @lastView="lastView"
+    ></Error>
 
     <transition name="step-tr">
-      <stepping :n_step="viewIndex" v-if="viewIndex >=0 && viewIndex<5"/>
+      <stepping :n_step="viewIndex" v-if="viewIndex >= 0 && viewIndex < 5" />
     </transition>
-
 
     <vue-element-loading :active="loading" is-full-screen />
     <div class="w-100 h-100" v-if="!loading">
@@ -77,7 +77,7 @@
           @lastView="lastView"
           v-if="viewIndex == 4"
         ></CampaignDetail> -->
-        
+
         <didactitiel
           :session="session"
           @nextView="nextView"
@@ -121,11 +121,7 @@
           v-if="viewIndex == 7"
         ></requestTicket>
 
-        <about
-          @lastView="endedView"
-          v-if="viewIndex == 8"
-        ></about>
-
+        <about @lastView="endedView" v-if="viewIndex == 8"></about>
       </transition>
     </div>
   </div>
@@ -133,20 +129,25 @@
 
 <script>
 import VueElementLoading from "vue-element-loading";
+import Welcom from "@/components/Interface/Welcom.vue";
+
 import Error from "@/components/Interface/ErrorsPayement.vue";
 import Stepping from "@/components/stepping.vue";
-import Welcom from "@/components/Interface/Welcom.vue";
 import Start from "@/components/Interface/Start.vue";
 import CampaignChoice from "@/components/Interface/CampaignChoice.vue";
 import AmountChoice from "@/components/Interface/AmountChoice.vue";
 import Payment from "@/components/Interface/Payment.vue";
-import didactitiel from '@/components/Interface/didactitiel.vue';
+import didactitiel from "@/components/Interface/didactitiel.vue";
 import CampaignDetail from "@/components/Interface/CampaignDetail.vue";
 import Play from "@/components/Interface/Play.vue";
-import ticketProposition from '@/components/Interface/ticketProposition.vue'
+import ticketProposition from "@/components/Interface/ticketProposition.vue";
 import End from "@/components/Interface/End.vue";
 import requestTicket from "@/components/Interface/requestTicket.vue";
 import about from "@/components/Interface/about.vue";
+const fs = require("fs");
+import axios from "axios";
+
+const request = require("request");
 
 export default {
   name: "Home",
@@ -175,7 +176,10 @@ export default {
         title: "",
         errors: {},
       },
-      viewIndex: -1, // Starting index 
+      terminal: {},
+      campaigns: [],
+      games: [],
+      viewIndex: -1, // Starting index
       maxViewIndex: 6,
       isAdmin: this.$store.getters.isAdmin,
       isLoggedIn: this.$store.getters.isLoggedIn,
@@ -218,18 +222,83 @@ export default {
       this.$router.push("/login");
     }
 
-    // Start timer for return to home 
+    // Start timer for return to home
     // var timeoutHandle = window.setTimeout(() => this.goBackHome(), 10000);
 
     // Loading all the data from API
     this.loading = true;
-    this.$store.commit("startListening");
     this.$http
       .get("terminal/mine/")
       .then((resp) => {
         this.terminal = resp.data.terminal;
         this.campaigns = resp.data.campaigns;
         this.games = resp.data.games;
+
+        // Core & Game management
+        // Here we check if have all the required game files before turning the terminal on
+        const pathGlobal = "/home/pi/games/";
+        const pathRoms = "/home/pi/games/roms/";
+        const pathCores = "/home/pi/games/cores/";
+        const pathBios = "/home/pi/games/bios/";
+
+        // Creating folders if they don't exist
+        if (!fs.existsSync(pathGlobal)) {
+          fs.mkdirSync(pathGlobal);
+        }
+        if (!fs.existsSync(pathRoms)) {
+          fs.mkdirSync(pathRoms);
+        }
+        if (!fs.existsSync(pathCores)) {
+          fs.mkdirSync(pathCores);
+        }
+        if (!fs.existsSync(pathBios)) {
+          fs.mkdirSync(pathBios);
+        }
+
+        this.games.forEach((game) => {
+          // Checking if the game exists
+          var currentPath = pathRoms + game.path;
+
+          try {
+            if (fs.existsSync(currentPath)) {
+              console.log("Game exists !");
+            } else {
+              request(game.file.file).pipe(fs.createWriteStream(currentPath));
+            }
+          } catch (err) {
+            console.error("Catched error on try : " + err);
+          }
+
+          // Checking if the Core exists
+          currentPath = pathCores + game.core.path;
+          try {
+            if (fs.existsSync(currentPath)) {
+              console.log("Core exists !");
+            } else {
+              request(game.core.file.file).pipe(
+                fs.createWriteStream(currentPath)
+              );
+            }
+          } catch (err) {
+            console.error("Catched error on try : " + err);
+          }
+
+          // Checking if the Core exists
+          if (game.core.bios_path) {
+            currentPath = pathBios + game.core.bios_path;
+            try {
+              if (fs.existsSync(currentPath)) {
+                console.log("Bios exists !");
+              } else {
+                request(game.core.bios.file).pipe(
+                  fs.createWriteStream(currentPath)
+                );
+              }
+            } catch (err) {
+              console.error("Catched error on try : " + err);
+            }
+          }
+        });
 
         // Random appearance of games and campaigns
         this.shuffleArray(this.campaigns);
@@ -242,7 +311,7 @@ export default {
         this.loading = false;
       })
       .catch((err) => {
-	console.log(err.response);
+        console.log(err.response);
         this.errors = {
           visible: true,
           title: "Erreur de chargement",
@@ -251,18 +320,6 @@ export default {
         this.loading = false;
       });
   },
-  // computed: {
-  //   a() {
-  //     return this.$store.state.gamepad.A;
-  //   }
-  // },
-  // watch : {
-  //   a: function(val) {
-  //       if (val) {
-  //           this.resetTimer();
-  //       }
-  //   }
-  // },
   methods: {
     // CHOICE METHODS
     saveGame: function(payload) {
@@ -399,13 +456,13 @@ export default {
       this.viewIndex = 2; // 2 if you want to replay from amount choice
     },
     moreInfo: function() {
-      this.viewIndex = 8; 
+      this.viewIndex = 8;
     },
     endedView() {
       this.viewIndex = 6;
     },
     homeView() {
-      this.viewIndex =-1;
+      this.viewIndex = -1;
       this.errors = {
         visible: false,
         title: "",

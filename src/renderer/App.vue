@@ -5,9 +5,11 @@
         <div class="d-flex align-items-center justify-content-between">
           <span id="message">Une nouvelle version est disponible !</span>
           <button
-            class="btn btn-primary d-none"
+            class="btn btn-primary"
+            v-if="updateAvailable"
             id="restart-app"
             @click.prevent="restartApp"
+            v-gamepad:button-start="restartApp"
           >
             Appuyer sur
             <span class="g-btn"
@@ -33,27 +35,9 @@ export default {
   data: function() {
     return {
       gamepads: [],
-      requestID: null
+      requestID: null,
+      updateAvailable: false,
     };
-  },
-  created: function() {
-    window.addEventListener("gamepadconnected", this.gamepadConnectionHandler);
-    window.addEventListener("gamepaddisconnected", this.gamepadDisconnectionHandler);
-  },
-  computed: {
-    start() {
-      return this.$store.state.gamepad.Start;
-    }
-  },
-  watch: {
-    start: function(val) {
-      if (val) {
-        this.restartApp();
-      }
-    },
-    right: function(val) {
-      console.log(val);
-    }
   },
   mounted: function() {
     const version = document.getElementById("version");
@@ -71,13 +55,13 @@ export default {
     ipcRenderer.on("update_available", () => {
       ipcRenderer.removeAllListeners("update_available");
       message.innerText = "A new update is available. Downloading now...";
-      notification.classList.remove("d-none");
+      this.updateAvailable = true;
     });
     ipcRenderer.on("update_downloaded", () => {
       ipcRenderer.removeAllListeners("update_downloaded");
       message.innerText =
         "Update Downloaded. It will be installed on restart. Restart now?";
-      restartButton.classList.remove("d-none");
+      this.updateAvailable = true;
       notification.classList.remove("d-none");
     });
   },
@@ -85,83 +69,7 @@ export default {
     restartApp: function() {
       ipcRenderer.send("restart_app");
     },
-    gamepadConnectionHandler: function(event) {
-      this.gamepads.push(event.gamepad);
-      console.log("Gamepad Connected: " + event.gamepad.id);
-      this.cycle();
-    },
-    gamepadDisconnectionHandler: function(event) {
-      this.gamepads.splice(this.gamepads.indexOf(event.gamepad), 1);
-      console.log("Gamepad Disconnected: " + event.gamepad.id);
-      cancelAnimationFrame(this.requestID);
-    },
-    scanGamepads: function() {
-      return navigator.getGamepads
-        ? Array.from(navigator.getGamepads()).filter(gp => gp !== null)
-        : navigator.webkitGetGamepads
-        ? Array.from(navigator.webkitGetGamepads()).filter(gp => gp !== null)
-        : [];
-    },
-    buttonPressed: function(btn) {
-      if (typeof btn === "object") {
-        return btn.pressed;
-      }
-      return btn == 1.0;
-    },
-    cycle: function() {
-      this.gamepads = this.scanGamepads();
-
-      var gp = this.gamepads[0];
-      if (this.$store.state.gamepad.listening) {
-        if (this.buttonPressed(gp.buttons[1])) {
-          this.$store.commit("toggleA", true);
-        } else {
-          this.$store.commit("toggleA", false);
-        }
-        if (this.buttonPressed(gp.buttons[0])) {
-          this.$store.commit("toggleB", true);
-        } else {
-          this.$store.commit("toggleB", false);
-        }
-        if (this.buttonPressed(gp.buttons[2])) {
-          this.$store.commit("toggleX", true);
-        } else {
-          this.$store.commit("toggleX", false);
-        }
-        if (this.buttonPressed(gp.buttons[3])) {
-          this.$store.commit("toggleY", true);
-        } else {
-          this.$store.commit("toggleY", false);
-        }
-        if (this.buttonPressed(gp.buttons[8])) {
-          this.$store.commit("toggleStart", true);
-        } else {
-          this.$store.commit("toggleStart", false);
-        }
-        if (gp.axes[0] > 0.7) {
-          this.$store.commit("toggleRight", true);
-        } else {
-          this.$store.commit("toggleRight", false);
-        }
-        if (gp.axes[0] < -0.7) {
-          this.$store.commit("toggleLeft", true);
-        } else {
-          this.$store.commit("toggleLeft", false);
-        }
-        if (gp.axes[1] < -0.7) {
-          this.$store.commit("toggleTop", true);
-        } else {
-          this.$store.commit("toggleTop", false);
-        }
-        if (gp.axes[1] > 0.7) {
-          this.$store.commit("toggleBottom", true);
-        } else {
-          this.$store.commit("toggleBottom", false);
-        }
-      }
-      this.requestID = requestAnimationFrame(this.cycle);
-    }
-  }
+  },
 };
 </script>
 

@@ -110,3 +110,25 @@ WARNING : The version number need to be change for each update of the applicatio
 You can comment the @lxpanel line to disable the toolbar on desktop
 You can comment the @pcmanfm line to disable desktop
 You can comment the @screensaver line to disable screensaver
+
+## Borne en connexion WIFI
+
+`sudo apt-get install network-manager network-manager-gnome`
+
+`sudo systemctl stop dhcpcd.service`
+
+`sudo systemctl disable dhcpcd.service`
+
+`sudo systemctl enable NetworkManager.service`
+
+`sudo systemctl start NetworkManager.service`
+
+Reboot
+
+Activer le wifi
+
+Click droit sur l'icone réseau dans la barre des tâches -> Modifier les réseaux -> Modifier connexion ethernet (cablée) -> IPV4 -> Partager avec d'autre appareils.
+
+Reboot toute la borne
+
+Magie ça marche ! si tout est branché...

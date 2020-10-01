@@ -41,13 +41,10 @@ export default {
     // We first launch the timer for the game session and we also stop listening to the Gamepad for now
     // to prevent missclick...
     this.$emit("startGameSession");
-    this.$store.commit("stopListening");
 
     // We then prepare the command and we launch it in a separate Node.js shell
-    const pathToCore =
-      "/home/pi/arcade-sys-games/cores/genesis_plus_gx_libretro.so";
-    const pathToGame =
-      "/home/pi/arcade-sys-games/roms/" + this.session.game.path;
+    const pathToCore = "/home/pi/games/cores/" + this.session.game.core.path;
+    const pathToGame = "/home/pi/games/roms/" + this.session.game.path;
 
     let command = 'retroarch -f -L "' + pathToCore + '" "' + pathToGame + '"';
     this.startShell(command);
@@ -64,7 +61,7 @@ export default {
           this.endGame();
         } else {
           this.status = stdout;
-          this.$store.commit("startListening"); // We must start listening to the gamepad again
+
           this.endGame();
         }
       });
@@ -72,7 +69,7 @@ export default {
       // TO-DO : maybe add a message that the time is out
       var timer = setTimeout(function() {
         exec('killall "retroarch"');
-      }, 1000*60*10); // milisecond*second*minute
+      }, 1000 * 60 * 10); // milisecond*second*minute
     },
     endGame: function() {
       this.loading = false;
