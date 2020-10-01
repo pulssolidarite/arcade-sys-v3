@@ -41,7 +41,7 @@ export default {
     if (this.$store.getters.isLoggedIn) {
       this.$router.push("/start");
     } else {
-      for(var retry = 1; retry < 3; stretryart++) {
+      for(var retry = 1; retry < 3; retry++) {
         setTimeout(function () {
           this.login();
         }, 3000);
