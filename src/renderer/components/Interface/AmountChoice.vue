@@ -2,7 +2,7 @@
   <div class="component">
     <div class="view amount-choice">
       <div class="s-title">
-        <div class="title">CHOISI TON MONTANT</div>
+        <div class="title">CHOISIS TON MONTANT</div>
         <div class="subtitle">
           <div class="animHorizontalText">
             100% des dons reversés à Habitat Humanisme.

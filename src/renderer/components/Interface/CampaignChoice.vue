@@ -2,7 +2,7 @@
   <div class="component">
     <div class="view campaign-choice">
       <div class="s-title">
-        <div class="title">CHOISI TON ASSOCIATION</div>
+        <div class="title">CHOISIS TON ASSOCIATION</div>
         <div class="subtitle"></div>
       </div>
 

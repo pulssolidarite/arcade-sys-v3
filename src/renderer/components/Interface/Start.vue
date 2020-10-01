@@ -2,7 +2,7 @@
   <div class="component">
     <div class="view game-choice">
       <div class="s-title">
-        <div class="title">CHOISI TON JEU</div>
+        <div class="title">CHOISIS TON JEU</div>
         <div class="subtitle">1 partie = 5 minutes</div>
       </div>
 
