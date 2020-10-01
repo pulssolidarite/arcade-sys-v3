@@ -46,22 +46,22 @@
                       <div class="icon2"> <img src="@/assets/img/picto/gamepad.png" alt="gamepad pictograme" class="pictogramme"></div>
                       <div class="type"> {{gameInfos[game.name].type}} </div> -->
                     <div class="icon1">
-                      <img
+                      <!-- <img
                         class="pictogramme"
                         src="@/assets/img/picto/gamepad.png"
                         alt="gamepad pictograme"
-                      />
+                      /> -->
                     </div>
                     <!-- <div class="nb-j">{{ gameInfos[game.name].nb_player }}</div> -->
                     <!-- <div class="type">{{ gameInfos[game.name].type }}</div> -->
                     <div class="icon2">
                       <!-- <img class="pictogramme" :src="'@/assets/img/picto/' + gameInfos[game.name].type + '.png'" :alt=game.name> -->
                       <!-- {{pathToPicto + gameInfos[game.name].type + '.png" alt="gamepad pictograme">'}} -->
-                      <img
+                      <!-- <img
                         class="pictogramme"
                         :src="getPictoUrl(game)"
                         :alt="game.name"
-                      />
+                      /> -->
                     </div>
                   </div>
                   <div class="c-line"></div>
