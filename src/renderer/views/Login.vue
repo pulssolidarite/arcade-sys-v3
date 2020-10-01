@@ -41,7 +41,12 @@ export default {
     if (this.$store.getters.isLoggedIn) {
       this.$router.push("/start");
     } else {
-      this.login();
+      for(var retry = 1; retry < 3; stretryart++) {
+        setTimeout(function () {
+          this.login();
+        }, 3000);
+      }
+      
     }
   },
   methods: {
