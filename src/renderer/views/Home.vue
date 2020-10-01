@@ -90,7 +90,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
-          v-if="viewIndex == 5"
+          v-if="viewIndex == 4"
         ></Play>
 
         <!-- <ticketProposition
@@ -110,7 +110,7 @@
           @replay="replay"
           @moreInfo="moreInfo"
           @ticket_request="ticket_request"
-          v-if="viewIndex == 6"
+          v-if="viewIndex == 5"
         ></End>
 
         <requestTicket
@@ -118,7 +118,7 @@
           @error="handleError"
           @lastView="endedView"
           @nextView="lastView"
-          v-if="viewIndex == 7"
+          v-if="viewIndex == 6"
         ></requestTicket>
 
         <about @lastView="endedView" v-if="viewIndex == 8"></about>
