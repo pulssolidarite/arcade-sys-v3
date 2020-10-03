@@ -33,7 +33,6 @@ export default {
       },
       loading: false,
       error: "",
-      loginRetryLimit = 3,
     };
   },
   mounted: function() {
@@ -53,11 +52,6 @@ export default {
         .catch((err) => {
           this.loading = false;
           this.error = err.response;
-          if (loginRetryLimit > 0){
-            await sleep(3000);
-            this.login();
-            loginRetryLimit--;
-          }
         });
     },
   },
