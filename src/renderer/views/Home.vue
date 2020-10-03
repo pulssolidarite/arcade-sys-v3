@@ -236,10 +236,10 @@ export default {
 
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
-        const pathGlobal = "/home/pi/games/";
-        const pathRoms = "/home/pi/games/roms/";
-        const pathCores = "/home/pi/games/cores/";
-        const pathBios = "/home/pi/games/bios/";
+        const pathGlobal = "D:\\hilal\\Téléchargements\\games\\";
+        const pathRoms = "D:\\hilal\\Téléchargements\\games\\roms\\";
+        const pathCores = "D:\\hilal\\Téléchargements\\games\\cores\\";
+        const pathBios = "D:\\hilal\\Téléchargements\\games\\bios\\";
 
         // Creating folders if they don't exist
         if (!fs.existsSync(pathGlobal)) {
@@ -311,7 +311,7 @@ export default {
         this.loading = false;
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
         this.errors = {
           visible: true,
           title: "Erreur de chargement",
