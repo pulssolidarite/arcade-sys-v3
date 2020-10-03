@@ -53,7 +53,7 @@ Go to **Online Updater**
 
 `$ sudo apt-get install arp-scan`
 
-`$ curl -LOk "https://github.com/pulssolidarite/arcade-sys/releases/download/v2.0.4/PULS-Front-end-X.X.X-armv7l.AppImage"`
+Download latest App Image release of arcade-sys-v3 and place it in home directory.
 
 `$ chmod a+x PULS-Front-end-X.X.X-armv7l.AppImage`
 
