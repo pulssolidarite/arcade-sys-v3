@@ -68,7 +68,7 @@
                         alt="gamepad pictograme"
                       /> -->
                     </div>
-                    <div class="nb-j">{{ game.nb_player }}</div>
+                    <div class="nb-j">{{ game.nb_players }}</div>
                     <div class="type">{{ game.type }}</div>
                     <div class="icon2">
                       <!-- <img class="pictogramme" :src="'@/assets/img/picto/' + gameInfos[game.name].type + '.png'" :alt=game.name> -->
