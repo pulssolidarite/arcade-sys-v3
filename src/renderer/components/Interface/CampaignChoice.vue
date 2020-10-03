@@ -119,7 +119,6 @@ export default {
     }
     this.overflowVerify();
     this.videoSize();
-    console.log(this.session.campaign.video);
   },
   methods: {
     simulate_a() {
