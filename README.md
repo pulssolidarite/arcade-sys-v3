@@ -1,10 +1,5 @@
 # Installation Nouvelle Borne Arcade Puls Impact
 
-## Optional : Project compilation
-
-For generate css : 
-Go to src > renderer > assets > css and execute :  
-`./dart-sass/sass ./sass/theme.scss ./theme.css` to generate or edit css. 
 
 ## Installation nouvelle borne
 
