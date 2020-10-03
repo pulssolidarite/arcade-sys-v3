@@ -391,7 +391,7 @@ export default {
 
 .amount-detail {
   margin-left: 50%;
-  margin-top: -10vh;
+  margin-top: -15vh;
   transform: translateX(-50%);
   background-color: #512fb5;
   box-shadow: -5px 0px #775ce4, 0px -5px #775ce4, 5px 0px #372491,
@@ -431,16 +431,16 @@ export default {
     0px 8px #372491;
 }
 
-.amount-icon .rounded{
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
+.amount-icon .rounded {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .amount-description {
   font-family: pixel3;
   color: white;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
 }
 
 .progress {
