@@ -7,19 +7,6 @@
       </div>
 
       <div class="s-content">
-        <div id="video-asso" class="video-asso">
-          <youtube
-            id="player-ytb"
-            :video-id="session.campaign.video"
-            :player-vars="playerVars"
-            :fitParent="true"
-            ref="youtube"
-            @ready="playerReady()"
-            @playing="playerPlaying()"
-            @ended="playVideo()"
-            style="height:315.3px; width: 621.22px;"
-          ></youtube>
-        </div>
         <div class="carousel">
           <vueper-slides
             ref="carousel"
@@ -46,10 +33,26 @@
                 <div class="carousel-content">
                   <div class="row title-a">{{ campaign.name }}</div>
                   <div class="row picture">
+                    <youtube
+                      v-show="campaign.is_video"
+                      id="player-ytb"
+                      :video-id="campaign.video"
+                      :player-vars="playerVars"
+                      :fitParent="true"
+                      :ref="'youtube' + i"
+                      @ready="playerReady(i)"
+                      @playing="playerPlaying(i)"
+                      @ended="playVideo(i)"
+                      style="height: 100%; width: 100%;"
+                    ></youtube>
+
                     <img
                       :src="campaign.logo"
                       :alt="campaign.name"
-                      class="slide-picture"
+                      :class="[
+                        'slide-picture',
+                        campaign.is_video ? 'slide-picture-hidden' : '',
+                      ]"
                     />
                   </div>
                   <div class="c-line"></div>
@@ -109,6 +112,7 @@ export default {
         showinfo: 0,
         rel: 0,
       },
+      currentSlide: 0,
     };
   },
   mounted: function() {
@@ -118,7 +122,7 @@ export default {
       this.chooseCampaign(0);
     }
     this.overflowVerify();
-    this.videoSize();
+    //this.videoSize();
   },
   methods: {
     simulate_a() {
@@ -136,6 +140,7 @@ export default {
       this.animateArrow("right");
     },
     chooseCampaign: function(index) {
+      this.currentSlide = index;
       this.choosenCampaign = this.campaigns[index];
       this.choosenIndexOf.campaigns = index;
 
@@ -145,18 +150,20 @@ export default {
         indexOf: this.choosenIndexOf.campaigns + 1,
       });
     },
-    playerReady: function() {
-      this.$refs.youtube.player.mute();
-      this.$refs.youtube.player.getDuration().then((resp) => {
+    playerReady: function(index) {
+      this.$refs["youtube" + index][0].player.mute();
+      this.$refs["youtube" + index][0].player.getDuration().then((resp) => {
         this.duration = resp;
       });
     },
-    playerPlaying: async function() {
-      let currentTime = this.$refs.youtube.player.getCurrentTime();
+    playerPlaying: async function(index) {
+      let currentTime = this.$refs[
+        "youtube" + index
+      ][0].player.getCurrentTime();
       this.timer = (Math.ceil(currentTime) / this.duration) * 100;
     },
-    playVideo() {
-      this.$refs.youtube.player.playVideo();
+    playVideo(index) {
+      this.$refs["youtube" + index][0].player.playVideo();
     },
     videoSize() {
       if (window.innerWidth / window.innerHeight < 1.4) {
@@ -187,12 +194,6 @@ export default {
       arrow.style.transform = "scale(1.4)";
       setTimeout(function() {
         arrow.style.transform = "scale(1)";
-      }, 150);
-      // Animate video
-      var video = document.getElementById("video-asso");
-      video.style.transform = "scale(0)";
-      setTimeout(function() {
-        video.style.transform = "scale(1)";
       }, 150);
     },
     overflowVerify() {

@@ -21,6 +21,7 @@
         </div>
         <div class="container my-3 h-100 text-center">
           <youtube
+            v-if="session.campaign.is_video"
             :video-id="session.campaign.video"
             :player-vars="playerVars"
             :fitParent="true"
@@ -29,6 +30,13 @@
             @playing="playerPlaying()"
             style="width:320px; height:180px "
           ></youtube>
+          <div class="w-100" v-else>
+            <img
+              :src="session.campaign.featured_image"
+              class="img-fluid"
+              :alt="session.campaign.name"
+            />
+          </div>
         </div>
         <div class="container mb-5 pb-3 mt-2 text-center">
           <div class="progress mb-5" style="height: 30px;">
@@ -63,19 +71,19 @@ export default {
         controls: 0,
         modestbranding: 1,
         showinfo: 0,
-        rel: 0
-      }
+        rel: 0,
+      },
     };
   },
   methods: {
     playerReady: function() {
-      this.$refs.youtube.player.getDuration().then(resp => {
+      this.$refs.youtube.player.getDuration().then((resp) => {
         this.duration = resp;
       });
     },
     playerPlaying: async function() {
       var interval = setInterval(() => {
-        this.$refs.youtube.player.getCurrentTime().then(resp => {
+        this.$refs.youtube.player.getCurrentTime().then((resp) => {
           this.timer = (Math.ceil(resp) / this.duration) * 100;
         });
         if (this.timer >= 99) {
@@ -88,7 +96,7 @@ export default {
       setInterval(() => {
         this.$emit("nextView");
       }, 600);
-    }
-  }
+    },
+  },
 };
 </script>

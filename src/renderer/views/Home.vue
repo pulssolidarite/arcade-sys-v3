@@ -78,11 +78,11 @@
           v-if="viewIndex == 4"
         ></CampaignDetail> -->
 
-        <!-- <didactitiel
+        <didactitiel
           :session="session"
           @nextView="nextView"
           v-if="viewIndex == 4"
-        ></didactitiel> -->
+        ></didactitiel>
 
         <!-- 5TH VIEW -->
         <Play
@@ -90,7 +90,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
-          v-if="viewIndex == 4"
+          v-if="viewIndex == 5"
         ></Play>
 
         <!-- <ticketProposition
@@ -110,7 +110,7 @@
           @replay="replay"
           @moreInfo="moreInfo"
           @ticket_request="ticket_request"
-          v-if="viewIndex == 5"
+          v-if="viewIndex == 6"
         ></End>
 
         <requestTicket
@@ -118,10 +118,10 @@
           @error="handleError"
           @lastView="endedView"
           @nextView="lastView"
-          v-if="viewIndex == 6"
+          v-if="viewIndex == 7"
         ></requestTicket>
 
-        <about @lastView="endedView" v-if="viewIndex == 7"></about>
+        <about @lastView="endedView" v-if="viewIndex == 8"></about>
       </transition>
     </div>
   </div>
@@ -137,7 +137,7 @@ import Start from "@/components/Interface/Start.vue";
 import CampaignChoice from "@/components/Interface/CampaignChoice.vue";
 import AmountChoice from "@/components/Interface/AmountChoice.vue";
 import Payment from "@/components/Interface/Payment.vue";
-// import didactitiel from "@/components/Interface/didactitiel.vue";
+import didactitiel from "@/components/Interface/didactitiel.vue";
 import CampaignDetail from "@/components/Interface/CampaignDetail.vue";
 import Play from "@/components/Interface/Play.vue";
 import ticketProposition from "@/components/Interface/ticketProposition.vue";
@@ -160,7 +160,7 @@ export default {
     CampaignChoice,
     AmountChoice,
     Payment,
-    // didactitiel,
+    didactitiel,
     CampaignDetail,
     Play,
     ticketProposition,
@@ -234,12 +234,15 @@ export default {
         this.campaigns = resp.data.campaigns;
         this.games = resp.data.games;
 
+        // TEST-ONLY : we get the subscription type here
+        console.log("Type d'offre : " + this.terminal.subscription_type);
+
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
         const pathGlobal = "/home/pi/games/";
-        const pathRoms = "/home/pi/games/roms/";
-        const pathCores = "/home/pi/games/cores/";
-        const pathBios = "/home/pi/games/bios/";
+        const pathRoms = pathGlobal + "roms/";
+        const pathCores = pathGlobal + "cores/";
+        const pathBios = pathGlobal + "bios/";
 
         // Creating folders if they don't exist
         if (!fs.existsSync(pathGlobal)) {
@@ -260,9 +263,7 @@ export default {
           var currentPath = pathRoms + game.path;
 
           try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Game exists !");
-            } else {
+            if (!fs.existsSync(currentPath)) {
               request(game.file.file).pipe(fs.createWriteStream(currentPath));
             }
           } catch (err) {
@@ -272,9 +273,7 @@ export default {
           // Checking if the Core exists
           currentPath = pathCores + game.core.path;
           try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Core exists !");
-            } else {
+            if (!fs.existsSync(currentPath)) {
               request(game.core.file.file).pipe(
                 fs.createWriteStream(currentPath)
               );
@@ -287,9 +286,7 @@ export default {
           if (game.core.bios_path) {
             currentPath = pathBios + game.core.bios_path;
             try {
-              if (fs.existsSync(currentPath)) {
-                console.log("Bios exists !");
-              } else {
+              if (!fs.existsSync(currentPath)) {
                 request(game.core.bios.file).pipe(
                   fs.createWriteStream(currentPath)
                 );
@@ -311,7 +308,7 @@ export default {
         this.loading = false;
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
         this.errors = {
           visible: true,
           title: "Erreur de chargement",
