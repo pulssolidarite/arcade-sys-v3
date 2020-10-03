@@ -26,16 +26,6 @@ Default password : raspberry
 
 `$ sudo raspi-config`
 
-Go to **4 - Localisation Options**
-- **2 - Timezone** to Europe/Paris
-- **3 - Keyboard** to appropriate keyboard brand and language
-- **4 - WLAN Country** to France
-
-Go to **2 - Network Options**
-- **2 - Wireless LAN**
-- - enter wifi name and password
-- - Test network with `ping` or `ifconfig`
-
 Go to **7 - Advanced Options**
 - **3 - Memory Split**
 - - replace 64 by 128 minimum and reboot
