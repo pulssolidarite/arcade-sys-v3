@@ -78,11 +78,11 @@
           v-if="viewIndex == 4"
         ></CampaignDetail> -->
 
-        <didactitiel
+        <!-- <didactitiel
           :session="session"
           @nextView="nextView"
           v-if="viewIndex == 4"
-        ></didactitiel>
+        ></didactitiel> -->
 
         <!-- 5TH VIEW -->
         <Play
@@ -90,7 +90,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
-          v-if="viewIndex == 5"
+          v-if="viewIndex == 4"
         ></Play>
 
         <!-- <ticketProposition
@@ -110,7 +110,7 @@
           @replay="replay"
           @moreInfo="moreInfo"
           @ticket_request="ticket_request"
-          v-if="viewIndex == 6"
+          v-if="viewIndex == 5"
         ></End>
 
         <requestTicket
@@ -118,10 +118,10 @@
           @error="handleError"
           @lastView="endedView"
           @nextView="lastView"
-          v-if="viewIndex == 7"
+          v-if="viewIndex == 6"
         ></requestTicket>
 
-        <about @lastView="endedView" v-if="viewIndex == 8"></about>
+        <about @lastView="endedView" v-if="viewIndex == 7"></about>
       </transition>
     </div>
   </div>
@@ -137,7 +137,7 @@ import Start from "@/components/Interface/Start.vue";
 import CampaignChoice from "@/components/Interface/CampaignChoice.vue";
 import AmountChoice from "@/components/Interface/AmountChoice.vue";
 import Payment from "@/components/Interface/Payment.vue";
-import didactitiel from "@/components/Interface/didactitiel.vue";
+// import didactitiel from "@/components/Interface/didactitiel.vue";
 import CampaignDetail from "@/components/Interface/CampaignDetail.vue";
 import Play from "@/components/Interface/Play.vue";
 import ticketProposition from "@/components/Interface/ticketProposition.vue";
@@ -160,7 +160,7 @@ export default {
     CampaignChoice,
     AmountChoice,
     Payment,
-    didactitiel,
+    // didactitiel,
     CampaignDetail,
     Play,
     ticketProposition,
