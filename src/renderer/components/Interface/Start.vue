@@ -33,10 +33,26 @@
                 <div class="carousel-content">
                   <div class="row title-g">{{ game.name }}</div>
                   <div class="row picture">
+                    <youtube
+                      v-show="game.is_video"
+                      id="player-ytb"
+                      :video-id="game.video"
+                      :player-vars="playerVars"
+                      :fitParent="true"
+                      :ref="'youtube' + i"
+                      @ready="playerReady(i)"
+                      @playing="playerPlaying(i)"
+                      @ended="playVideo(i)"
+                      style="height: 100%; width: 100%;"
+                    ></youtube>
+
                     <img
                       :src="game.logo"
                       :alt="game.name"
-                      class="slide-picture"
+                      :class="[
+                        'slide-picture',
+                        game.is_video ? 'slide-picture-hidden' : '',
+                      ]"
                     />
                   </div>
                   <div class="c-line"></div>
@@ -104,6 +120,15 @@ export default {
       choosenIndexOf: {
         games: "",
       },
+      playerVars: {
+        autoplay: 1,
+        iv_load_policy: 3,
+        playsinline: 1,
+        controls: 0,
+        modestbranding: 1,
+        showinfo: 0,
+        rel: 0,
+      },
       gameInfos: jsonKeys,
       pathToPicto: '<img class="pictogramme" src="@/assets/img/picto/',
     };
@@ -137,7 +162,21 @@ export default {
       return images("./" + this.gameInfos[game.name].type + ".png");
       // return '@/assets/img/picto/' +  this.gameInfos[game.name].type + '.png';
     },
-
+    playerReady: function(index) {
+      this.$refs["youtube" + index][0].player.mute();
+      this.$refs["youtube" + index][0].player.getDuration().then((resp) => {
+        this.duration = resp;
+      });
+    },
+    playerPlaying: async function(index) {
+      let currentTime = this.$refs[
+        "youtube" + index
+      ][0].player.getCurrentTime();
+      this.timer = (Math.ceil(currentTime) / this.duration) * 100;
+    },
+    playVideo(index) {
+      this.$refs["youtube" + index][0].player.playVideo();
+    },
     // OTHER METHODS
     chooseGame: function(index) {
       this.choosenGame = this.games[index];

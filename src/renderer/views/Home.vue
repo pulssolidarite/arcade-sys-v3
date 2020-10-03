@@ -234,6 +234,9 @@ export default {
         this.campaigns = resp.data.campaigns;
         this.games = resp.data.games;
 
+        // TEST-ONLY : we get the subscription type here
+        console.log("Type d'offre : " + this.terminal.subscription_type);
+
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
         const pathGlobal = "D:\\hilal\\Téléchargements\\games\\";
@@ -260,9 +263,7 @@ export default {
           var currentPath = pathRoms + game.path;
 
           try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Game exists !");
-            } else {
+            if (!fs.existsSync(currentPath)) {
               request(game.file.file).pipe(fs.createWriteStream(currentPath));
             }
           } catch (err) {
@@ -272,9 +273,7 @@ export default {
           // Checking if the Core exists
           currentPath = pathCores + game.core.path;
           try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Core exists !");
-            } else {
+            if (!fs.existsSync(currentPath)) {
               request(game.core.file.file).pipe(
                 fs.createWriteStream(currentPath)
               );
@@ -287,9 +286,7 @@ export default {
           if (game.core.bios_path) {
             currentPath = pathBios + game.core.bios_path;
             try {
-              if (fs.existsSync(currentPath)) {
-                console.log("Bios exists !");
-              } else {
+              if (!fs.existsSync(currentPath)) {
                 request(game.core.bios.file).pipe(
                   fs.createWriteStream(currentPath)
                 );
