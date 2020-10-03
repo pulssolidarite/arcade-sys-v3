@@ -239,10 +239,10 @@ export default {
 
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
-        const pathGlobal = "D:\\hilal\\Téléchargements\\games\\";
-        const pathRoms = "D:\\hilal\\Téléchargements\\games\\roms\\";
-        const pathCores = "D:\\hilal\\Téléchargements\\games\\cores\\";
-        const pathBios = "D:\\hilal\\Téléchargements\\games\\bios\\";
+        const pathGlobal = "/home/pi/games/";
+        const pathRoms = pathGlobal + "roms/";
+        const pathCores = pathGlobal + "cores/";
+        const pathBios = pathGlobal + "bios/";
 
         // Creating folders if they don't exist
         if (!fs.existsSync(pathGlobal)) {
