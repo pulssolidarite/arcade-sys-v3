@@ -111,3 +111,7 @@ Click droit sur l'icone réseau dans la barre des tâches -> Modifier les résea
 Reboot toute la borne
 
 Magie ça marche ! si tout est branché...
+
+## Garder l'écran allumé
+
+`sudo systemctl enable xscreensaver`
