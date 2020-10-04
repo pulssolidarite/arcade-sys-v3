@@ -64,7 +64,7 @@ export default {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
     if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 1000 * 30);
+      setTimeout(() => this.pay(this.session.amount), 1000 * 3);
     } else {
       this.$emit("lastView");
     }
@@ -72,7 +72,6 @@ export default {
     // FOR DEV PURPOSE ONLY
     // For skipping payment
     //setTimeout(() => this.skipPayment(this.session.amount), 8000);
-    setTimeout(() => this.$emit("home"), 1000 * 60 * 2);
   },
   methods: {
     skipPayment: function(amount) {
