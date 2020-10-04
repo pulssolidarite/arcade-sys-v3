@@ -3,7 +3,7 @@
     <div class="view game-choice">
       <div class="s-title">
         <div class="title">CHOISIS TON JEU</div>
-        <div class="subtitle">1 partie = 5 minutes</div>
+        <div class="subtitle">1 partie = {{this.session.terminal.play_timer}} minutes</div>
       </div>
 
       <div class="s-content">
@@ -62,22 +62,22 @@
                       <div class="icon2"> <img src="@/assets/img/picto/gamepad.png" alt="gamepad pictograme" class="pictogramme"></div>
                       <div class="type"> {{gameInfos[game.name].type}} </div> -->
                     <div class="icon1">
-                      <!-- <img
+                      <img
                         class="pictogramme"
                         src="@/assets/img/picto/gamepad.png"
                         alt="gamepad pictograme"
-                      /> -->
+                      />
                     </div>
-                    <div class="nb-j">{{ game.nb_players }}</div>
+                    <div class="nb-j">x{{ game.nb_players }}</div>
                     <div class="type">{{ game.type }}</div>
                     <div class="icon2">
                       <!-- <img class="pictogramme" :src="'@/assets/img/picto/' + gameInfos[game.name].type + '.png'" :alt=game.name> -->
                       <!-- {{pathToPicto + gameInfos[game.name].type + '.png" alt="gamepad pictograme">'}} -->
-                      <!-- <img
+                      <img
                         class="pictogramme"
                         :src="getPictoUrl(game)"
                         :alt="game.name"
-                      /> -->
+                      />
                     </div>
                   </div>
                   <div class="c-line"></div>

@@ -19,7 +19,7 @@
         </div>
 
         <div class="w-credit">
-          <span class="copyright">© PULS IMPACT · 2019 - 2020</span>
+          <span class="copyright">© PULS IMPACT · 2020</span>
           <span class="credit-infos">Agence en innovations solidaires</span>
         </div>
       </div>

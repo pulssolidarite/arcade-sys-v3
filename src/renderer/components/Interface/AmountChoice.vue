@@ -5,7 +5,7 @@
         <div class="title">CHOISIS TON MONTANT</div>
         <div class="subtitle">
           <div class="animHorizontalText">
-            100% des dons reversés à Habitat Humanisme.
+            Vos dons sont reversés aux assosiations et aux artistes.
           </div>
         </div>
       </div>
