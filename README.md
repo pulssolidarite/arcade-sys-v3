@@ -23,7 +23,7 @@ Default password : raspberry
 
 Go to **7 - Advanced Options**
 - **3 - Memory Split**
-- - replace 64 by 128 minimum and reboot
+- - replace 64 by 512 minimum and reboot
 
 ## Update Linux
 
