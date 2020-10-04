@@ -46,6 +46,9 @@ import helpGamepad from "@/components/helpGamepad.vue";
 export default {
   name: "about",
   components: { helpGamepad },
+  mounted : function(){
+     setTimeout(() => this.$emit("home"), 1000 * 60);
+  },
   methods: {
     simulate_b() {
       this.$emit("lastView");

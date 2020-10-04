@@ -140,6 +140,7 @@ export default {
       this.chooseGame(0);
     }
     this.overflowVerify();
+    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     // SIMULATE GAMEPAD METHODS

@@ -94,6 +94,9 @@ export default {
       pathToKeys: {},
     };
   },
+  mounted: function(){
+    setTimeout(() => this.$emit("home"), 1000 * 60);
+  },
   components: { helpGamepad },
   methods: {
     simulate_a() {

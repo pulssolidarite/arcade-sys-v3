@@ -123,6 +123,7 @@ export default {
     }
     this.overflowVerify();
     //this.videoSize();
+    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     simulate_a() {

@@ -123,6 +123,7 @@ export default {
         this.chooseAmount(2);
       }
     }
+    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     // line_right() {
@@ -238,7 +239,7 @@ export default {
         return campaign.text30;
       }
       if (amount == 50) {
-        return campaign.text30; //text50 when back ready
+        return campaign.text50; //text50 when back ready
       }
     },
     getActionPhoto: function(campaign, amount) {
@@ -258,7 +259,7 @@ export default {
         return campaign.photo30;
       }
       if (amount == 50) {
-        return campaign.photo30; //photo50 when back ready
+        return campaign.photo50; //photo50 when back ready
       }
     },
     chooseAmount: function(index) {
