@@ -53,6 +53,14 @@ Go to **Online Updater**
 
 Install mono-complete : https://www.mono-project.com/download/stable/#download-lin-raspbian
 
+`git clone https://github.com/pulssolidarite/PayterPay.git`
+
+Aller dans le dossier PayterPay et compiler:
+
+`msbuild /p:Configuration=Release`
+
+Deplacer le dossier PayterPay/bin/Release dans le home et renommer en Payter.
+
 `$ sudo apt-get install arp-scan`
 
 Download latest App Image release of arcade-sys-v3 and place it in home directory.
