@@ -67,10 +67,6 @@ Add these two lines at the end of `.bashrc` :
 
 `$ source .bashrc`
 
-Download games
-
-`$ git clone https://github.com/pulssolidarite/arcade-sys-games.git`
-
 Test the overlay
 
 `$ ./PULS-Front-end-X.X.X-armv7l.AppImage`
