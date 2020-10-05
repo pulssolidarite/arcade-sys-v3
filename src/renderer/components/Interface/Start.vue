@@ -108,7 +108,7 @@
 <script>
 import helpGamepad from "@/components/helpGamepad.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
-import jsonKeys from "./games_infos.json";
+//import jsonKeys from "./games_infos.json";
 
 export default {
   name: "Start",
@@ -129,7 +129,7 @@ export default {
         showinfo: 0,
         rel: 0,
       },
-      gameInfos: jsonKeys,
+      //gameInfos: jsonKeys,
       pathToPicto: '<img class="pictogramme" src="@/assets/img/picto/',
     };
   },
@@ -160,7 +160,7 @@ export default {
     },
     getPictoUrl(game) {
       var images = require.context("@/assets/img/picto", false, /\.png$/);
-      return images("./" + this.gameInfos[game.name].type + ".png");
+      return images("./" + game.type + ".png");
       // return '@/assets/img/picto/' +  this.gameInfos[game.name].type + '.png';
     },
     playerReady: function(index) {
