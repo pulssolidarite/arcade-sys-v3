@@ -34,6 +34,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
+          @home="homeView"
           v-if="viewIndex == 0"
         ></Start>
 
@@ -46,6 +47,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
+          @home="homeView"
           v-if="viewIndex == 1"
         ></CampaignChoice>
 
@@ -56,6 +58,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
+          @home="homeView"
           v-if="viewIndex == 2"
         ></AmountChoice>
 
@@ -118,6 +121,7 @@
           @error="handleError"
           @lastView="endedView"
           @nextView="lastView"
+          @home="homeView"
           v-if="viewIndex == 7"
         ></requestTicket>
 
