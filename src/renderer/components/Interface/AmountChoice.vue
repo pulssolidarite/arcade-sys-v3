@@ -166,33 +166,23 @@ export default {
           flag2.className = "empty-flag";
           break;
         case 5:
-          setTimeout(function() {
-            flag2.className = "full-flag";
-          }, 350);
+          flag2.className = "full-flag";
           flag3.className = "empty-flag";
           break;
         case 10:
-          setTimeout(function() {
-            flag3.className = "full-flag";
-          }, 350);
+          flag3.className = "full-flag";
           flag4.className = "empty-flag";
           break;
         case 20:
-          setTimeout(function() {
-            flag4.className = "full-flag";
-          }, 350);
+          flag4.className = "full-flag";
           flag5.className = "empty-flag";
           break;
         case 30:
-          setTimeout(function() {
-            flag5.className = "full-flag";
-          }, 350);
+          flag5.className = "full-flag";
           flag6.className = "empty-flag";
           break;
         case 50:
-          setTimeout(function() {
-            flag6.className = "full-flag";
-          }, 350);
+          flag6.className = "full-flag";
           break;
       }
     },

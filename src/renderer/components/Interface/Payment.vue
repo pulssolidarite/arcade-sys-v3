@@ -221,7 +221,7 @@ export default {
 .txt-recap {
   font-family: pixel3;
   color: white;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   position: absolute;
   left: 50%;
   width: 36vw;
