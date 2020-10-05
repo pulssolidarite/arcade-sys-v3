@@ -134,13 +134,13 @@ export default {
     };
   },
   mounted: function() {
+    setTimeout(() => this.$emit("home"), 1000 * 60);
     if (this.session.position_game) {
       this.chooseGame(this.session.position_game - 1);
     } else {
       this.chooseGame(0);
     }
     this.overflowVerify();
-    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     // SIMULATE GAMEPAD METHODS

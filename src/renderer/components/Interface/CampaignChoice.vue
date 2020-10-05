@@ -116,6 +116,7 @@ export default {
     };
   },
   mounted: function() {
+    setTimeout(() => this.$emit("home"), 1000 * 60);
     if (this.session.position_asso) {
       this.chooseCampaign(this.session.position_asso - 1);
     } else {
@@ -123,7 +124,6 @@ export default {
     }
     this.overflowVerify();
     //this.videoSize();
-    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     simulate_a() {
