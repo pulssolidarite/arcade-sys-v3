@@ -56,6 +56,9 @@ export default {
       this.$emit("lastView");
     },
   },
+  mounted: function(){
+    setTimeout(() => this.$emit("home"), 1000 * 60);
+  },
 };
 </script>
 

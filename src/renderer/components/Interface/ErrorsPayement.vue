@@ -63,6 +63,7 @@ export default {
   },
   mounted: function() {
     this.doChoice(0);
+    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     simulate_up() {
