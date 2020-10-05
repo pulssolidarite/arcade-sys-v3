@@ -140,7 +140,7 @@ export default {
       this.chooseGame(0);
     }
     this.overflowVerify();
-    setTimeout(() => this.$emit("home"), 1000 * 5);
+    setTimeout(function(){this.$emit("home")}.bind(this), 1000 * 5);
     console.log("timeout");
   },
   methods: {
