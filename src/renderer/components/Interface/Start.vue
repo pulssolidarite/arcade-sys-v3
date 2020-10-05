@@ -135,6 +135,7 @@ export default {
   },
   mounted: function() {
     setTimeout(() => this.$emit("home"), 1000 * 60);
+    console.log("timeout");
     if (this.session.position_game) {
       this.chooseGame(this.session.position_game - 1);
     } else {
