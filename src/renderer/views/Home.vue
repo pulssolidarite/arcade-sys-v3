@@ -206,6 +206,8 @@ export default {
     };
   },
   mounted: function() {
+    document.body.style.cursor = 'none';
+
     this.session = {
       terminal: {},
       campaign: {},
