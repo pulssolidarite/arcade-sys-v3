@@ -40,6 +40,7 @@ export default {
     };
   },
   mounted: function() {
+    document.body.style.cursor = 'none';
     const version = document.getElementById("version");
 
     ipcRenderer.send("app_version");
