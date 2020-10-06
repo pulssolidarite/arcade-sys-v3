@@ -67,7 +67,7 @@ Download latest App Image release of arcade-sys-v3 and place it in home director
 
 `$ chmod a+x PULS-Front-end-X.X.X-armv7l.AppImage`
 
-Add these two lines at the end of `.bashrc` :
+Add these two lines at the end of `/etc/environment` :
 
 > Warning : Make sure to create a new terminal (and activate it) on the Admin Panel and use the logins for following step.
 
@@ -75,7 +75,7 @@ Add these two lines at the end of `.bashrc` :
 
 `export PULS_MDP=???`
 
-`$ source .bashrc`
+`$ source /etc/environment`
 
 Test the overlay
 
@@ -97,7 +97,9 @@ And add at the end, the path to AppImage :
 WARNING : The version number need to be change for each update of the application. 
 
 You can comment the @lxpanel line to disable the toolbar on desktop
+
 You can comment the @pcmanfm line to disable desktop
+
 You can comment the @screensaver line to disable screensaver
 
 ## Borne en connexion WIFI
