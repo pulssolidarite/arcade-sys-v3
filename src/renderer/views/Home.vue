@@ -152,6 +152,7 @@ const fs = require("fs");
 import axios from "axios";
 
 const request = require("request");
+const robot = require("robotjs");
 
 export default {
   name: "Home",
@@ -206,8 +207,7 @@ export default {
     };
   },
   mounted: function() {
-    document.body.style.cursor = 'none';
-
+    robot.moveMouse(0,0);
     this.session = {
       terminal: {},
       campaign: {},
