@@ -1,10 +1,5 @@
 # Installation Nouvelle Borne Arcade Puls Impact
 
-## Optional : Project compilation
-
-For generate css : 
-Go to src > renderer > assets > css and execute :  
-`./dart-sass/sass ./sass/theme.scss ./theme.css` to generate or edit css. 
 
 ## Installation nouvelle borne
 
@@ -26,19 +21,9 @@ Default password : raspberry
 
 `$ sudo raspi-config`
 
-Go to **4 - Localisation Options**
-- **2 - Timezone** to Europe/Paris
-- **3 - Keyboard** to appropriate keyboard brand and language
-- **4 - WLAN Country** to France
-
-Go to **2 - Network Options**
-- **2 - Wireless LAN**
-- - enter wifi name and password
-- - Test network with `ping` or `ifconfig`
-
 Go to **7 - Advanced Options**
 - **3 - Memory Split**
-- - replace 64 by 128 minimum and reboot
+- - replace 64 by 512 minimum and reboot
 
 ## Update Linux
 
@@ -46,7 +31,7 @@ Go to **7 - Advanced Options**
 
 `$ sudo apt-get upgrade`
 
-`$ sudo apt-get install git snapd`
+`$ sudo apt-get install git snapd xscreensaver`
 
 `$ sudo snap install core`
 
@@ -68,13 +53,21 @@ Go to **Online Updater**
 
 Install mono-complete : https://www.mono-project.com/download/stable/#download-lin-raspbian
 
+`git clone https://github.com/pulssolidarite/PayterPay.git`
+
+Aller dans le dossier PayterPay et compiler:
+
+`msbuild /p:Configuration=Release`
+
+Deplacer le dossier PayterPay/bin/Release dans le home et renommer en Payter.
+
 `$ sudo apt-get install arp-scan`
 
-`$ curl -LOk "https://github.com/pulssolidarite/arcade-sys/releases/download/v2.0.4/PULS-Front-end-X.X.X-armv7l.AppImage"`
+Download latest App Image release of arcade-sys-v3 and place it in home directory.
 
 `$ chmod a+x PULS-Front-end-X.X.X-armv7l.AppImage`
 
-Add these two lines at the end of `.bashrc` :
+Add these two lines at the end of `/etc/environment` :
 
 > Warning : Make sure to create a new terminal (and activate it) on the Admin Panel and use the logins for following step.
 
@@ -82,11 +75,7 @@ Add these two lines at the end of `.bashrc` :
 
 `export PULS_MDP=???`
 
-`$ source .bashrc`
-
-Download games
-
-`$ git clone https://github.com/pulssolidarite/arcade-sys-games.git`
+`$ source /etc/environment`
 
 Test the overlay
 
@@ -108,7 +97,9 @@ And add at the end, the path to AppImage :
 WARNING : The version number need to be change for each update of the application. 
 
 You can comment the @lxpanel line to disable the toolbar on desktop
+
 You can comment the @pcmanfm line to disable desktop
+
 You can comment the @screensaver line to disable screensaver
 
 ## Borne en connexion WIFI
@@ -132,3 +123,7 @@ Click droit sur l'icone réseau dans la barre des tâches -> Modifier les résea
 Reboot toute la borne
 
 Magie ça marche ! si tout est branché...
+
+## Garder l'écran allumé
+
+`sudo systemctl enable xscreensaver`

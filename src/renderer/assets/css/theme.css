@@ -33,6 +33,7 @@
 body {
   font-family: "Futura Std";
   font-weight: normal;
+  cursor:none;
 }
 
 .h1,
