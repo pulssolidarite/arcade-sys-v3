@@ -68,7 +68,6 @@ export default {
       // We use a global timer to kill the game after 10 minutes
       // TO-DO : maybe add a message that the time is out
       if (this.session.terminal.play_timer) {
-        console.log(this.session.terminal.play_timer);
         var timer = setTimeout(function() {
           exec('killall "retroarch"');
         }, 1000 * 60 * this.session.terminal.play_timer); // milisecond*second*minute

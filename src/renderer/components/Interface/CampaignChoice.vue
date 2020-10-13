@@ -116,13 +116,13 @@ export default {
     };
   },
   mounted: function() {
-    setTimeout(() => this.$emit("home"), 1000 * 60);
     if (this.session.position_asso) {
       this.chooseCampaign(this.session.position_asso - 1);
     } else {
       this.chooseCampaign(0);
     }
     this.overflowVerify();
+    setTimeout(() => this.$emit("home"), 1000 * 60);
     //this.videoSize();
   },
   methods: {

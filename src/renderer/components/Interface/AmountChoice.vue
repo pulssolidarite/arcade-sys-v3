@@ -114,7 +114,6 @@ export default {
     };
   },
   mounted: function() {
-    setTimeout(() => this.$emit("home"), 1000 * 60);
     if (!this.session.position_asso) {
       this.$emit("lastView");
     } else {
@@ -124,6 +123,7 @@ export default {
         this.chooseAmount(2);
       }
     }
+    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     // line_right() {
