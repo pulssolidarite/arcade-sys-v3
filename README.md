@@ -31,7 +31,7 @@ Go to **7 - Advanced Options**
 
 `$ sudo apt-get upgrade`
 
-`$ sudo apt-get install git snapd xscreensaver`
+`$ sudo apt-get install git snapd xscreensaver arp-scan`
 
 `$ sudo snap install core`
 
@@ -55,13 +55,11 @@ Install mono-complete : https://www.mono-project.com/download/stable/#download-l
 
 `git clone https://github.com/pulssolidarite/PayterPay.git`
 
-Aller dans le dossier PayterPay et compiler:
+Go to PayterPay repository and compile:
 
 `msbuild /p:Configuration=Release`
 
-Deplacer le dossier PayterPay/bin/Release dans le home et renommer en Payter.
-
-`$ sudo apt-get install arp-scan`
+Move PayterPay/bin/Release/ to home/ and rename it Payter/
 
 Download latest App Image release of arcade-sys-v3 and place it in home directory.
 
@@ -124,6 +122,3 @@ Reboot toute la borne
 
 Magie ça marche ! si tout est branché...
 
-## Garder l'écran allumé
-
-`sudo systemctl enable xscreensaver`
