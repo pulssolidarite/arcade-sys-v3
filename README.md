@@ -40,9 +40,7 @@ Go to **7 - Advanced Options**
 
 ## Download & Install Retroarch
 
-`$ sudo snap install retroarch`
-
-`$ retroarch`
+Follow this link : https://gist.github.com/ematysek/fc01a47c7d34f0ca4dad41226c53ff6e
 
 Go to **Online Updater**
 - Download Assets (optional)
