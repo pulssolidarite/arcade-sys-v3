@@ -32,7 +32,7 @@ Go to **7 - Advanced Options**
 
 `$ sudo apt-get upgrade`
 
-`$ sudo apt-get install git snapd xscreensaver arp-scan`
+`$ sudo apt-get install git snapd xscreensaver arp-scan xserver-xorg-input-joystick`
 
 `$ sudo snap install core`
 
@@ -47,6 +47,8 @@ Go to **Online Updater**
 - Download Joypad Profiles
 - esc to exit
 - Reexecute retroarch and configure joypads
+
+Go To **Notifications** and turn all off
 
 ## Download and install Puls Impact Overlay
 
