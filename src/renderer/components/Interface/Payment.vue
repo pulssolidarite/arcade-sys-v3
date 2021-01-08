@@ -64,7 +64,7 @@ export default {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
     if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 1000 * 3);
+      this.pay(this.session.amount);
     } else {
       this.$emit("lastView");
     }
