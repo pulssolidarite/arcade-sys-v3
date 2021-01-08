@@ -30,6 +30,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+html{
+  cursor:none;
+}
+
 body {
   font-family: "Futura Std";
   font-weight: normal;
