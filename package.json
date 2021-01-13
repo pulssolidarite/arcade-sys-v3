@@ -23,9 +23,9 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
-    "productName": "PULS-Front-end",
+    "productName": "PULS-ARCADE",
     "appId": "com.pulsproject.arcade3",
-    "artifactName": "PULS-Front-end.${ext}",
+    "artifactName": "PULS-ARCADE.${ext}",
     "publish": [
       {
         "provider": "github",

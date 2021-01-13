@@ -239,7 +239,7 @@ export default {
         this.games = resp.data.games;
 
         // TEST-ONLY : we get the subscription type here
-        console.log("Type d'offre : " + this.terminal.subscription_type);
+        // console.log("Type d'offre : " + this.terminal.subscription_type);
 
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
