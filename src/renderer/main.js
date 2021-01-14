@@ -57,7 +57,7 @@ Vue.prototype.$http = axios;
 //Vue.prototype.$http.defaults.baseURL = process.env.SERVER_URL;
 
 //Vue.prototype.$http.defaults.baseURL = "https://puls-back-preprod.herokuapp.com/";
-Vue.prototype.$http.defaults.baseURL = "http://127.0.0.1:8000/";
+Vue.prototype.$http.defaults.baseURL = "https://puls-back-prod.herokuapp.com/";
 const token = localStorage.getItem("accessToken");
 
 if (token) {
@@ -73,3 +73,8 @@ new Vue({
   store,
   render: (h) => h(App),
 }).$mount("#app");
+
+
+window.onload = function(){
+	document.body.style.cursor = "none";
+}

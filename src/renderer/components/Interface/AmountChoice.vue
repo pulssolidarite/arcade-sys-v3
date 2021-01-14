@@ -2,10 +2,10 @@
   <div class="component">
     <div class="view amount-choice">
       <div class="s-title">
-        <div class="title">CHOISI TON MONTANT</div>
+        <div class="title">CHOISIS TON MONTANT</div>
         <div class="subtitle">
           <div class="animHorizontalText">
-            100% des dons reversés à Habitat Humanisme.
+            Vos dons sont reversés aux assosiations et aux artistes.
           </div>
         </div>
       </div>
@@ -123,6 +123,7 @@ export default {
         this.chooseAmount(2);
       }
     }
+    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     // line_right() {
@@ -165,33 +166,23 @@ export default {
           flag2.className = "empty-flag";
           break;
         case 5:
-          setTimeout(function() {
-            flag2.className = "full-flag";
-          }, 350);
+          flag2.className = "full-flag";
           flag3.className = "empty-flag";
           break;
         case 10:
-          setTimeout(function() {
-            flag3.className = "full-flag";
-          }, 350);
+          flag3.className = "full-flag";
           flag4.className = "empty-flag";
           break;
         case 20:
-          setTimeout(function() {
-            flag4.className = "full-flag";
-          }, 350);
+          flag4.className = "full-flag";
           flag5.className = "empty-flag";
           break;
         case 30:
-          setTimeout(function() {
-            flag5.className = "full-flag";
-          }, 350);
+          flag5.className = "full-flag";
           flag6.className = "empty-flag";
           break;
         case 50:
-          setTimeout(function() {
-            flag6.className = "full-flag";
-          }, 350);
+          flag6.className = "full-flag";
           break;
       }
     },
@@ -238,7 +229,7 @@ export default {
         return campaign.text30;
       }
       if (amount == 50) {
-        return campaign.text30; //text50 when back ready
+        return campaign.text50; //text50 when back ready
       }
     },
     getActionPhoto: function(campaign, amount) {
@@ -258,7 +249,7 @@ export default {
         return campaign.photo30;
       }
       if (amount == 50) {
-        return campaign.photo30; //photo50 when back ready
+        return campaign.photo50; //photo50 when back ready
       }
     },
     chooseAmount: function(index) {
@@ -391,7 +382,7 @@ export default {
 
 .amount-detail {
   margin-left: 50%;
-  margin-top: -10vh;
+  margin-top: -15vh;
   transform: translateX(-50%);
   background-color: #512fb5;
   box-shadow: -5px 0px #775ce4, 0px -5px #775ce4, 5px 0px #372491,
@@ -431,15 +422,16 @@ export default {
     0px 8px #372491;
 }
 
-.amount-icon {
-  margin-left: 50%;
-  transform: translateX(-50%);
+.amount-icon .rounded {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .amount-description {
   font-family: pixel3;
   color: white;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
 }
 
 .progress {

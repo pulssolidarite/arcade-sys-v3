@@ -2,8 +2,8 @@
   <div class="component">
     <div class="view game-choice">
       <div class="s-title">
-        <div class="title">CHOISI TON JEU</div>
-        <div class="subtitle">1 partie = 5 minutes</div>
+        <div class="title">CHOISIS TON JEU</div>
+        <div class="subtitle">1 partie = {{this.session.terminal.play_timer}} minutes</div>
       </div>
 
       <div class="s-content">
@@ -33,10 +33,26 @@
                 <div class="carousel-content">
                   <div class="row title-g">{{ game.name }}</div>
                   <div class="row picture">
+                    <youtube
+                      v-show="game.is_video"
+                      id="player-ytb"
+                      :video-id="game.video"
+                      :player-vars="playerVars"
+                      :fitParent="true"
+                      :ref="'youtube' + i"
+                      @ready="playerReady(i)"
+                      @playing="playerPlaying(i)"
+                      @ended="playVideo(i)"
+                      style="height: 100%; width: 100%;"
+                    ></youtube>
+
                     <img
                       :src="game.logo"
                       :alt="game.name"
-                      class="slide-picture"
+                      :class="[
+                        'slide-picture',
+                        game.is_video ? 'slide-picture-hidden' : '',
+                      ]"
                     />
                   </div>
                   <div class="c-line"></div>
@@ -52,8 +68,8 @@
                         alt="gamepad pictograme"
                       />
                     </div>
-                    <div class="nb-j">{{ gameInfos[game.name].nb_player }}</div>
-                    <div class="type">{{ gameInfos[game.name].type }}</div>
+                    <div class="nb-j">x{{ game.nb_players }}</div>
+                    <div class="type">{{ game.type }}</div>
                     <div class="icon2">
                       <!-- <img class="pictogramme" :src="'@/assets/img/picto/' + gameInfos[game.name].type + '.png'" :alt=game.name> -->
                       <!-- {{pathToPicto + gameInfos[game.name].type + '.png" alt="gamepad pictograme">'}} -->
@@ -92,7 +108,7 @@
 <script>
 import helpGamepad from "@/components/helpGamepad.vue";
 import { VueperSlides, VueperSlide } from "vueperslides";
-import jsonKeys from "./games_infos.json";
+//import jsonKeys from "./games_infos.json";
 
 export default {
   name: "Start",
@@ -104,7 +120,16 @@ export default {
       choosenIndexOf: {
         games: "",
       },
-      gameInfos: jsonKeys,
+      playerVars: {
+        autoplay: 1,
+        iv_load_policy: 3,
+        playsinline: 1,
+        controls: 0,
+        modestbranding: 1,
+        showinfo: 0,
+        rel: 0,
+      },
+      //gameInfos: jsonKeys,
       pathToPicto: '<img class="pictogramme" src="@/assets/img/picto/',
     };
   },
@@ -115,6 +140,7 @@ export default {
       this.chooseGame(0);
     }
     this.overflowVerify();
+    setTimeout(() => this.$emit("home"), 1000 * 60);
   },
   methods: {
     // SIMULATE GAMEPAD METHODS
@@ -134,10 +160,24 @@ export default {
     },
     getPictoUrl(game) {
       var images = require.context("@/assets/img/picto", false, /\.png$/);
-      return images("./" + this.gameInfos[game.name].type + ".png");
+      return images("./" + game.type + ".png");
       // return '@/assets/img/picto/' +  this.gameInfos[game.name].type + '.png';
     },
-
+    playerReady: function(index) {
+      this.$refs["youtube" + index][0].player.mute();
+      this.$refs["youtube" + index][0].player.getDuration().then((resp) => {
+        this.duration = resp;
+      });
+    },
+    playerPlaying: async function(index) {
+      let currentTime = this.$refs[
+        "youtube" + index
+      ][0].player.getCurrentTime();
+      this.timer = (Math.ceil(currentTime) / this.duration) * 100;
+    },
+    playVideo(index) {
+      this.$refs["youtube" + index][0].player.playVideo();
+    },
     // OTHER METHODS
     chooseGame: function(index) {
       this.choosenGame = this.games[index];

@@ -30,6 +30,11 @@
   font-weight: normal;
   font-style: normal;
 }
+
+html{
+  cursor:none;
+}
+
 body {
   font-family: "Futura Std";
   font-weight: normal;
@@ -144,7 +149,7 @@ body {
   -webkit-filter: grayscale(100%);
 }
 
-.campaign-choice .vueperslide--active .slide-picture {
+.campaign-choice .slide-picture-hidden {
   display: none;
 }
 
@@ -194,7 +199,7 @@ body {
 }
 .carousel-content .title-a,
 .carousel-content .title-g {
-  height: 10%;
+  min-height: 10%;
   text-align: center;
   font-size: 3rem;
   font-weight: 600;
@@ -926,11 +931,13 @@ body {
   background-color: #7e79fa;
   opacity: 0.8;
   transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .error-menu .but-group .e-button .text-button,
 .end-content .but-group .e-button .text-button {
-  margin-top: 32px;
   font-family: Pixel3;
   color: white;
   text-align: center;

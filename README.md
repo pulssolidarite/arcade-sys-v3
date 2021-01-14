@@ -64,7 +64,7 @@ Move PayterPay/bin/Release/ to home/ and rename it Payter/
 
 Download latest App Image release of arcade-sys-v3 and place it in home directory.
 
-`$ chmod a+x PULS-Front-end-X.X.X-armv7l.AppImage`
+`$ chmod a+x PULS-ARCADE.AppImage`
 
 Add these two lines at the end of `/etc/environment` :
 
@@ -78,7 +78,7 @@ Add these two lines at the end of `/etc/environment` :
 
 Test the overlay
 
-`$ ./PULS-Front-end-X.X.X-armv7l.AppImage`
+`$ ./PULS-ARCADE.AppImage`
 
 > Info : If the first screen stays white, restart the overlay
 
@@ -91,7 +91,7 @@ Go into autostart file in LXDE-pi directory :
 
 And add at the end, the path to AppImage : 
 
-`@/home/pi/PULS-Front-end-X.X.X-armv7l.AppImage`
+`@/home/pi/PULS-ARCADE.AppImage`
 
 WARNING : The version number need to be change for each update of the application. 
 

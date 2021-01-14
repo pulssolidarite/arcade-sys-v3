@@ -43,10 +43,8 @@ export default {
     this.$emit("startGameSession");
 
     // We then prepare the command and we launch it in a separate Node.js shell
-    const pathToCore =
-      "/home/pi/arcade-sys-games/cores/genesis_plus_gx_libretro.so";
-    const pathToGame =
-      "/home/pi/arcade-sys-games/roms/" + this.session.game.path;
+    const pathToCore = "/home/pi/games/cores/" + this.session.game.core.path;
+    const pathToGame = "/home/pi/games/roms/" + this.session.game.path;
 
     let command = 'retroarch -f -L "' + pathToCore + '" "' + pathToGame + '"';
     this.startShell(command);
@@ -69,9 +67,15 @@ export default {
       });
       // We use a global timer to kill the game after 10 minutes
       // TO-DO : maybe add a message that the time is out
-      var timer = setTimeout(function() {
-        exec('killall "retroarch"');
-      }, 1000 * 60 * 10); // milisecond*second*minute
+      if (this.session.terminal.play_timer) {
+        var timer = setTimeout(function() {
+          exec('killall "retroarch"');
+        }, 1000 * 60 * this.session.terminal.play_timer); // milisecond*second*minute
+      } else {
+        var timer = setTimeout(function() {
+          exec('killall "retroarch"');
+        }, 1000 * 60 * 10); // milisecond*second*minute
+      }
     },
     endGame: function() {
       this.loading = false;

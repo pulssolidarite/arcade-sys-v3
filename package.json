@@ -1,6 +1,6 @@
 {
   "name": "puls-arcade",
-  "version": "3.0.1",
+  "version": "3.3.0",
   "author": "Moncef HILALI, Yoann BOUGE, Fabien BLIN",
   "description": "A complete system to manage Arcade terminal capable of running retro games with donations management.",
   "license": "GNU AGPLv3",
@@ -23,8 +23,9 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
-    "productName": "PULS Front-end",
+    "productName": "PULS-ARCADE",
     "appId": "com.pulsproject.arcade3",
+    "artifactName": "PULS-ARCADE.${ext}",
     "publish": [
       {
         "provider": "github",

@@ -34,6 +34,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
+          @home="homeView"
           v-if="viewIndex == 0"
         ></Start>
 
@@ -46,6 +47,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
+          @home="homeView"
           v-if="viewIndex == 1"
         ></CampaignChoice>
 
@@ -56,6 +58,7 @@
           @error="handleError"
           @nextView="nextView"
           @lastView="lastView"
+          @home="homeView"
           v-if="viewIndex == 2"
         ></AmountChoice>
 
@@ -118,6 +121,7 @@
           @error="handleError"
           @lastView="endedView"
           @nextView="lastView"
+          @home="homeView"
           v-if="viewIndex == 7"
         ></requestTicket>
 
@@ -234,22 +238,36 @@ export default {
         this.campaigns = resp.data.campaigns;
         this.games = resp.data.games;
 
+        // TEST-ONLY : we get the subscription type here
+        // console.log("Type d'offre : " + this.terminal.subscription_type);
+
         // Core & Game management
         // Here we check if have all the required game files before turning the terminal on
-        const pathRoms = "D:\\hilal\\Documents\\Web Dev\\PULS\\roms\\";
-        const pathCores = "D:\\hilal\\Documents\\Web Dev\\PULS\\cores\\";
-        const pathBios = "D:\\hilal\\Documents\\Web Dev\\PULS\\bios\\";
+        const pathGlobal = "/home/pi/games/";
+        const pathRoms = pathGlobal + "roms/";
+        const pathCores = pathGlobal + "cores/";
+        const pathBios = pathGlobal + "bios/";
 
-        console.log("here");
+        // Creating folders if they don't exist
+        if (!fs.existsSync(pathGlobal)) {
+          fs.mkdirSync(pathGlobal);
+        }
+        if (!fs.existsSync(pathRoms)) {
+          fs.mkdirSync(pathRoms);
+        }
+        if (!fs.existsSync(pathCores)) {
+          fs.mkdirSync(pathCores);
+        }
+        if (!fs.existsSync(pathBios)) {
+          fs.mkdirSync(pathBios);
+        }
 
         this.games.forEach((game) => {
           // Checking if the game exists
           var currentPath = pathRoms + game.path;
 
           try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Game exists !");
-            } else {
+            if (!fs.existsSync(currentPath)) {
               request(game.file.file).pipe(fs.createWriteStream(currentPath));
             }
           } catch (err) {
@@ -259,9 +277,7 @@ export default {
           // Checking if the Core exists
           currentPath = pathCores + game.core.path;
           try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Core exists !");
-            } else {
+            if (!fs.existsSync(currentPath)) {
               request(game.core.file.file).pipe(
                 fs.createWriteStream(currentPath)
               );
@@ -271,17 +287,17 @@ export default {
           }
 
           // Checking if the Core exists
-          currentPath = pathBios + game.core.bios_path;
-          try {
-            if (fs.existsSync(currentPath)) {
-              console.log("Bios exists !");
-            } else {
-              request(game.core.bios.file).pipe(
-                fs.createWriteStream(currentPath)
-              );
+          if (game.core.bios_path) {
+            currentPath = pathBios + game.core.bios_path;
+            try {
+              if (!fs.existsSync(currentPath)) {
+                request(game.core.bios.file).pipe(
+                  fs.createWriteStream(currentPath)
+                );
+              }
+            } catch (err) {
+              console.error("Catched error on try : " + err);
             }
-          } catch (err) {
-            console.error("Catched error on try : " + err);
           }
         });
 
@@ -296,7 +312,7 @@ export default {
         this.loading = false;
       })
       .catch((err) => {
-        console.log(err.response);
+        console.log(err);
         this.errors = {
           visible: true,
           title: "Erreur de chargement",
