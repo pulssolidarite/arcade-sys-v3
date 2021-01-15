@@ -1,8 +1,6 @@
 # Installation Nouvelle Borne Arcade Puls Impact
 
-
 This guide is made to help install all the software and configure the Debian for the Puls Impact arcade machine. If you have a SD card save of this config, you may use it and adapt the configurations for the specifics.
-
 
 ## Installation nouvelle borne
 
@@ -34,9 +32,7 @@ Go to **7 - Advanced Options**
 
 `$ sudo apt-get upgrade`
 
-
 `$ sudo apt-get install git snapd xscreensaver arp-scan xserver-xorg-input-joystick`
-
 
 `$ sudo snap install core`
 
@@ -60,17 +56,15 @@ Install mono-complete : https://www.mono-project.com/download/stable/#download-l
 
 `git clone https://github.com/pulssolidarite/PayterPay.git`
 
-
 Go to PayterPay repository and compile:
 
 `msbuild /p:Configuration=Release`
 
 Move PayterPay/bin/Release/ to home/ and rename it Payter/
 
-
 Download latest App Image release of arcade-sys-v3 and place it in home directory.
 
-`$ chmod a+x PULS-Front-end-X.X.X-armv7l.AppImage`
+`$ chmod a+x PULS-ARCADE.AppImage`
 
 Add these two lines at the end of `/etc/environment` :
 
@@ -84,7 +78,7 @@ Add these two lines at the end of `/etc/environment` :
 
 Test the overlay
 
-`$ ./PULS-Front-end-X.X.X-armv7l.AppImage`
+`$ ./PULS-ARCADE.AppImage`
 
 > Info : If the first screen stays white, restart the overlay
 
@@ -97,7 +91,7 @@ Go into autostart file in LXDE-pi directory :
 
 And add at the end, the path to AppImage : 
 
-`@/home/pi/PULS-Front-end-X.X.X-armv7l.AppImage`
+`@/home/pi/PULS-ARCADE.AppImage`
 
 WARNING : The version number need to be change for each update of the application. 
 
