@@ -1,5 +1,6 @@
 # Installation Nouvelle Borne Arcade Puls Impact
 
+This guide is made to help install all the software and configure the Debian for the Puls Impact arcade machine. If you have a SD card save of this config, you may use it and adapt the configurations for the specifics.
 
 ## Installation nouvelle borne
 
@@ -31,7 +32,7 @@ Go to **7 - Advanced Options**
 
 `$ sudo apt-get upgrade`
 
-`$ sudo apt-get install git snapd xscreensaver`
+`$ sudo apt-get install git snapd xscreensaver arp-scan xserver-xorg-input-joystick`
 
 `$ sudo snap install core`
 
@@ -39,9 +40,7 @@ Go to **7 - Advanced Options**
 
 ## Download & Install Retroarch
 
-`$ sudo snap install retroarch`
-
-`$ retroarch`
+Follow this link : https://gist.github.com/ematysek/fc01a47c7d34f0ca4dad41226c53ff6e
 
 Go to **Online Updater**
 - Download Assets (optional)
@@ -49,19 +48,19 @@ Go to **Online Updater**
 - esc to exit
 - Reexecute retroarch and configure joypads
 
+Go To **Notifications** and turn all off
+
 ## Download and install Puls Impact Overlay
 
 Install mono-complete : https://www.mono-project.com/download/stable/#download-lin-raspbian
 
 `git clone https://github.com/pulssolidarite/PayterPay.git`
 
-Aller dans le dossier PayterPay et compiler:
+Go to PayterPay repository and compile:
 
 `msbuild /p:Configuration=Release`
 
-Deplacer le dossier PayterPay/bin/Release dans le home et renommer en Payter.
-
-`$ sudo apt-get install arp-scan`
+Move PayterPay/bin/Release/ to home/ and rename it Payter/
 
 Download latest App Image release of arcade-sys-v3 and place it in home directory.
 
@@ -124,6 +123,3 @@ Reboot toute la borne
 
 Magie ça marche ! si tout est branché...
 
-## Garder l'écran allumé
-
-`sudo systemctl enable xscreensaver`
