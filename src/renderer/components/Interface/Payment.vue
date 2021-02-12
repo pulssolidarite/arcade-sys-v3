@@ -61,8 +61,6 @@ export default {
   name: "Payment",
   props: ["session"],
   mounted: function() {
-    // IN PRODUCTION UNCOMMENT THIS
-    // For paying with PayterTerminal
     if (process.env.PULS_SKIPPAYMENT == "TRUE") {
       // FOR DEV PURPOSE ONLY
       // For skipping payment
@@ -85,8 +83,8 @@ export default {
         game: this.session.game.id,
         date: new Date(),
         method: "Manual",
-        status: "Accepted",
-        amount: amount,
+        status: "Skiped",
+        amount: 0,
         currency: "EUR",
       };
 
@@ -101,7 +99,7 @@ export default {
         date: new Date(),
         method: "Manual",
         status: "",
-        amount: amount,
+        amount: 0,
         currency: "EUR",
       };
 
