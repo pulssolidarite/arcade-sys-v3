@@ -63,15 +63,18 @@ export default {
   mounted: function() {
     // IN PRODUCTION UNCOMMENT THIS
     // For paying with PayterTerminal
-    if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 1000);
-    } else {
-      this.$emit("lastView");
-    }
+    if (process.env.PULS_SKIPPAYMENT == "TRUE") {
+      // FOR DEV PURPOSE ONLY
+      // For skipping payment
+      setTimeout(() => this.skipPayment(this.session.amount), 8000);
 
-    // FOR DEV PURPOSE ONLY
-    // For skipping payment
-    //setTimeout(() => this.skipPayment(this.session.amount), 8000);
+    } else {
+      if (this.session.amount) {
+        setTimeout(() => this.pay(this.session.amount), 1000);
+      } else {
+        this.$emit("lastView");
+      }
+    }
   },
   methods: {
     skipPayment: function(amount) {

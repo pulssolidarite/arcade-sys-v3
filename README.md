@@ -74,6 +74,10 @@ Add these two lines at the end of `/etc/environment` :
 
 `export PULS_MDP=???`
 
+> Add this for free mode:
+
+`export PULS_SKIPPAYMENT=TRUE`
+
 `$ source /etc/environment`
 
 Test the overlay
