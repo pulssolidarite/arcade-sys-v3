@@ -19,6 +19,7 @@
         </div>
 
         <div class="w-credit">
+          <span class="credit-infos">{{ version }}</span>
           <span class="copyright">© PULS IMPACT · 2021</span>
           <span class="credit-infos">Agence en innovations solidaires</span>
         </div>
@@ -46,6 +47,9 @@ export default {
       this.$emit("nextView");
     },
   },
+  data: {
+    version: "3.3.5",
+  }
 };
 </script>
 
