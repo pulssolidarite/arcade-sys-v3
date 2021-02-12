@@ -20,11 +20,11 @@
     <div class="w-100 h-100" v-if="!loading">
       <transition name="mytr" mode="out-in">
         <!-- SCREENSAVER -->
-        <Welcom
+        <Welcome
           @error="handleError"
           @nextView="nextView"
           v-if="viewIndex == -1"
-        ></Welcom>
+        ></Welcome>
 
         <!-- FIRST VIEW -->
         <Start
@@ -133,7 +133,7 @@
 
 <script>
 import VueElementLoading from "vue-element-loading";
-import Welcom from "@/components/Interface/Welcom.vue";
+import Welcome from "@/components/Interface/Welcome.vue";
 
 import Error from "@/components/Interface/ErrorsPayement.vue";
 import Stepping from "@/components/stepping.vue";
@@ -159,7 +159,7 @@ export default {
     VueElementLoading,
     Error,
     Stepping,
-    Welcom,
+    Welcome,
     Start,
     CampaignChoice,
     AmountChoice,
