@@ -53,7 +53,8 @@ export default {
   },
   data: function() {
     return {
-      version: "v" + require('/package.json').version
+      //version: "v" + require('/package.json').version
+      version: "vX.X.X"
     };
   }
 };
