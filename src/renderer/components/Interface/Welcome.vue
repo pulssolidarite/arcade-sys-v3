@@ -34,9 +34,9 @@
 <script>
 import helpGamepad from "@/components/helpGamepad.vue";
 
-const fs = require('fs')
-const packageJson = fs.readFileSync('./package.json')
-const version = JSON.parse(packageJson).version || 0
+//const fs = require('fs')
+//const packageJson = fs.readFileSync('/package.json')
+//const version = JSON.parse(packageJson).version || 0
 
 export default {
   name: "Welcome",
