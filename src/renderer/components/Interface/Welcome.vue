@@ -19,7 +19,7 @@
         </div>
 
         <div class="w-credit">
-          <span class="credit-infos">{{ this.version }}</span>
+          <span class="credit-infos">{{ this.appVersion }}</span>
           <span class="copyright">© PULS IMPACT · 2021</span>
           <span class="credit-infos">Agence en innovations solidaires</span>
         </div>
@@ -34,9 +34,10 @@
 <script>
 import helpGamepad from "@/components/helpGamepad.vue";
 
-//const fs = require('fs')
-//const packageJson = fs.readFileSync('/package.json')
-//const version = JSON.parse(packageJson).version || 0
+// const fs = require('fs')
+// const packageJson = fs.readFileSync('./package.json')
+// const version = JSON.parse(packageJson).version || 0
+import {version} from '../../../../package'
 
 export default {
   name: "Welcome",
@@ -53,8 +54,8 @@ export default {
   },
   data: function() {
     return {
-      //version: "v" + require('/package.json').version
-      version: "vX.X.X"
+      // version: "v" + require('/package.json').version
+      appVersion: version
     };
   }
 };
