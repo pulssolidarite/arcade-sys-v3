@@ -33,10 +33,6 @@
 
 <script>
 import helpGamepad from "@/components/helpGamepad.vue";
-
-// const fs = require('fs')
-// const packageJson = fs.readFileSync('./package.json')
-// const version = JSON.parse(packageJson).version || 0
 import {version} from '../../../../package'
 
 export default {
@@ -54,7 +50,6 @@ export default {
   },
   data: function() {
     return {
-      // version: "v" + require('/package.json').version
       appVersion: version
     };
   }
