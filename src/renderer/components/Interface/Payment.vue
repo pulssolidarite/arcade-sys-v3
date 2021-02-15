@@ -61,17 +61,18 @@ export default {
   name: "Payment",
   props: ["session"],
   mounted: function() {
-    // IN PRODUCTION UNCOMMENT THIS
-    // For paying with PayterTerminal
-    if (this.session.amount) {
-      setTimeout(() => this.pay(this.session.amount), 1000);
-    } else {
-      this.$emit("lastView");
-    }
+    if (process.env.PULS_SKIPPAYMENT == "TRUE") {
+      // FOR DEV PURPOSE ONLY
+      // For skipping payment
+      setTimeout(() => this.skipPayment(this.session.amount), 8000);
 
-    // FOR DEV PURPOSE ONLY
-    // For skipping payment
-    //setTimeout(() => this.skipPayment(this.session.amount), 8000);
+    } else {
+      if (this.session.amount) {
+        setTimeout(() => this.pay(this.session.amount), 1000);
+      } else {
+        this.$emit("lastView");
+      }
+    }
   },
   methods: {
     skipPayment: function(amount) {
@@ -82,8 +83,8 @@ export default {
         game: this.session.game.id,
         date: new Date(),
         method: "Manual",
-        status: "Accepted",
-        amount: amount,
+        status: "Skiped",
+        amount: 0,
         currency: "EUR",
       };
 
@@ -98,7 +99,7 @@ export default {
         date: new Date(),
         method: "Manual",
         status: "",
-        amount: amount,
+        amount: 0,
         currency: "EUR",
       };
 
