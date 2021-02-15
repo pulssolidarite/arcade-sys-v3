@@ -5,7 +5,7 @@
         <div class="title">CHOISIS TON MONTANT</div>
         <div class="subtitle">
           <div class="animHorizontalText">
-            Vos dons sont reversés aux assosiations et aux artistes.
+            Vos dons sont reversés aux assosiations.
           </div>
         </div>
       </div>
