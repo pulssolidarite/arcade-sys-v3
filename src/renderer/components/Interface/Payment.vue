@@ -64,7 +64,8 @@ export default {
     if (process.env.PULS_SKIPPAYMENT == "TRUE") {
       // FOR DEV PURPOSE ONLY
       // For skipping payment
-      setTimeout(() => this.skipPayment(this.session.amount), 8000);
+      console.log("skip payment");
+      setTimeout(() => this.skipPayment(this.session.amount), 1000);
 
     } else {
       if (this.session.amount) {

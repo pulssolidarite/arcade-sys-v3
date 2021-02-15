@@ -9,15 +9,13 @@
       <div class="about-content">
         <div class="infos-puls">
           <p>
-            Puls Impact est le fruit de deux entrepreneurs sociaux qui engagent
-            leurs actions dans la recherche et le développement de nouvelles
-            solutions pour démocratiser la générosité et l’engagement.
-            <br /><br />« Une société de l’engagement passe par le développement
-            de la générosité »<br /><br />
-            Notre approche consiste à placer le plaisir, l’émotion, le
-            divertissement et le ludique au cœur des solutions de générosité
-            afin de sensibiliser différemment aux enjeux associatifs et
-            multiplier le geste de don pour le grand public.
+            Puls Impact est une agence qui développe des solutions innovantes de collecte de dons au profit des associations caritatives. 
+            Son approche est unique : lier la solidarité et le jeu vidéo. 
+            L’objectif est donc de permettre aux citoyens de s’amuser tout en faisant de bonnes actions : <br />
+            soutenir des associations par un don ! <br /><br />
+            La borne d’arcade solidaire est une des solutions originales développées par Puls Impact. 
+            L’intégralité des dons effectuées sur la machine sont reversés à l’association que vous avez sélectionnée. 
+            Alors un grand MERCI pour votre engagement ! 
           </p>
         </div>
         <div class="contact">
